@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.ups.vista;
+package ec.edu.ups.vista.factura;
 
 /**
  *
- * @author Byron PC
+ * @author Domenica Cañizares
  */
-public class prueba extends javax.swing.JInternalFrame {
+public class CrearFactura extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form prueba
+     * Creates new form CrearFactura
      */
-    public prueba() {
+    public CrearFactura() {
         initComponents();
     }
 
