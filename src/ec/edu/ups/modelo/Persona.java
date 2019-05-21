@@ -10,5 +10,12 @@ package ec.edu.ups.modelo;
  * @author erics
  */
 public class Persona {
+    private int codigo ;
+    private String nombre;
+    private String cedula;
+    private int edad ;
+    
+            
+     
     
 }
