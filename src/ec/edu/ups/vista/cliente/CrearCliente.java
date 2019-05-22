@@ -5,17 +5,38 @@
  */
 package ec.edu.ups.vista.cliente;
 
+import ec.edu.ups.Modelo.Cliente;
+import ec.edu.ups.controladores.ControladorCliente;
+import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author erics
  */
 public class CrearCliente extends javax.swing.JInternalFrame {
+    private ControladorCliente controladorCliente;
+    private ResourceBundle mensajes;
 
     /**
      * Creates new form CrearCliente
      */
-    public CrearCliente() {
+    public CrearCliente(ControladorCliente ControladorCliente, ResourceBundle mensajes) {
         initComponents();
+        this.controladorCliente=ControladorCliente;
+       txtcodigo.setText(Integer.toString(this.controladorCliente.getCodigo()));
+       this.mensajes = mensajes;
+       cambiarIdioma(mensajes);
+    }
+    public void cambiarIdioma(ResourceBundle mensajes){
+        
+        labelcodigo.setText(mensajes.getString("cliente.codigo"));
+        labelnombre.setText(mensajes.getString("cliente.nombre"));
+        labelcedula.setText(mensajes.getString("cliente.cedula"));
+        labeldireccion.setText(mensajes.getString("cliente.direccion"));
+        labeltelefono.setText(mensajes.getString("cliente.telefono"));
+        botoncrearcliente.setText(mensajes.getString("boton.crear"));
+        
     }
 
     /**
@@ -27,21 +48,218 @@ public class CrearCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField7 = new javax.swing.JTextField();
+        clientetitulo = new javax.swing.JLabel();
+        labelcodigo = new javax.swing.JLabel();
+        labelnombre = new javax.swing.JLabel();
+        labeldireccion = new javax.swing.JLabel();
+        labelcedula = new javax.swing.JLabel();
+        labeledad = new javax.swing.JLabel();
+        labelgenero = new javax.swing.JLabel();
+        labeltelefono = new javax.swing.JLabel();
+        labelapellido = new javax.swing.JLabel();
+        txtcodigo = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
+        txtapellido = new javax.swing.JTextField();
+        txtdireccion = new javax.swing.JTextField();
+        txtedad = new javax.swing.JTextField();
+        txtcedula = new javax.swing.JTextField();
+        txtgenero = new javax.swing.JTextField();
+        txttelefono = new javax.swing.JTextField();
+        botoncrearcliente = new javax.swing.JButton();
+
+        jTextField7.setToolTipText("");
+
+        setClosable(true);
+
+        clientetitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        clientetitulo.setText("Crear Cliente");
+
+        labelcodigo.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelcodigo.setText("Código:");
+
+        labelnombre.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelnombre.setText("Nombre:");
+
+        labeldireccion.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeldireccion.setText("Dirección:");
+
+        labelcedula.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelcedula.setText("Cedula:");
+
+        labeledad.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeledad.setText("Edad:");
+
+        labelgenero.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelgenero.setText("Género:");
+
+        labeltelefono.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeltelefono.setText("Teléfono:");
+
+        labelapellido.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelapellido.setText("Apellido:");
+
+        txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtcodigo.setEnabled(false);
+
+        txtnombre.setToolTipText("");
+        txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtapellido.setToolTipText("");
+        txtapellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtdireccion.setToolTipText("");
+        txtdireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtedad.setToolTipText("");
+        txtedad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtcedula.setToolTipText("");
+        txtcedula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtgenero.setToolTipText("");
+        txtgenero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txttelefono.setToolTipText("");
+        txttelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        botoncrearcliente.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        botoncrearcliente.setText("Crear ");
+        botoncrearcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botoncrearclienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelcodigo)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(labelnombre)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtnombre))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(labelcedula)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(labeledad)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(labelapellido)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelgenero)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(128, 128, 128)
+                                .addComponent(botoncrearcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labeldireccion)
+                        .addGap(39, 39, 39)
+                        .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(labeltelefono)
+                        .addGap(18, 18, 18)
+                        .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(clientetitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(180, 180, 180))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(clientetitulo)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelcodigo)
+                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelnombre)
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelapellido)
+                    .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelcedula)
+                    .addComponent(txtcedula, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(labeledad)
+                    .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labeldireccion)
+                    .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labeltelefono)
+                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelgenero)
+                    .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botoncrearcliente))
+                .addGap(183, 183, 183))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botoncrearclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncrearclienteActionPerformed
+        // TODO add your handling code here:
+        Cliente cliente = new Cliente ();
+        cliente.setNombre(txtnombre.getText());
+        cliente.setDireccion(txtdireccion.getText());
+        cliente.setCedula(txtcedula.getText());
+        cliente.setTelefono(txttelefono.getText());
+        txtnombre.setText("");
+        txtdireccion.setText("");
+        txtcedula.setText("");
+        txttelefono.setText("");
+        controladorCliente.create(cliente);
+        txtcodigo.setText(Integer.toString(this.controladorCliente.getCodigo()));
+        JOptionPane.showMessageDialog(this, "Cliente creado exitosamente", "Crear cliente", JOptionPane.OK_OPTION);
+    }//GEN-LAST:event_botoncrearclienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botoncrearcliente;
+    private javax.swing.JLabel clientetitulo;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel labelapellido;
+    private javax.swing.JLabel labelcedula;
+    private javax.swing.JLabel labelcodigo;
+    private javax.swing.JLabel labeldireccion;
+    private javax.swing.JLabel labeledad;
+    private javax.swing.JLabel labelgenero;
+    private javax.swing.JLabel labelnombre;
+    private javax.swing.JLabel labeltelefono;
+    private javax.swing.JTextField txtapellido;
+    private javax.swing.JTextField txtcedula;
+    private javax.swing.JTextField txtcodigo;
+    private javax.swing.JTextField txtdireccion;
+    private javax.swing.JTextField txtedad;
+    private javax.swing.JTextField txtgenero;
+    private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 }
