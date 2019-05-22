@@ -11,7 +11,7 @@ package ec.edu.ups.Modelo;
  */
 public class FacturaDetalle {
 
-    //private Servicio serv;
+    private Servicio serv;
 
     private int codigo;
     private int cantidad;
@@ -28,7 +28,7 @@ public class FacturaDetalle {
         this.subtotal = subtotal;
         this.total = total;
     }
-    /*
+    
      public Servicio getServ() {
      return serv;
      }
@@ -36,7 +36,6 @@ public class FacturaDetalle {
      public void setProd(Servicio serv) {
      this.serv = serv;
      }
-     */
 
     public int getCodigo() {
         return codigo;
