@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author erics
  */
-public abstract class Cliente extends Persona {
+public class Cliente extends Persona {
     private String direccion;
     private String telefono;
     private String genero;
