@@ -39,5 +39,30 @@ public class ControladorFactura {
         return fechaT;
     }
     
-  
+    //crear un nuevo objeto en la lista
+    public void create(Factura objeto){
+        codigo ++;
+        objeto.setRuc(codigo);
+        lista.add(objeto);
+    }
+    
+    //leer el codigo para buscar la factura
+    public Factura read(int codigo){
+        for (Factura fac : lista) {
+            if (fac.getRuc()== codigo) {
+                return fac;
+            }
+        }
+        return null;
+    }
+    
+    //eliminar la factura si contiene un error
+    public void delete(int codigo){
+        for (Factura fac : lista) {
+            if (fac.getRuc()== codigo){
+                lista.remove(fac);
+                break;
+            }
+        }
+    }
 }
