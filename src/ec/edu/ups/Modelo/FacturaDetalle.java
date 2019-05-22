@@ -21,8 +21,8 @@ public class FacturaDetalle {
     public FacturaDetalle() {
     }
 
-    public FacturaDetalle(/*Servicio serv,*/int codigo, int cantidad, double subtotal, double total) {
-        /*this.serv = serv;*/
+    public FacturaDetalle(Servicio serv,int codigo, int cantidad, double subtotal, double total) {
+        this.serv = serv;
         this.codigo = codigo;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
