@@ -5,7 +5,9 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.controladores.ControladorServicio;
+import ec.edu.ups.vista.cliente.CrearCliente;
 import ec.edu.ups.vista.servicio.BuscarServicio;
 import ec.edu.ups.vista.servicio.CrearServicio;
 import ec.edu.ups.vista.servicio.ModificarServicio;
@@ -20,9 +22,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
      * Creates new form VistaPrincipal
      */
     private ControladorServicio controladorservicio;
+    private ControladorCliente controladorcliente;
     public VistaPrincipal() {
         initComponents();
         controladorservicio = new ControladorServicio();
+        controladorcliente = new ControladorCliente();
+                
     }
 
     /**
@@ -209,6 +214,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu2.add(jMenuItem13);
 
         jMenuItem14.setText("Eliminar");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem14);
 
         menuBar.add(jMenu2);
@@ -245,6 +255,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         // TODO add your handling code here:
+      CrearCliente crear = new CrearCliente(controladorcliente);
+      crear.setVisible(true);
+      DesktopPane.add(crear);
          
     }//GEN-LAST:event_openMenuItemActionPerformed
 
@@ -273,6 +286,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
       crear.setVisible(true);
       DesktopPane.add(crear);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     /**
      * @param args the command line arguments
