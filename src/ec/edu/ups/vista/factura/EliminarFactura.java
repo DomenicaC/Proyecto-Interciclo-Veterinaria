@@ -24,6 +24,8 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
         int b = VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
         
         setLocation(a/2, b/2);
+        
+        setVisible(true);
     }
 
     /**
