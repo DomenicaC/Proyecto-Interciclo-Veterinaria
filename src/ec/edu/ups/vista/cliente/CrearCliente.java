@@ -38,14 +38,14 @@ public class CrearCliente extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(265, 265, 265)
                 .addComponent(jLabel1)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(419, Short.MAX_VALUE))
+                .addContainerGap(487, Short.MAX_VALUE))
         );
 
         pack();
