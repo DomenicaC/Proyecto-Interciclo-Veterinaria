@@ -5,6 +5,8 @@
  */
 package ec.edu.ups.vista.factura;
 
+import ec.edu.ups.vista.VistaPrincipal;
+
 /**
  *
  * @author Domenica Cañizares
@@ -16,6 +18,13 @@ public class CrearFactura extends javax.swing.JInternalFrame {
      */
     public CrearFactura() {
         initComponents();
+        
+        
+        //centrar ventana
+        int a = VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
+        int b = VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
+        
+        setLocation(a/2, b/2);
     }
 
     /**
@@ -49,12 +58,12 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         txtFecha = new javax.swing.JTextField();
         lblFecha = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        lblNomV = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        lblCedV = new javax.swing.JLabel();
+        txtCedV = new javax.swing.JTextField();
         btnBuscarVF = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -223,9 +232,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel10.setText("Nombre Veterinario");
+        lblNomV.setBackground(new java.awt.Color(255, 255, 255));
+        lblNomV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomV.setText("Nombre Veterinario");
 
         jTextField9.setEditable(false);
         jTextField9.setEnabled(false);
@@ -237,9 +246,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         jTextField10.setEditable(false);
         jTextField10.setEnabled(false);
 
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel12.setText("Cedula Veterinario");
+        lblCedV.setBackground(new java.awt.Color(255, 255, 255));
+        lblCedV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCedV.setText("Cedula Veterinario");
 
         btnBuscarVF.setText("Buscar");
 
@@ -251,14 +260,14 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addComponent(lblCedV)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscarVF)
                         .addGap(150, 150, 150))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
+                        .addComponent(lblNomV)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
@@ -272,12 +281,12 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCedV)
+                    .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarVF))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(lblNomV)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -501,9 +510,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCrearF;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -524,7 +531,6 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
@@ -539,8 +545,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lblCedV;
     private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblNomV;
     private javax.swing.JLabel lblRuc;
+    private javax.swing.JTextField txtCedV;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtRuc;
     // End of variables declaration//GEN-END:variables
