@@ -45,7 +45,7 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         labeldireccion = new javax.swing.JLabel();
         labeledad = new javax.swing.JLabel();
         labelgenero = new javax.swing.JLabel();
-        botoncrearcliente = new javax.swing.JButton();
+        botoncancelar = new javax.swing.JButton();
         labeltelefono = new javax.swing.JLabel();
         labelapellido = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
@@ -79,11 +79,11 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         labelgenero.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
         labelgenero.setText("Género:");
 
-        botoncrearcliente.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        botoncrearcliente.setText("Crear ");
-        botoncrearcliente.addActionListener(new java.awt.event.ActionListener() {
+        botoncancelar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        botoncancelar.setText("Cancelar");
+        botoncancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botoncrearclienteActionPerformed(evt);
+                botoncancelarActionPerformed(evt);
             }
         });
 
@@ -96,21 +96,27 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtcodigo.setEnabled(false);
 
+        txtnombre.setEditable(false);
         txtnombre.setToolTipText("");
         txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        txtapellido.setEditable(false);
         txtapellido.setToolTipText("");
         txtapellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        txtdireccion.setEditable(false);
         txtdireccion.setToolTipText("");
         txtdireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        txtedad.setEditable(false);
         txtedad.setToolTipText("");
         txtedad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        txtgenero.setEditable(false);
         txtgenero.setToolTipText("");
         txtgenero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        txttelefono.setEditable(false);
         txttelefono.setToolTipText("");
         txttelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -132,10 +138,6 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(botoncrearcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(284, 284, 284))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,6 +178,10 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(66, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botoncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,9 +219,9 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtedad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labeledad)))
-                .addGap(18, 18, 18)
-                .addComponent(botoncrearcliente)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(botoncancelar)
+                .addGap(19, 19, 19))
         );
 
         clientetitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
@@ -247,43 +253,29 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botoncrearclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncrearclienteActionPerformed
-        // TODO add your handling code here:
-        Cliente cliente = new Cliente();
-        cliente.setNombre(txtnombre.getText());
-        cliente.setDireccion(txtdireccion.getText());
-        cliente.setCedula(txtcedula.getText());
-        cliente.setTelefono(txttelefono.getText());
-        txtnombre.setText("");
-        txtdireccion.setText("");
-        txtcedula.setText("");
-        txttelefono.setText("");
-        txtapellido.setText("");
-        txtgenero.setText("");
-        txtedad.setText("");
-        controladorCliente.create(cliente);
-        txtcodigo.setText(Integer.toString(this.controladorCliente.getCodigo()));
-        JOptionPane.showMessageDialog(this, "Cliente creado exitosamente", "Crear cliente", JOptionPane.OK_OPTION);
-    }//GEN-LAST:event_botoncrearclienteActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         String cedula = txtcedula.getText();
+        String cedula = txtcedula.getText();
         Cliente cliente = controladorCliente.read1(cedula);
-        txtnombre.setText(cliente.getNombre());
         txtcodigo.setText(Integer.toString(cliente.getCodigo()));
+        txtnombre.setText(cliente.getNombre());
+        txtapellido.setText(cliente.getApellido());
         txtdireccion.setText(cliente.getDireccion());
         txttelefono.setText(cliente.getTelefono());
-        txtapellido.setText(cliente.getApellido());
         txtgenero.setText(cliente.getGenero());
         txtedad.setText(Integer.toString(cliente.getEdad()));
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void botoncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncancelarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_botoncancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botoncrearcliente;
+    private javax.swing.JButton botoncancelar;
     private javax.swing.JLabel clientetitulo;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
