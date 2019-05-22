@@ -299,7 +299,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
         // TODO add your handling code here:
-        BuscarCliente crear = new BuscarCliente(controladorcliente);
+      BuscarCliente crear = new BuscarCliente(controladorcliente);
       crear.setVisible(true);
       DesktopPane.add(crear);
         
