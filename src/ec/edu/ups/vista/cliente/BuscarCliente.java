@@ -7,6 +7,7 @@ package ec.edu.ups.vista.cliente;
 
 import ec.edu.ups.Modelo.Cliente;
 import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.vista.VistaPrincipal;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,11 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
     public BuscarCliente(ControladorCliente controladorCliente) {
         initComponents();
          this.controladorCliente = controladorCliente;
+         int a = VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
+        int b = VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
+        
+        setLocation(a/2, b/2);
+        setVisible(true);
     }
 
     /**
