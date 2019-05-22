@@ -22,10 +22,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VistaPrincipal
      */
+    
+    
+    
     private ControladorServicio controladorservicio;
     private ControladorCliente controladorcliente;
     public VistaPrincipal() {
         initComponents();
+        
         controladorservicio = new ControladorServicio();
         controladorcliente = new ControladorCliente();
                 
