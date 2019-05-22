@@ -7,6 +7,7 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.controladores.ControladorServicio;
+import ec.edu.ups.vista.cliente.BuscarCliente;
 import ec.edu.ups.vista.cliente.CrearCliente;
 import ec.edu.ups.vista.servicio.BuscarServicio;
 import ec.edu.ups.vista.servicio.CrearServicio;
@@ -100,6 +101,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Buscar");
+        saveAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAsMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(saveAsMenuItem);
 
         exitMenuItem.setMnemonic('x');
@@ -290,6 +296,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
+        // TODO add your handling code here:
+        BuscarCliente crear = new BuscarCliente(controladorcliente);
+      crear.setVisible(true);
+      DesktopPane.add(crear);
+        
+        
+    }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
