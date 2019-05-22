@@ -179,6 +179,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu1.setText("Servicio");
 
         jMenuItem7.setText("Crear");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem7);
 
         jMenuItem11.setText("Buscar");
@@ -245,9 +250,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
         // TODO add your handling code here:
-        CrearServicio crear = new CrearServicio(controladorservicio);
-      crear.setVisible(true);
-      jDesktopPane1.add(crear);
+       
     }//GEN-LAST:event_contentsMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
@@ -263,6 +266,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
       crear.setVisible(true);
       jDesktopPane1.add(crear);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+         CrearServicio crear = new CrearServicio(controladorservicio);
+      crear.setVisible(true);
+      jDesktopPane1.add(crear);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
