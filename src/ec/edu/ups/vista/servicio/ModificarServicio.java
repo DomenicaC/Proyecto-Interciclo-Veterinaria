@@ -5,6 +5,10 @@
  */
 package ec.edu.ups.vista.servicio;
 
+import ec.edu.ups.Modelo.Servicio;
+import ec.edu.ups.controladores.ControladorServicio;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlos
@@ -14,8 +18,11 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
     /**
      * Creates new form ModificarServicio
      */
-    public ModificarServicio() {
+    private ControladorServicio controladorservicio;
+    
+    public ModificarServicio(ControladorServicio controladorservicio) {
         initComponents();
+        this.controladorservicio = controladorservicio;
     }
 
     /**
@@ -27,21 +34,143 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        cancelar = new javax.swing.JButton();
+        Aceptar = new javax.swing.JButton();
+        txtprecio = new javax.swing.JTextField();
+        JCE = new javax.swing.JLabel();
+        txtnombre = new javax.swing.JTextField();
+        JN = new javax.swing.JLabel();
+        LCODIGO = new javax.swing.JLabel();
+        txtcodigo = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
+        setClosable(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(10, 10, 10, 10, new java.awt.Color(204, 255, 153)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel1.setText("MODIFICAR SERVICIO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 280, 50));
+
+        cancelar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        cancelar.setForeground(new java.awt.Color(0, 255, 204));
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 150, 40));
+
+        Aceptar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Aceptar.setForeground(new java.awt.Color(0, 255, 204));
+        Aceptar.setText("Buscar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 150, 40));
+
+        txtprecio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtprecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtprecioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 220, 50));
+
+        JCE.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        JCE.setText("PRECIO:");
+        JCE.setToolTipText("");
+        jPanel1.add(JCE, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 120, 30));
+
+        txtnombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 220, 50));
+
+        JN.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        JN.setText("NOMBRE:");
+        jPanel1.add(JN, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 120, 30));
+
+        LCODIGO.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        LCODIGO.setText("CODIGO:");
+        jPanel1.add(LCODIGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 120, 30));
+
+        txtcodigo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 220, 50));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 255, 204));
+        jButton1.setText("Modificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 311, 140, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 480, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        // TODO add your handling code here:
+
+        dispose();
+    }//GEN-LAST:event_cancelarActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+        // TODO add your handling code here:
+        int codigo = Integer.parseInt(txtcodigo.getText());
+        Servicio buscarProducto = controladorservicio.read(codigo);
+        txtnombre.setText(buscarProducto.getNombreservicio());
+        txtprecio.setText(String.valueOf(buscarProducto.getPrecio()));
+    }//GEN-LAST:event_AceptarActionPerformed
+
+    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtprecioActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Servicio modificar = new Servicio();
+        modificar.setNombreservicio(txtnombre.getText());
+        modificar.setPrecio(Double.valueOf(txtprecio.getText()));
+        controladorservicio.update(modificar);
+        JOptionPane.showMessageDialog(this, "Servicio actualizado exitosamente!!", "modifcar servicio" , JOptionPane.OK_OPTION);
+        txtcodigo.setText(String.valueOf(this.controladorservicio.getCodigo()));
+        txtnombre.setText("");
+        txtprecio.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Aceptar;
+    private javax.swing.JLabel JCE;
+    private javax.swing.JLabel JN;
+    private javax.swing.JLabel LCODIGO;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtcodigo;
+    private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txtprecio;
     // End of variables declaration//GEN-END:variables
 }
