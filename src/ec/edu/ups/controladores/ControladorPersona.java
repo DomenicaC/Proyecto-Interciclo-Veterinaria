@@ -5,8 +5,8 @@
  */
 package ec.edu.ups.controladores;
 
-import ec.edu.ups.modelo.Cliente;
-import ec.edu.ups.modelo.Persona;
+
+import ec.edu.ups.Modelo.Persona;
 import java.util.HashSet;
 import java.util.Set;
 
