@@ -5,6 +5,11 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controladores.ControladorServicio;
+import ec.edu.ups.vista.servicio.BuscarServicio;
+import ec.edu.ups.vista.servicio.CrearServicio;
+import ec.edu.ups.vista.servicio.ModificarServicio;
+
 /**
  *
  * @author Byron PC
@@ -14,8 +19,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VistaPrincipal
      */
+    private ControladorServicio controladorservicio;
     public VistaPrincipal() {
         initComponents();
+        controladorservicio = new ControladorServicio();
     }
 
     /**
@@ -27,6 +34,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -62,11 +70,27 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 418, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 279, Short.MAX_VALUE)
+        );
+
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cliente");
 
         openMenuItem.setMnemonic('o');
         openMenuItem.setText("Crear");
+        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(openMenuItem);
 
         saveAsMenuItem.setMnemonic('a');
@@ -119,13 +143,28 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         contentsMenuItem.setMnemonic('c');
         contentsMenuItem.setText("Crear");
+        contentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contentsMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(contentsMenuItem);
 
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("Buscar");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutMenuItem);
 
         jMenuItem4.setText("Actualizar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         helpMenu.add(jMenuItem4);
 
         jMenuItem5.setText("Eliminar");
@@ -140,6 +179,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu1.setText("Servicio");
 
         jMenuItem7.setText("Crear");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem7);
 
         jMenuItem11.setText("Buscar");
@@ -185,11 +229,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
@@ -198,6 +242,37 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_openMenuItemActionPerformed
+
+    private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_contentsMenuItemActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        // TODO add your handling code here:
+     BuscarServicio crear = new BuscarServicio(controladorservicio);
+      crear.setVisible(true);
+      jDesktopPane1.add(crear);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        ModificarServicio crear = new ModificarServicio(controladorservicio);
+      crear.setVisible(true);
+      jDesktopPane1.add(crear);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+         CrearServicio crear = new CrearServicio(controladorservicio);
+      crear.setVisible(true);
+      jDesktopPane1.add(crear);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,6 +319,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
