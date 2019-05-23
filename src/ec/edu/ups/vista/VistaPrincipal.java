@@ -6,25 +6,28 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.cliente.BuscarCliente;
 import ec.edu.ups.vista.cliente.CrearCliente;
+import ec.edu.ups.vista.mascota.CrearMascota;
 import ec.edu.ups.vista.servicio.BuscarServicio;
 import ec.edu.ups.vista.servicio.CrearServicio;
 import ec.edu.ups.vista.servicio.ModificarServicio;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Byron PC
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-
+private CrearMascota crearMascota;
     /**
      * Creates new form VistaPrincipal
      */
     
     
-    
+    private ControladorMascota controladormascota;
     private ControladorServicio controladorservicio;
     private ControladorCliente controladorcliente;
     public VistaPrincipal() {
@@ -90,7 +93,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
         DesktopPaneLayout.setVerticalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 273, Short.MAX_VALUE)
         );
 
         fileMenu.setMnemonic('f');
@@ -131,25 +134,41 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
+        editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/mascota.png"))); // NOI18N
         editMenu.setMnemonic('e');
         editMenu.setText("Mascota");
 
+        cutMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/crearmascota.png"))); // NOI18N
         cutMenuItem.setMnemonic('t');
         cutMenuItem.setText("Crear");
+        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cutMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(cutMenuItem);
 
+        copyMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        copyMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscar.png"))); // NOI18N
         copyMenuItem.setMnemonic('y');
         copyMenuItem.setText("Buscar");
         editMenu.add(copyMenuItem);
 
+        pasteMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pasteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar.png"))); // NOI18N
         pasteMenuItem.setMnemonic('p');
         pasteMenuItem.setText("Actualizar");
         editMenu.add(pasteMenuItem);
 
+        deleteMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        deleteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
         deleteMenuItem.setMnemonic('d');
         deleteMenuItem.setText("Eliminar");
         editMenu.add(deleteMenuItem);
 
+        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
         jMenuItem3.setText("Listar");
         editMenu.add(jMenuItem3);
 
@@ -311,6 +330,28 @@ public class VistaPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_saveAsMenuItemActionPerformed
+
+    private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
+        // TODO add your handling code here:
+         String x = CrearMascota.x;
+        try{
+            if(x==null){
+            if (crearMascota == null || crearMascota.isVisible() == false) {
+            crearMascota = new CrearMascota();
+            crearMascota.setVisible(true);
+            DesktopPane.add(crearMascota);
+            DesktopPane.moveToFront(crearMascota);
+        }
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "La ventana esta en ejecucion");
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        CrearMascota crearmascota = new CrearMascota();
+        crearmascota.setVisible(true);
+        
+    }//GEN-LAST:event_cutMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
