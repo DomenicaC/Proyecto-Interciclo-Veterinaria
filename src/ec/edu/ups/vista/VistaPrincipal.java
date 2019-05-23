@@ -14,6 +14,7 @@ import ec.edu.ups.vista.mascota.CrearMascota;
 import ec.edu.ups.vista.servicio.BuscarServicio;
 import ec.edu.ups.vista.servicio.CrearServicio;
 import ec.edu.ups.vista.servicio.ModificarServicio;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
  * @author Byron PC
  */
 public class VistaPrincipal extends javax.swing.JFrame {
+    
 private CrearMascota crearMascota;
     /**
      * Creates new form VistaPrincipal
@@ -31,6 +33,8 @@ private CrearMascota crearMascota;
     private ControladorServicio controladorservicio;
     private ControladorCliente controladorcliente;
     public VistaPrincipal() {
+        //Declaramos un icono nuevo para la calculadora
+        setIconImage(new ImageIcon(("src/ec/edu/ups/vista/veterinari.png")).getImage());
         initComponents();
         DesktopPane.setBorder(new Fondo());
         this.setExtendedState(VistaPrincipal.MAXIMIZED_BOTH);
