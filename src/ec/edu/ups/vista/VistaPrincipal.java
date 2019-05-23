@@ -115,6 +115,7 @@ private CrearMascota crearMascota;
         });
         fileMenu.add(openMenuItem);
 
+        saveAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscar.png"))); // NOI18N
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Buscar");
         saveAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +125,7 @@ private CrearMascota crearMascota;
         });
         fileMenu.add(saveAsMenuItem);
 
+        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar.png"))); // NOI18N
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Actualizar");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -133,9 +135,11 @@ private CrearMascota crearMascota;
         });
         fileMenu.add(exitMenuItem);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
         jMenuItem1.setText("Borrar");
         fileMenu.add(jMenuItem1);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
         jMenuItem2.setText("Listar");
         fileMenu.add(jMenuItem2);
 
@@ -160,6 +164,11 @@ private CrearMascota crearMascota;
         copyMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscar.png"))); // NOI18N
         copyMenuItem.setMnemonic('y');
         copyMenuItem.setText("Buscar");
+        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(copyMenuItem);
 
         pasteMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -363,6 +372,10 @@ private CrearMascota crearMascota;
         crearmascota.setVisible(true);
         
     }//GEN-LAST:event_cutMenuItemActionPerformed
+
+    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_copyMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
