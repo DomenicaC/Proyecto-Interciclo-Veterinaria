@@ -10,6 +10,9 @@ import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.cliente.BuscarCliente;
 import ec.edu.ups.vista.cliente.CrearCliente;
+import ec.edu.ups.vista.factura.BuscarFactura;
+import ec.edu.ups.vista.factura.CrearFactura;
+import ec.edu.ups.vista.factura.EliminarFactura;
 import ec.edu.ups.vista.mascota.CrearMascota;
 import ec.edu.ups.vista.servicio.BuscarServicio;
 import ec.edu.ups.vista.servicio.CrearServicio;
@@ -22,16 +25,20 @@ import javax.swing.JOptionPane;
  * @author Byron PC
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-    
-private CrearMascota crearMascota;
+
+    private CrearMascota crearMascota;
+
+    private CrearFactura crearF;
+    private BuscarFactura buscarF;
+    private EliminarFactura eliF;
     /**
      * Creates new form VistaPrincipal
      */
-    
-    
+
     private ControladorMascota controladormascota;
     private ControladorServicio controladorservicio;
     private ControladorCliente controladorcliente;
+
     public VistaPrincipal() {
         //Titulo
         this.setTitle("BABA´S VETERINARIA");
@@ -40,10 +47,10 @@ private CrearMascota crearMascota;
         initComponents();
         DesktopPane.setBorder(new Fondo());
         this.setExtendedState(VistaPrincipal.MAXIMIZED_BOTH);
-        
+
         controladorservicio = new ControladorServicio();
         controladorcliente = new ControladorCliente();
-                
+
     }
 
     /**
@@ -82,9 +89,9 @@ private CrearMascota crearMascota;
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
+        CrearFMenuItem = new javax.swing.JMenuItem();
+        BuscarFMenuItem = new javax.swing.JMenuItem();
+        EliFMenuItem = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
@@ -257,19 +264,29 @@ private CrearMascota crearMascota;
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/factura.png"))); // NOI18N
         jMenu2.setText("Factura");
 
-        jMenuItem12.setText("Crear");
-        jMenu2.add(jMenuItem12);
-
-        jMenuItem13.setText("Buscar");
-        jMenu2.add(jMenuItem13);
-
-        jMenuItem14.setText("Eliminar");
-        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+        CrearFMenuItem.setText("Crear");
+        CrearFMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem14ActionPerformed(evt);
+                CrearFMenuItemActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem14);
+        jMenu2.add(CrearFMenuItem);
+
+        BuscarFMenuItem.setText("Buscar");
+        BuscarFMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarFMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(BuscarFMenuItem);
+
+        EliFMenuItem.setText("Eliminar");
+        EliFMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliFMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(EliFMenuItem);
 
         menuBar.add(jMenu2);
 
@@ -306,76 +323,121 @@ private CrearMascota crearMascota;
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         // TODO add your handling code here:
-      CrearCliente crear = new CrearCliente(controladorcliente);
-      crear.setVisible(true);
-      DesktopPane.add(crear);
-         
+        CrearCliente crear = new CrearCliente(controladorcliente);
+        crear.setVisible(true);
+        DesktopPane.add(crear);
+
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_contentsMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         // TODO add your handling code here:
-     BuscarServicio crear = new BuscarServicio(controladorservicio);
-      crear.setVisible(true);
-      DesktopPane.add(crear);
+        BuscarServicio crear = new BuscarServicio(controladorservicio);
+        crear.setVisible(true);
+        DesktopPane.add(crear);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         ModificarServicio crear = new ModificarServicio(controladorservicio);
-      crear.setVisible(true);
-      DesktopPane.add(crear);
+        crear.setVisible(true);
+        DesktopPane.add(crear);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
-         CrearServicio crear = new CrearServicio(controladorservicio);
-      crear.setVisible(true);
-      DesktopPane.add(crear);
+        CrearServicio crear = new CrearServicio(controladorservicio);
+        crear.setVisible(true);
+        DesktopPane.add(crear);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
+    private void EliFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliFMenuItemActionPerformed
+        String x = eliF.x;
+        try {
+            if (x == null) {
+                if (eliF == null || eliF.isVisible() == false) {
+                    eliF = new EliminarFactura();
+                    DesktopPane.add(eliF);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_EliFMenuItemActionPerformed
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
         // TODO add your handling code here:
-      BuscarCliente crear = new BuscarCliente(controladorcliente);
-      crear.setVisible(true);
-      DesktopPane.add(crear);
-        
-        
+        BuscarCliente crear = new BuscarCliente(controladorcliente);
+        crear.setVisible(true);
+        DesktopPane.add(crear);
+
+
     }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
     private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
         // TODO add your handling code here:
-         String x = CrearMascota.x;
-        try{
-            if(x==null){
-            if (crearMascota == null || crearMascota.isVisible() == false) {
-            crearMascota = new CrearMascota();
-            crearMascota.setVisible(true);
-            DesktopPane.add(crearMascota);
-            DesktopPane.moveToFront(crearMascota);
-        }
-            }else{
+        String x = CrearMascota.x;
+        try {
+            if (x == null) {
+                if (crearMascota == null || crearMascota.isVisible() == false) {
+                    crearMascota = new CrearMascota();
+                    crearMascota.setVisible(true);
+                    DesktopPane.add(crearMascota);
+                    DesktopPane.moveToFront(crearMascota);
+                }
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "La ventana esta en ejecucion");
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         CrearMascota crearmascota = new CrearMascota();
         crearmascota.setVisible(true);
-        
+
     }//GEN-LAST:event_cutMenuItemActionPerformed
 
     private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_copyMenuItemActionPerformed
+
+    private void CrearFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearFMenuItemActionPerformed
+        String x = crearF.x;
+        try {
+            if (x == null) {
+                if (crearF == null || crearF.isVisible() == false) {
+                    crearF = new CrearFactura();
+                    DesktopPane.add(crearF);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_CrearFMenuItemActionPerformed
+
+    private void BuscarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarFMenuItemActionPerformed
+        String x = buscarF.x;
+        try {
+            if (x == null) {
+                if (buscarF == null || buscarF.isVisible() == false) {
+                    buscarF = new BuscarFactura();
+                    DesktopPane.add(buscarF);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BuscarFMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -413,7 +475,10 @@ private CrearMascota crearMascota;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem BuscarFMenuItem;
+    private javax.swing.JMenuItem CrearFMenuItem;
     public static javax.swing.JDesktopPane DesktopPane;
+    private javax.swing.JMenuItem EliFMenuItem;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
@@ -429,9 +494,6 @@ private CrearMascota crearMascota;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;

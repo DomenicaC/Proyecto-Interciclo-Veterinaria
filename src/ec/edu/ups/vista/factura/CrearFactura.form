@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
 
@@ -31,6 +31,9 @@
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="internalFrameClosing" listener="javax.swing.event.InternalFrameListener" parameters="javax.swing.event.InternalFrameEvent" handler="formInternalFrameClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -132,12 +135,14 @@
                   <Component id="txtSub" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblIva" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtIva" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="btnCrearF" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCancelarF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblIva" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIva" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -231,21 +236,25 @@
                       <Component id="txtCodC" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblNomC" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNomC" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="lblApeC" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtApeC" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblNomC" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNomC" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblTelC" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTelC" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="lblDirC" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtDirC" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblTelC" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTelC" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -555,22 +564,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblCodM" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCodM" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="btnBuscarMF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="lblEdadM" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtEdadM" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCodM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCodM" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="btnBuscarMF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblNomM" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNomM" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="lblPesoM" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtPesoM" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblNomM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNomM" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
