@@ -29,6 +29,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ControladorCliente controladorcliente;
     public VistaPrincipal() {
         initComponents();
+        DesktopPane.setBorder(new Fondo());
+        this.setExtendedState(VistaPrincipal.MAXIMIZED_BOTH);
         
         controladorservicio = new ControladorServicio();
         controladorcliente = new ControladorCliente();
