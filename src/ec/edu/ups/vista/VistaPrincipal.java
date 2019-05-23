@@ -33,7 +33,9 @@ private CrearMascota crearMascota;
     private ControladorServicio controladorservicio;
     private ControladorCliente controladorcliente;
     public VistaPrincipal() {
-        //Declaramos un icono nuevo para la calculadora
+        //Titulo
+        this.setTitle("BABA´S VETERINARIA");
+        //Declaramos un icono nuevo para la veterinaria
         setIconImage(new ImageIcon(("src/ec/edu/ups/vista/veterinari.png")).getImage());
         initComponents();
         DesktopPane.setBorder(new Fondo());
