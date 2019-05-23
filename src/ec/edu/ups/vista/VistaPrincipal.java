@@ -89,13 +89,14 @@ private CrearMascota crearMascota;
         DesktopPane.setLayout(DesktopPaneLayout);
         DesktopPaneLayout.setHorizontalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
+            .addGap(0, 525, Short.MAX_VALUE)
         );
         DesktopPaneLayout.setVerticalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 273, Short.MAX_VALUE)
         );
 
+        fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/clienteicono.png"))); // NOI18N
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cliente");
 
@@ -174,6 +175,7 @@ private CrearMascota crearMascota;
 
         menuBar.add(editMenu);
 
+        helpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/veterinario.png"))); // NOI18N
         helpMenu.setMnemonic('h');
         helpMenu.setText("Veterinario");
 
@@ -212,6 +214,7 @@ private CrearMascota crearMascota;
 
         menuBar.add(helpMenu);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/servicio.png"))); // NOI18N
         jMenu1.setText("Servicio");
 
         jMenuItem7.setText("Crear");
@@ -236,6 +239,7 @@ private CrearMascota crearMascota;
 
         menuBar.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/factura.png"))); // NOI18N
         jMenu2.setText("Factura");
 
         jMenuItem12.setText("Crear");
@@ -254,6 +258,7 @@ private CrearMascota crearMascota;
 
         menuBar.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/idioma.png"))); // NOI18N
         jMenu3.setText("Idioma");
 
         jMenuItem15.setText("Español");
