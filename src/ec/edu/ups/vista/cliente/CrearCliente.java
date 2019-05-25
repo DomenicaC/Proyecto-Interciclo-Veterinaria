@@ -8,6 +8,7 @@ package ec.edu.ups.vista.cliente;
 import ec.edu.ups.Modelo.Cliente;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.vista.VistaPrincipal;
+import static ec.edu.ups.vista.mascota.CrearMascota.x;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class CrearCliente extends javax.swing.JInternalFrame {
     private ControladorCliente controladorCliente;
+    
    // private ResourceBundle mensajes;
 
     /**
@@ -26,6 +28,7 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCliente=ControladorCliente;
        txtcodigo.setText(Integer.toString(this.controladorCliente.getCodigo()));
+       
      //  this.mensajes = mensajes;
       // cambiarIdioma(mensajes);
       
@@ -81,28 +84,45 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         jTextField7.setToolTipText("");
 
         setClosable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         clientetitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
         clientetitulo.setText("Crear Cliente");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        labelcodigo.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelcodigo.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelcodigo.setText("Código:");
 
-        labelnombre.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelnombre.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelnombre.setText("Nombre:");
 
-        labeldireccion.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeldireccion.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labeldireccion.setText("Dirección:");
 
-        labelcedula.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelcedula.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelcedula.setText("Cedula:");
 
-        labeledad.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeledad.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labeledad.setText("Edad:");
 
-        labelgenero.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelgenero.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelgenero.setText("Género:");
 
         botoncrearcliente.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
@@ -113,10 +133,10 @@ public class CrearCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        labeltelefono.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeltelefono.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labeltelefono.setText("Teléfono:");
 
-        labelapellido.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelapellido.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         labelapellido.setText("Apellido:");
 
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -264,6 +284,9 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         cliente.setDireccion(txtdireccion.getText());
         cliente.setCedula(txtcedula.getText());
         cliente.setTelefono(txttelefono.getText());
+        cliente.setApellido(txtapellido.getText());
+        cliente.setGenero(txtgenero.getText());
+        cliente.setEdad(Integer.parseInt(txtedad.getText()));
         txtnombre.setText("");
         txtdireccion.setText("");
         txtcedula.setText("");
@@ -275,6 +298,11 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         txtcodigo.setText(Integer.toString(this.controladorCliente.getCodigo()));
         JOptionPane.showMessageDialog(this, "Cliente creado exitosamente", "Crear cliente", JOptionPane.OK_OPTION);
     }//GEN-LAST:event_botoncrearclienteActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

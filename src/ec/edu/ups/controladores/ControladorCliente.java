@@ -63,10 +63,10 @@ public class ControladorCliente {
     }
     
     public void update(Cliente cliente){
-        if(lista.contains(cliente)){
+        
             lista.remove(cliente);
             lista.add(cliente);
-        }
+        
     }
     
     public void delete(int codigo){

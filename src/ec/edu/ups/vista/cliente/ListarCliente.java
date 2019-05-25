@@ -5,17 +5,48 @@
  */
 package ec.edu.ups.vista.cliente;
 
+import ec.edu.ups.Modelo.Cliente;
+import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.vista.VistaPrincipal;
+import java.util.Set;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author erics
  */
 public class ListarCliente extends javax.swing.JInternalFrame {
+     private ControladorCliente controladorCliente;
 
     /**
      * Creates new form ListarCliente
      */
-    public ListarCliente() {
+    public ListarCliente(ControladorCliente ControladorCliente) {
         initComponents();
+        this.controladorCliente = ControladorCliente;
+        llenarDatos();
+        int a = VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
+        int b = VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
+        
+        setLocation(a/2, b/2);
+        setVisible(true);
+    }
+    public void llenarDatos(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) tablacliente.getModel();
+        Set<Cliente> lista = controladorCliente.getLista();
+        for (Cliente cliente : lista) {
+            Object[] datos = {cliente.getCodigo(),
+                cliente.getNombre(),
+                cliente.getApellido(),
+                cliente.getCedula(),
+                cliente.getTelefono(),
+                cliente.getDireccion(),
+                cliente.getEdad(),
+                cliente.getGenero() };
+            modelo.addRow(datos);
+        }
+        
     }
 
     /**
@@ -27,21 +58,57 @@ public class ListarCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablacliente = new javax.swing.JTable();
+        clientetitulo = new javax.swing.JLabel();
+
+        setClosable(true);
+
+        tablacliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Nombre", "Apellido", "Cedula", "Teléfono", "Dirección", "Edad", "Género"
+            }
+        ));
+        jScrollPane1.setViewportView(tablacliente);
+
+        clientetitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        clientetitulo.setText("Listar Cliente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(clientetitulo)
+                        .addGap(245, 245, 245))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(clientetitulo)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel clientetitulo;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablacliente;
     // End of variables declaration//GEN-END:variables
 }

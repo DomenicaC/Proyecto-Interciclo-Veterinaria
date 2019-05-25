@@ -10,6 +10,9 @@ import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.cliente.BuscarCliente;
 import ec.edu.ups.vista.cliente.CrearCliente;
+import ec.edu.ups.vista.cliente.EliminarCliente;
+import ec.edu.ups.vista.cliente.ListarCliente;
+import ec.edu.ups.vista.cliente.ModificarCliente;
 import ec.edu.ups.vista.factura.BuscarFactura;
 import ec.edu.ups.vista.factura.CrearFactura;
 import ec.edu.ups.vista.factura.EliminarFactura;
@@ -144,10 +147,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
         jMenuItem1.setText("Borrar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         fileMenu.add(jMenuItem1);
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
         jMenuItem2.setText("Listar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         fileMenu.add(jMenuItem2);
 
         menuBar.add(fileMenu);
@@ -318,11 +331,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
+        ModificarCliente crear = new ModificarCliente(controladorcliente);
+        crear.setVisible(true);
+        DesktopPane.add(crear);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         // TODO add your handling code here:
+       
+        
         CrearCliente crear = new CrearCliente(controladorcliente);
         crear.setVisible(true);
         DesktopPane.add(crear);
@@ -438,6 +455,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_BuscarFMenuItemActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        ListarCliente crear = new ListarCliente(controladorcliente);
+        crear.setVisible(true);
+        DesktopPane.add(crear);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        EliminarCliente crear = new EliminarCliente(controladorcliente);
+        crear.setVisible(true);
+        DesktopPane.add(crear);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
