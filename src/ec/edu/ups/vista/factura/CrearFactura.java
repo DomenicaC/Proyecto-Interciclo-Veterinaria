@@ -30,11 +30,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     /**
      * Creates new form CrearFactura
      */
-    private ControladorFactura contFact;
-    private ControladorVeterinario contVet;
-    private ControladorCliente contCliente;
-    private ControladorMascota contMasc;
-    private ControladorServicio contServ;
+    private ControladorFactura controladorFactura;
+    private ControladorVeterinario controladorVeterinario;
+    private ControladorCliente controladorCliente;
+    private ControladorMascota controladorMascota;
+    private ControladorServicio controladorServicio;
 
     private Factura factura;
     private Servicio servicio;
@@ -45,14 +45,14 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private double total1, subtotal1, iva, total2;
     private DefaultTableModel tablaF;
 
-    public CrearFactura(ControladorFactura contFact, ControladorVeterinario contVet, ControladorCliente contCliente, ControladorMascota contMasc, ControladorServicio contServ) {
+    public CrearFactura(ControladorFactura controladorFactura, ControladorVeterinario controladorVeterinario, ControladorCliente controladorCliente, ControladorMascota controladorMascota, ControladorServicio controladorServicio) {
         initComponents();
 
-        this.contFact = contFact;
-        this.contCliente = contCliente;
-        this.contMasc = contMasc;
-        this.contVet = contVet;
-        this.contServ = contServ;
+        this.controladorFactura = controladorFactura;
+        this.controladorCliente = controladorCliente;
+        this.controladorMascota = controladorMascota;
+        this.controladorVeterinario = controladorVeterinario;
+        this.controladorServicio = controladorServicio;
 
         this.factura = new Factura();
 
@@ -64,9 +64,9 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         servicio = null;
         contador = 0;
 
-        int ruc = this.contFact.getCodigo() + 1;
+        int ruc = this.controladorFactura.getCodigo() + 1;
         txtRuc.setText(String.valueOf(ruc));
-        txtFecha.setText(contFact.getFecha());
+        txtFecha.setText(controladorFactura.getFecha());
 
         x = "x";
 
@@ -651,7 +651,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
             if (columna == 0) {
                 codigoServ = Integer.parseInt(tblServ.getValueAt(fila, columna).toString());
-                servicio = contServ.read(codigoServ);
+                servicio = controladorServicio.read(codigoServ);
 
                 double precio = servicio.getPrecio();
                 int cant = Integer.parseInt(tblServ.getValueAt(fila, 1).toString());
@@ -704,7 +704,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private void btnBuscarCFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCFActionPerformed
 
         String cedula = txtCedC.getText();
-        Cliente cliente = contCliente.read1(cedula);
+        Cliente cliente = controladorCliente.read1(cedula);
 
         if (cliente == null) {
             JOptionPane.showMessageDialog(null, "Cedula no Existe");
@@ -720,7 +720,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private void btnBuscarMFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMFActionPerformed
 
         int codigo = Integer.parseInt(txtCodM.getText());
-        Mascota mascota = contMasc.read(codigo);
+        Mascota mascota = controladorMascota.read(codigo);
         if (mascota == null) {
             JOptionPane.showMessageDialog(null, "Codigo no encontrado");
         } else {

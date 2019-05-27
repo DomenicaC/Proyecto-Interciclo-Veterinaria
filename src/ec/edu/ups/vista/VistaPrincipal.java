@@ -49,10 +49,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
      * Creates new form VistaPrincipal
      */
 
-    private ControladorMascota controladormascota;
-    private ControladorServicio controladorservicio;
-    private ControladorCliente controladorcliente;
-    private ControladorVeterinario controladorveterinario;
+    private ControladorMascota controladorMascota;
+    private ControladorServicio controladorServicio;
+    private ControladorCliente controladorCliente;
+    private ControladorVeterinario controladorVeterinario;
     private ControladorFactura controladorFactura;
 
     public VistaPrincipal() {
@@ -64,10 +64,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         DesktopPane.setBorder(new Fondo());
         this.setExtendedState(VistaPrincipal.MAXIMIZED_BOTH);
 
-        controladorservicio = new ControladorServicio();
-        controladorcliente = new ControladorCliente();
-        controladorveterinario = new ControladorVeterinario();
-        controladormascota = new ControladorMascota();
+        controladorServicio = new ControladorServicio();
+        controladorCliente = new ControladorCliente();
+        controladorVeterinario = new ControladorVeterinario();
+        controladorMascota = new ControladorMascota();
+        controladorFactura = new ControladorFactura();
     }
 
     /**
@@ -384,7 +385,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        ModificarCliente crear = new ModificarCliente(controladorcliente);
+        ModificarCliente crear = new ModificarCliente(controladorCliente);
         crear.setVisible(true);
         DesktopPane.add(crear);
     }//GEN-LAST:event_exitMenuItemActionPerformed
@@ -392,7 +393,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         // TODO add your handling code here:
 
-        CrearCliente crear = new CrearCliente(controladorcliente);
+        CrearCliente crear = new CrearCliente(controladorCliente);
         crear.setVisible(true);
         DesktopPane.add(crear);
 
@@ -400,28 +401,28 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
         // TODO add your handling code here:
-        CrearVeterinario crearv = new CrearVeterinario(controladorveterinario);
+        CrearVeterinario crearv = new CrearVeterinario(controladorVeterinario);
         crearv.setVisible(true);
         DesktopPane.add(crearv);
     }//GEN-LAST:event_contentsMenuItemActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
-        BuscarVeterinario crear = new BuscarVeterinario(controladorveterinario);
+        BuscarVeterinario crear = new BuscarVeterinario(controladorVeterinario);
         crear.setVisible(true);
         DesktopPane.add(crear);
     }//GEN-LAST:event_buscarActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        ModificarVeterinario modificarv = new ModificarVeterinario(controladorveterinario);
+        ModificarVeterinario modificarv = new ModificarVeterinario(controladorVeterinario);
         modificarv.setVisible(true);
         DesktopPane.add(modificarv);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
-        CrearServicio crear = new CrearServicio(controladorservicio);
+        CrearServicio crear = new CrearServicio(controladorServicio);
         crear.setVisible(true);
         DesktopPane.add(crear);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
@@ -444,7 +445,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
         // TODO add your handling code here:
-        BuscarCliente crear = new BuscarCliente(controladorcliente);
+        BuscarCliente crear = new BuscarCliente(controladorCliente);
         crear.setVisible(true);
         DesktopPane.add(crear);
 
@@ -457,7 +458,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (crearMascota == null || crearMascota.isVisible() == false) {
-                    crearMascota = new CrearMascota(controladormascota);
+                    crearMascota = new CrearMascota(controladorMascota);
                     crearMascota.setVisible(true);
                     DesktopPane.add(crearMascota);
                     DesktopPane.moveToFront(crearMascota);
@@ -471,22 +472,22 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cutMenuItemActionPerformed
 
     private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
-    String x= buscarMascota.x;
-    try{
-        if(x==null){
-            if (buscarMascota == null || buscarMascota.isVisible() == false) {
-                    buscarMascota = new BuscarMascota(controladormascota);
+        String x = buscarMascota.x;
+        try {
+            if (x == null) {
+                if (buscarMascota == null || buscarMascota.isVisible() == false) {
+                    buscarMascota = new BuscarMascota(controladorMascota);
                     buscarMascota.setVisible(true);
                     DesktopPane.add(buscarMascota);
                     DesktopPane.moveToFront(buscarMascota);
                 }
-            
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "La ventana esta en ejecucion");
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana esta en ejecucion");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }catch(Exception e){
-        e.printStackTrace();
-    }
     }//GEN-LAST:event_copyMenuItemActionPerformed
 
     private void CrearFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearFMenuItemActionPerformed
@@ -494,7 +495,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (crearF == null || crearF.isVisible() == false) {
-                    crearF = new CrearFactura(controladorFactura,controladorveterinario, controladorcliente,controladormascota, controladorservicio);
+                    crearF = new CrearFactura(controladorFactura, controladorVeterinario, controladorCliente, controladorMascota, controladorServicio);
                     DesktopPane.add(crearF);
                 }
             } else {
@@ -524,56 +525,56 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        ListarCliente crear = new ListarCliente(controladorcliente);
+        ListarCliente crear = new ListarCliente(controladorCliente);
         crear.setVisible(true);
         DesktopPane.add(crear);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        EliminarCliente crear = new EliminarCliente(controladorcliente);
+        EliminarCliente crear = new EliminarCliente(controladorCliente);
         crear.setVisible(true);
         DesktopPane.add(crear);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
-        ModificarServicio eliminars = new ModificarServicio(controladorservicio);
+        ModificarServicio eliminars = new ModificarServicio(controladorServicio);
         eliminars.setVisible(true);
         DesktopPane.add(eliminars);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
-        BuscarServicio buscars = new BuscarServicio(controladorservicio);
+        BuscarServicio buscars = new BuscarServicio(controladorServicio);
         buscars.setVisible(true);
         DesktopPane.add(buscars);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-        EliminarServicio eliminars = new EliminarServicio(controladorservicio);
+        EliminarServicio eliminars = new EliminarServicio(controladorServicio);
         eliminars.setVisible(true);
         DesktopPane.add(eliminars);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
-        ListaServicio listas = new ListaServicio(controladorservicio);
+        ListaServicio listas = new ListaServicio(controladorServicio);
         listas.setVisible(true);
         DesktopPane.add(listas);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        ListaVeterinario listav = new ListaVeterinario(controladorveterinario);
+        ListaVeterinario listav = new ListaVeterinario(controladorVeterinario);
         listav.setVisible(true);
         DesktopPane.add(listav);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        EliminarVeterinario eliminarv = new EliminarVeterinario(controladorveterinario);
+        EliminarVeterinario eliminarv = new EliminarVeterinario(controladorVeterinario);
         eliminarv.setVisible(true);
         DesktopPane.add(eliminarv);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
