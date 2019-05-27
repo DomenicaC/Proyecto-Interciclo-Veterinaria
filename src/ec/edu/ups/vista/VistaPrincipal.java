@@ -17,6 +17,7 @@ import ec.edu.ups.vista.cliente.ModificarCliente;
 import ec.edu.ups.vista.factura.BuscarFactura;
 import ec.edu.ups.vista.factura.CrearFactura;
 import ec.edu.ups.vista.factura.EliminarFactura;
+import ec.edu.ups.vista.mascota.BuscarMascota;
 import ec.edu.ups.vista.mascota.CrearMascota;
 import ec.edu.ups.vista.servicio.BuscarServicio;
 import ec.edu.ups.vista.servicio.CrearServicio;
@@ -42,6 +43,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private CrearFactura crearF;
     private BuscarFactura buscarF;
     private EliminarFactura eliF;
+    private BuscarMascota buscarMascota;
     /**
      * Creates new form VistaPrincipal
      */
@@ -467,7 +469,22 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cutMenuItemActionPerformed
 
     private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
-
+    String x= buscarMascota.x;
+    try{
+        if(x==null){
+            if (buscarMascota == null || buscarMascota.isVisible() == false) {
+                    buscarMascota = new BuscarMascota(controladormascota);
+                    buscarMascota.setVisible(true);
+                    DesktopPane.add(buscarMascota);
+                    DesktopPane.moveToFront(buscarMascota);
+                }
+            
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "La ventana esta en ejecucion");
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }
     }//GEN-LAST:event_copyMenuItemActionPerformed
 
     private void CrearFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearFMenuItemActionPerformed
