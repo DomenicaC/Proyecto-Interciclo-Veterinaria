@@ -6,6 +6,7 @@
 package ec.edu.ups.vista.factura;
 
 import com.sun.glass.events.KeyEvent;
+import ec.edu.ups.Modelo.Cliente;
 import ec.edu.ups.Modelo.Factura;
 import ec.edu.ups.Modelo.FacturaDetalle;
 import ec.edu.ups.Modelo.Servicio;
@@ -220,6 +221,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         lblCedC.setText("Cedula Cliente");
 
         btnBuscarCF.setText("Buscar");
+        btnBuscarCF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarCFActionPerformed(evt);
+            }
+        });
 
         lblCodC.setBackground(new java.awt.Color(255, 255, 255));
         lblCodC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -360,6 +366,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         lblCedV.setText("Cedula Veterinario");
 
         btnBuscarVF.setText("Buscar");
+        btnBuscarVF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarVFActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -678,6 +689,23 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             txtTot.setText(String.valueOf(total2));
         }
     }//GEN-LAST:event_tblServKeyReleased
+
+    private void btnBuscarVFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVFActionPerformed
+        
+    }//GEN-LAST:event_btnBuscarVFActionPerformed
+
+    private void btnBuscarCFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCFActionPerformed
+        
+        String cedula = txtCedC.getText();
+        Cliente cliente = contCliente.read1(cedula);
+        
+        txtCodC.setText(Integer.toString(cliente.getCodigo()));
+        txtNomC.setText(cliente.getNombre());
+        txtApeC.setText(cliente.getApellido());
+        txtDirC.setText(cliente.getDireccion());
+        txtTelC.setText(cliente.getTelefono());
+        
+    }//GEN-LAST:event_btnBuscarCFActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
