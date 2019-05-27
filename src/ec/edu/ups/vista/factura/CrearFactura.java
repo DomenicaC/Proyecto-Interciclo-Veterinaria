@@ -5,7 +5,19 @@
  */
 package ec.edu.ups.vista.factura;
 
+import com.sun.glass.events.KeyEvent;
+import ec.edu.ups.Modelo.Cliente;
+import ec.edu.ups.Modelo.Factura;
+import ec.edu.ups.Modelo.FacturaDetalle;
+import ec.edu.ups.Modelo.Servicio;
+import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.vista.VistaPrincipal;
+import ec.edu.ups.controladores.ControladorFactura;
+import ec.edu.ups.controladores.ControladorMascota;
+import ec.edu.ups.controladores.ControladorServicio;
+import ec.edu.ups.controladores.ControladorVeterinario;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,21 +28,94 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     /**
      * Creates new form CrearFactura
      */
-    
+    private ControladorFactura contFact;
+    private ControladorVeterinario contVet;
+    private ControladorCliente contCliente;
+    private ControladorMascota contMasc;
+    private ControladorServicio contServ;
+
+    private Factura factura;
+    private Servicio servicio;
+
     public static String x;
-    
-    public CrearFactura() {
+
+    private int contador;
+    private double total1, subtotal1, iva, total2;
+    private DefaultTableModel tablaF;
+
+    public CrearFactura(ControladorFactura contFact, ControladorVeterinario contVet, ControladorCliente contCliente, ControladorMascota contMasc, ControladorServicio contServ) {
         initComponents();
-        
-        x="x";
-        
+
+        this.contFact = contFact;
+        this.contCliente = contCliente;
+        this.contMasc = contMasc;
+        this.contVet = contVet;
+        this.contServ = contServ;
+
+        this.factura = new Factura();
+
+        total1 = 0;
+        subtotal1 = 0;
+        iva = 0;
+        total2 = 0;
+        tablaF = null;
+        servicio = null;
+        contador = 0;
+
+        int ruc = this.contFact.getCodigo() + 1;
+        txtRuc.setText(String.valueOf(ruc));
+        txtFecha.setText(contFact.getFecha());
+
+        x = "x";
+
         //centrar ventana
-        int a = VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
-        int b = VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
-        
-        setLocation(a/2, b/2);
-        
+        int a = VistaPrincipal.DesktopPane.getWidth() - this.getWidth();
+        int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
+
+        setLocation(a / 2, b / 2);
+
         setVisible(true);
+    }
+
+    public void llenarDatos() {
+        DefaultTableModel modeloP = (DefaultTableModel) tblServ.getModel();
+        List<FacturaDetalle> lista = factura.getDetalles();
+
+        while (contador < lista.size()) {
+            Object[] datos = {factura.getDetalles().get(contador).getCodigo(),
+                lista.get(contador).getCantidad(),
+                lista.get(contador).getServ().getNombreservicio(),
+                lista.get(contador).getServ().getPrecio(),
+                lista.get(contador).getTotal()
+            };
+            modeloP.addRow(datos);
+            contador++;
+        }
+        calcularSubTot();
+        txtSub.setText(Double.toString(factura.getSubtotal()));
+        calcularTotal();
+        txtTot.setText(Double.toString(factura.getTotal()));
+    }
+
+    public void calcularSubTot() {
+        double sub = 0;
+        for (int i = 0; i < factura.getDetalles().size(); i++) {
+            sub += factura.getDetalles().get(i).getSubtotal();
+        }
+        factura.setSubtotal(sub);
+    }
+
+    public void calcularTotal() {
+        double tot = factura.getSubtotal() + (factura.getSubtotal() * factura.getIva());
+        factura.setTotal(tot);
+    }
+
+    public void vaciarDatos() {
+        DefaultTableModel modelo = (DefaultTableModel) tblServ.getModel();
+        int filas = tblServ.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            modelo.removeRow(0);
+        }
     }
 
     /**
@@ -136,6 +221,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         lblCedC.setText("Cedula Cliente");
 
         btnBuscarCF.setText("Buscar");
+        btnBuscarCF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarCFActionPerformed(evt);
+            }
+        });
 
         lblCodC.setBackground(new java.awt.Color(255, 255, 255));
         lblCodC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -276,6 +366,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         lblCedV.setText("Cedula Veterinario");
 
         btnBuscarVF.setText("Buscar");
+        btnBuscarVF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarVFActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -409,6 +504,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
                 "Codigo", "Cantidad", "Nombre", "Precio Unitario", "Total"
             }
         ));
+        tblServ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblServKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblServ);
 
         lblIva.setBackground(new java.awt.Color(255, 255, 255));
@@ -530,8 +630,82 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-        x=null;
+        x = null;
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void tblServKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServKeyReleased
+        int key = evt.getKeyCode();
+        if (key == KeyEvent.VK_ENTER) {
+            int fila = tblServ.getSelectedRow();
+            int columna = tblServ.getSelectedColumn();
+            int codigoServ = 0;
+
+            Object[] datos1 = {"", 0, "", "", ""};
+
+            if (columna == 0) {
+                codigoServ = Integer.parseInt(tblServ.getValueAt(fila, columna).toString());
+                servicio = contServ.read(codigoServ);
+
+                double precio = servicio.getPrecio();
+                int cant = Integer.parseInt(tblServ.getValueAt(fila, 1).toString());
+
+                tablaF = (DefaultTableModel) tblServ.getModel();
+                tablaF.removeRow(fila);
+                total1 = precio * cant;
+
+                Object[] datos = {codigoServ,
+                    cant,
+                    servicio.getNombreservicio(),
+                    servicio.getPrecio(),
+                    total1};
+
+                tablaF.addRow(datos);
+                tablaF.addRow(datos1);
+
+            } else if (columna == 1) {
+                codigoServ = Integer.parseInt(tblServ.getValueAt(fila, columna - 1).toString());
+                int cant = Integer.parseInt(tblServ.getValueAt(fila, columna).toString());
+                tablaF.removeRow(fila);
+                tablaF.removeRow(tblServ.getRowCount() - 1);
+
+                total1 = servicio.getPrecio() * cant;
+
+                Object[] datos = {codigoServ,
+                    cant,
+                    servicio.getNombreservicio(),
+                    servicio.getPrecio(),
+                    total1};
+
+                tablaF.addRow(datos);
+                tablaF.addRow(datos1);
+            }
+
+            subtotal1 = subtotal1 + total1;
+            iva = subtotal1 * 0.12;
+            total2 = subtotal1 + iva;
+            
+            txtSub.setText(String.valueOf(subtotal1));
+            txtIva.setText(String.valueOf(iva));
+            txtTot.setText(String.valueOf(total2));
+        }
+    }//GEN-LAST:event_tblServKeyReleased
+
+    private void btnBuscarVFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVFActionPerformed
+        
+    }//GEN-LAST:event_btnBuscarVFActionPerformed
+
+    private void btnBuscarCFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCFActionPerformed
+        
+        String cedula = txtCedC.getText();
+        Cliente cliente = contCliente.read1(cedula);
+        
+        txtCodC.setText(Integer.toString(cliente.getCodigo()));
+        txtNomC.setText(cliente.getNombre());
+        txtApeC.setText(cliente.getApellido());
+        txtDirC.setText(cliente.getDireccion());
+        txtTelC.setText(cliente.getTelefono());
+        
+    }//GEN-LAST:event_btnBuscarCFActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

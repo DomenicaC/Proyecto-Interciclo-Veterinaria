@@ -6,6 +6,7 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.controladores.ControladorFactura;
 import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.controladores.ControladorVeterinario;
@@ -52,6 +53,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ControladorServicio controladorservicio;
     private ControladorCliente controladorcliente;
     private ControladorVeterinario controladorveterinario;
+    private ControladorFactura controladorFactura;
+
     public VistaPrincipal() {
         //Titulo
         this.setTitle("BABA´S VETERINARIA");
@@ -63,7 +66,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         controladorservicio = new ControladorServicio();
         controladorcliente = new ControladorCliente();
-        controladorveterinario =new ControladorVeterinario();
+        controladorveterinario = new ControladorVeterinario();
         controladormascota = new ControladorMascota();
     }
 
@@ -388,8 +391,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         // TODO add your handling code here:
-       
-        
+
         CrearCliente crear = new CrearCliente(controladorcliente);
         crear.setVisible(true);
         DesktopPane.add(crear);
@@ -412,9 +414,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-       ModificarVeterinario modificarv = new ModificarVeterinario(controladorveterinario);
-       modificarv.setVisible(true);
-       DesktopPane.add(modificarv);
+        ModificarVeterinario modificarv = new ModificarVeterinario(controladorveterinario);
+        modificarv.setVisible(true);
+        DesktopPane.add(modificarv);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -492,7 +494,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (crearF == null || crearF.isVisible() == false) {
-                    crearF = new CrearFactura();
+                    crearF = new CrearFactura(controladorFactura,controladorveterinario, controladorcliente,controladormascota, controladorservicio);
                     DesktopPane.add(crearF);
                 }
             } else {
@@ -536,9 +538,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
-     ModificarServicio eliminars= new ModificarServicio(controladorservicio);
-     eliminars.setVisible(true);
-    DesktopPane.add(eliminars);
+        ModificarServicio eliminars = new ModificarServicio(controladorservicio);
+        eliminars.setVisible(true);
+        DesktopPane.add(eliminars);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
@@ -550,9 +552,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-        EliminarServicio eliminars= new EliminarServicio(controladorservicio);
-     eliminars.setVisible(true);
-    DesktopPane.add(eliminars);
+        EliminarServicio eliminars = new EliminarServicio(controladorservicio);
+        eliminars.setVisible(true);
+        DesktopPane.add(eliminars);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
