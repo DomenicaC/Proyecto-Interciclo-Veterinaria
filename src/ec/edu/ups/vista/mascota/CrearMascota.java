@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 public class CrearMascota extends javax.swing.JInternalFrame {
 public static String x;
 private ControladorMascota controladorMascota;
+private CrearMascota crearmas;
       
     /**
      * Creates new form CrearMascota
@@ -232,9 +233,10 @@ private ControladorMascota controladorMascota;
     }//GEN-LAST:event_btncrearActionPerformed
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        this.setVisible(false);
+    // TODO add your handling code here:
+   this.dispose();
+   this.setVisible(false);
+   x=null;
     }//GEN-LAST:event_btncancelarActionPerformed
 
 
