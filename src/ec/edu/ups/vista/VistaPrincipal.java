@@ -125,6 +125,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cliente");
 
+        openMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/crearcliente.png"))); // NOI18N
         openMenuItem.setMnemonic('o');
         openMenuItem.setText("Crear");
         openMenuItem.addActionListener(new java.awt.event.ActionListener() {
