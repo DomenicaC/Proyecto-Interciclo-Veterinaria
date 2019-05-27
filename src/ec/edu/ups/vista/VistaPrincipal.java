@@ -8,6 +8,7 @@ package ec.edu.ups.vista;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.controladores.ControladorServicio;
+import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.cliente.BuscarCliente;
 import ec.edu.ups.vista.cliente.CrearCliente;
 import ec.edu.ups.vista.cliente.EliminarCliente;
@@ -22,6 +23,10 @@ import ec.edu.ups.vista.servicio.CrearServicio;
 import ec.edu.ups.vista.servicio.EliminarServicio;
 import ec.edu.ups.vista.servicio.ListaServicio;
 import ec.edu.ups.vista.servicio.ModificarServicio;
+import ec.edu.ups.vista.veterinario.BuscarVeterinario;
+import ec.edu.ups.vista.veterinario.CrearVeterinario;
+import ec.edu.ups.vista.veterinario.ListaVeterinario;
+import ec.edu.ups.vista.veterinario.ModificarVeterinario;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -43,7 +48,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ControladorMascota controladormascota;
     private ControladorServicio controladorservicio;
     private ControladorCliente controladorcliente;
-
+    private ControladorVeterinario controladorveterinario;
     public VistaPrincipal() {
         //Titulo
         this.setTitle("BABA´S VETERINARIA");
@@ -55,7 +60,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         controladorservicio = new ControladorServicio();
         controladorcliente = new ControladorCliente();
-
+        controladorveterinario =new ControladorVeterinario();
     }
 
     /**
@@ -251,6 +256,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
         jMenuItem6.setText("Listar");
         jMenuItem6.setToolTipText("");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         helpMenu.add(jMenuItem6);
 
         menuBar.add(helpMenu);
@@ -378,21 +388,23 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
         // TODO add your handling code here:
-
+        CrearVeterinario crearv = new CrearVeterinario(controladorveterinario);
+        crearv.setVisible(true);
+        DesktopPane.add(crearv);
     }//GEN-LAST:event_contentsMenuItemActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
-        BuscarServicio crear = new BuscarServicio(controladorservicio);
+        BuscarVeterinario crear = new BuscarVeterinario(controladorveterinario);
         crear.setVisible(true);
         DesktopPane.add(crear);
     }//GEN-LAST:event_buscarActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        ModificarServicio crear = new ModificarServicio(controladorservicio);
-        crear.setVisible(true);
-        DesktopPane.add(crear);
+       ModificarVeterinario modificarv = new ModificarVeterinario(controladorveterinario);
+       modificarv.setVisible(true);
+       DesktopPane.add(modificarv);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -527,6 +539,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         listas.setVisible(true);
         DesktopPane.add(listas);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        ListaVeterinario listav = new ListaVeterinario(controladorveterinario);
+        listav.setVisible(true);
+        DesktopPane.add(listav);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -9,6 +9,7 @@ import ec.edu.ups.Modelo.Veterinario;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
  *
  * @author Carlos
@@ -25,9 +26,9 @@ public class ControladorVeterinario {
         return codigo;
     }
  public Veterinario readCedula(String cedula){
-        for(Veterinario veterinario : lista){
-            if(veterinario.getCedula().equals(cedula))
-                return veterinario;
+        for(Veterinario cliente : lista){
+            if(cliente.getCedula().equals(cedula))
+                return cliente;
         }
         return null;
     }
@@ -43,28 +44,28 @@ public class ControladorVeterinario {
        
     }
     public Veterinario read(int codigo) {
-        for (Veterinario veterinario : lista) {
-            if (veterinario.getCodigo() == codigo) {
-                return veterinario;
+        for (Veterinario cliente : lista) {
+            if (cliente.getCodigo() == codigo) {
+                return cliente;
             }
         }
         return null;
     }
     public void update(Veterinario objeto) {
-        for (Veterinario veterinario : lista) {
+        for (Veterinario cliente : lista) {
            
-            if(veterinario.equals(objeto)){
-                lista.remove(veterinario);
+            if(cliente.equals(objeto)){
+                lista.remove(cliente);
                 lista.add(objeto);
                 break;
             }
         }
     }
     public void delete(int codigo) {
-        for (Veterinario veterinario : lista) {
+        for (Veterinario cliente : lista) {
            
-            if(veterinario.getCodigo()== codigo){
-                lista.remove(veterinario);
+            if(cliente.getCodigo()== codigo){
+                lista.remove(cliente);
                 break;
             }
         }
