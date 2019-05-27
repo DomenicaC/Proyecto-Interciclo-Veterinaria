@@ -9,6 +9,7 @@ import com.sun.glass.events.KeyEvent;
 import ec.edu.ups.Modelo.Cliente;
 import ec.edu.ups.Modelo.Factura;
 import ec.edu.ups.Modelo.FacturaDetalle;
+import ec.edu.ups.Modelo.Mascota;
 import ec.edu.ups.Modelo.Servicio;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.vista.VistaPrincipal;
@@ -17,6 +18,7 @@ import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.controladores.ControladorVeterinario;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -434,6 +436,11 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         lblEdadM.setText("Edad Mascota");
 
         btnBuscarMF.setText("Buscar");
+        btnBuscarMF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarMFActionPerformed(evt);
+            }
+        });
 
         lblPesoM.setBackground(new java.awt.Color(255, 255, 255));
         lblPesoM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -683,7 +690,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             subtotal1 = subtotal1 + total1;
             iva = subtotal1 * 0.12;
             total2 = subtotal1 + iva;
-            
+
             txtSub.setText(String.valueOf(subtotal1));
             txtIva.setText(String.valueOf(iva));
             txtTot.setText(String.valueOf(total2));
@@ -691,21 +698,38 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblServKeyReleased
 
     private void btnBuscarVFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVFActionPerformed
-        
+
     }//GEN-LAST:event_btnBuscarVFActionPerformed
 
     private void btnBuscarCFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCFActionPerformed
-        
+
         String cedula = txtCedC.getText();
         Cliente cliente = contCliente.read1(cedula);
-        
-        txtCodC.setText(Integer.toString(cliente.getCodigo()));
-        txtNomC.setText(cliente.getNombre());
-        txtApeC.setText(cliente.getApellido());
-        txtDirC.setText(cliente.getDireccion());
-        txtTelC.setText(cliente.getTelefono());
-        
+
+        if (cliente == null) {
+            JOptionPane.showMessageDialog(null, "Cedula no Existe");
+        } else {
+            txtCodC.setText(Integer.toString(cliente.getCodigo()));
+            txtNomC.setText(cliente.getNombre());
+            txtApeC.setText(cliente.getApellido());
+            txtDirC.setText(cliente.getDireccion());
+            txtTelC.setText(cliente.getTelefono());
+        }
     }//GEN-LAST:event_btnBuscarCFActionPerformed
+
+    private void btnBuscarMFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMFActionPerformed
+
+        int codigo = Integer.parseInt(txtCodM.getText());
+        Mascota mascota = contMasc.read(codigo);
+        if (mascota == null) {
+            JOptionPane.showMessageDialog(null, "Codigo no encontrado");
+        } else {
+            txtEdadM.setText(Integer.toString(mascota.getEdad()));
+            txtNomM.setText(mascota.getNombre());
+            txtPesoM.setText(Double.toString(mascota.getPeso()));
+        }
+
+    }//GEN-LAST:event_btnBuscarMFActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
