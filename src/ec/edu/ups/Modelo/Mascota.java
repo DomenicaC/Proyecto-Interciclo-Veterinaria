@@ -61,8 +61,8 @@ public class Mascota {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + this.codigo;
+        int hash = 3;
+        hash = 97 * hash + this.codigo;
         return hash;
     }
 
@@ -84,9 +84,6 @@ public class Mascota {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return super.toString() + "Mascota{" + "nombre=" + nombre + ", codigo=" + codigo + ", edad=" + edad + ", peso=" + peso + '}';
-    }
-
+    
+ 
 }

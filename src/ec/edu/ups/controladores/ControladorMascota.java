@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.controladores;
 
+
 import ec.edu.ups.Modelo.Mascota;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,41 +17,35 @@ import java.util.Set;
 public class ControladorMascota {
     private Set<Mascota> lista;
     private int codigo;
-
-  public Set<Mascota> getLista(){
-        return lista;
-  }
-  public int getCodigo() {
+    
+    public Set<Mascota> getLista(){
+        return lista;                
+    }
+    public int getCodigo(){
         return codigo;
     }
-    
-    public ControladorMascota() {
-        lista = new HashSet<>();
-        codigo = 1;
+    public ControladorMascota(){
+        lista=new HashSet<>();
+        codigo=1;
     }
-        
-     public void create(Mascota mascota){
+    public void create(Mascota mascota){
         mascota.setCodigo(codigo);
         codigo++;
         lista.add(mascota);
     }
-    
     public Mascota read(int codigo){
-        for (Mascota mascota : lista) {
-            if(mascota.getCodigo() == codigo){
+        for(Mascota mascota: lista){
+            if(mascota.getCodigo()==codigo){
                 return mascota;
             }
         }
         return null;
     }
-    
-  
-    
     public void update(Mascota mascota){
-        if(lista.contains(mascota)){
+        
             lista.remove(mascota);
             lista.add(mascota);
-        }
+        
     }
     
     public void delete(int codigo){
@@ -67,5 +62,9 @@ public class ControladorMascota {
             System.out.println(mascota.getNombre());
         }
     }
-    
 }
+
+    
+
+    
+

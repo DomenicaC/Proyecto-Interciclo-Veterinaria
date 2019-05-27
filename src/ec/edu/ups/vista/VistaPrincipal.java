@@ -62,6 +62,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         controladorservicio = new ControladorServicio();
         controladorcliente = new ControladorCliente();
         controladorveterinario =new ControladorVeterinario();
+        controladormascota = new ControladorMascota();
     }
 
     /**
@@ -451,7 +452,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (crearMascota == null || crearMascota.isVisible() == false) {
-                    crearMascota = new CrearMascota();
+                    crearMascota = new CrearMascota(controladormascota);
                     crearMascota.setVisible(true);
                     DesktopPane.add(crearMascota);
                     DesktopPane.moveToFront(crearMascota);
@@ -462,9 +463,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        CrearMascota crearmascota = new CrearMascota();
-        crearmascota.setVisible(true);
-
     }//GEN-LAST:event_cutMenuItemActionPerformed
 
     private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
