@@ -130,6 +130,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cliente");
 
+        openMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         openMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/crearcliente.png"))); // NOI18N
         openMenuItem.setMnemonic('o');
         openMenuItem.setText("Crear");
@@ -140,7 +141,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         fileMenu.add(openMenuItem);
 
-        saveAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscar.png"))); // NOI18N
+        saveAsMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        saveAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/busacar2.png"))); // NOI18N
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Buscar");
         saveAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +152,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         fileMenu.add(saveAsMenuItem);
 
-        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar.png"))); // NOI18N
+        exitMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/modificarcliente.png"))); // NOI18N
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Actualizar");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +163,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         fileMenu.add(exitMenuItem);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/eliminarcliente.png"))); // NOI18N
         jMenuItem1.setText("Borrar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +173,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         fileMenu.add(jMenuItem1);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarcliente.png"))); // NOI18N
         jMenuItem2.setText("Listar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,6 +234,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         helpMenu.setMnemonic('h');
         helpMenu.setText("Veterinario");
 
+        contentsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/veterinarioo.png"))); // NOI18N
         contentsMenuItem.setMnemonic('c');
         contentsMenuItem.setText("Crear");
         contentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +244,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         helpMenu.add(contentsMenuItem);
 
-        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscar.png"))); // NOI18N
+        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/gato2.png"))); // NOI18N
         buscar.setMnemonic('a');
         buscar.setText("Buscar");
         buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +254,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         helpMenu.add(buscar);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar.png"))); // NOI18N
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar2.png"))); // NOI18N
         jMenuItem4.setText("Actualizar");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +263,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         helpMenu.add(jMenuItem4);
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarr.png"))); // NOI18N
         jMenuItem5.setText("Eliminar");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +272,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         helpMenu.add(jMenuItem5);
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarrrr.png"))); // NOI18N
         jMenuItem6.setText("Listar");
         jMenuItem6.setToolTipText("");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -281,6 +287,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/servicio.png"))); // NOI18N
         jMenu1.setText("Servicio");
 
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/servicios.png"))); // NOI18N
         jMenuItem7.setText("Crear");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,7 +296,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem7);
 
-        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscar.png"))); // NOI18N
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscarservicio.png"))); // NOI18N
         jMenuItem11.setText("Buscar");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,7 +305,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem11);
 
-        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar.png"))); // NOI18N
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizarservicio.png"))); // NOI18N
         jMenuItem10.setText("Actualizar");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,7 +314,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem10);
 
-        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/elimarservicio.png"))); // NOI18N
         jMenuItem9.setText("Eliminar");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,7 +323,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem9);
 
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarfac.png"))); // NOI18N
         jMenuItem8.setText("Listar");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,6 +337,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/factura.png"))); // NOI18N
         jMenu2.setText("Factura");
 
+        CrearFMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/facturacrear.png"))); // NOI18N
         CrearFMenuItem.setText("Crear");
         CrearFMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,6 +346,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(CrearFMenuItem);
 
+        BuscarFMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscarfactura.png"))); // NOI18N
         BuscarFMenuItem.setText("Buscar");
         BuscarFMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,6 +355,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(BuscarFMenuItem);
 
+        EliFMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/deleteffac.png"))); // NOI18N
         EliFMenuItem.setText("Eliminar");
         EliFMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
