@@ -25,6 +25,7 @@ import ec.edu.ups.vista.servicio.ListaServicio;
 import ec.edu.ups.vista.servicio.ModificarServicio;
 import ec.edu.ups.vista.veterinario.BuscarVeterinario;
 import ec.edu.ups.vista.veterinario.CrearVeterinario;
+import ec.edu.ups.vista.veterinario.EliminarVeterinario;
 import ec.edu.ups.vista.veterinario.ListaVeterinario;
 import ec.edu.ups.vista.veterinario.ModificarVeterinario;
 import javax.swing.ImageIcon;
@@ -251,6 +252,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
         jMenuItem5.setText("Eliminar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         helpMenu.add(jMenuItem5);
 
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
@@ -546,6 +552,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         listav.setVisible(true);
         DesktopPane.add(listav);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        EliminarVeterinario eliminarv = new EliminarVeterinario(controladorveterinario);
+        eliminarv.setVisible(true);
+        DesktopPane.add(eliminarv);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
