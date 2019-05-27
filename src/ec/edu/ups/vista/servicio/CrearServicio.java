@@ -110,7 +110,7 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         txtcp.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jPanel1.add(txtcp, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 220, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 480, 340));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -19,6 +19,8 @@ import ec.edu.ups.vista.factura.EliminarFactura;
 import ec.edu.ups.vista.mascota.CrearMascota;
 import ec.edu.ups.vista.servicio.BuscarServicio;
 import ec.edu.ups.vista.servicio.CrearServicio;
+import ec.edu.ups.vista.servicio.EliminarServicio;
+import ec.edu.ups.vista.servicio.ListaServicio;
 import ec.edu.ups.vista.servicio.ModificarServicio;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -261,15 +263,35 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem7);
 
         jMenuItem11.setText("Buscar");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem11);
 
         jMenuItem10.setText("Actualizar");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem10);
 
         jMenuItem9.setText("Eliminar");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem9);
 
         jMenuItem8.setText("Listar");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem8);
 
         menuBar.add(jMenu1);
@@ -469,6 +491,34 @@ public class VistaPrincipal extends javax.swing.JFrame {
         crear.setVisible(true);
         DesktopPane.add(crear);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+     ModificarServicio eliminars= new ModificarServicio(controladorservicio);
+     eliminars.setVisible(true);
+    DesktopPane.add(eliminars);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        BuscarServicio buscars = new BuscarServicio(controladorservicio);
+        buscars.setVisible(true);
+        DesktopPane.add(buscars);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        EliminarServicio eliminars= new EliminarServicio(controladorservicio);
+     eliminars.setVisible(true);
+    DesktopPane.add(eliminars);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        ListaServicio listas = new ListaServicio(controladorservicio);
+        listas.setVisible(true);
+        DesktopPane.add(listas);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments

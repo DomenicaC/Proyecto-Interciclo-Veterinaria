@@ -13,14 +13,13 @@ import javax.swing.JOptionPane;
  *
  * @author Carlos
  */
-public class ModificarServicio extends javax.swing.JInternalFrame {
+public class EliminarServicio extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ModificarServicio
+     * Creates new form EliminarServicio
      */
     private ControladorServicio controladorservicio;
-    
-    public ModificarServicio(ControladorServicio controladorservicio) {
+    public EliminarServicio(ControladorServicio controladorservicio) {
         initComponents();
         this.controladorservicio = controladorservicio;
     }
@@ -44,7 +43,7 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         JN = new javax.swing.JLabel();
         LCODIGO = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        BE = new javax.swing.JButton();
 
         setClosable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -55,7 +54,7 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("MODIFICAR SERVICIO");
+        jLabel1.setText("ELIMINAR SERVICIO");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 280, 50));
 
         cancelar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -110,17 +109,17 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         txtcodigo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 220, 50));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 255, 204));
-        jButton1.setText("Modificar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BE.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BE.setForeground(new java.awt.Color(0, 255, 204));
+        BE.setText("Eliminar");
+        BE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BEActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 311, 140, 40));
+        jPanel1.add(BE, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 311, 140, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 400));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -133,7 +132,7 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         // TODO add your handling code here:
-         int codigo = Integer.parseInt(txtcodigo.getText());
+        int codigo = Integer.parseInt(txtcodigo.getText());
         Servicio buscarProducto = controladorservicio.read(codigo);
         txtnombre.setText(buscarProducto.getNombreservicio());
         txtprecio.setText(String.valueOf(buscarProducto.getPrecio()));
@@ -147,26 +146,24 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEActionPerformed
         // TODO add your handling code here:
-        Servicio modificar = controladorservicio.read(Integer.parseInt(txtcodigo.getText()));
-        modificar.setNombreservicio(txtnombre.getText());
-        modificar.setPrecio(Double.parseDouble(txtprecio.getText()));
-        controladorservicio.update(modificar);
-
-        JOptionPane.showMessageDialog(this, "Producto Actualizado exitosamente", "Actualizar producto", JOptionPane.OK_OPTION);
+        int codigo = Integer.parseInt(txtcodigo.getText());
+        controladorservicio.delete(codigo);
+        JOptionPane.showMessageDialog(this, "Servici eliminado exitosamente!!", "eliminar servicio" , JOptionPane.OK_OPTION);
+       txtcodigo.setText("");
         txtnombre.setText("");
         txtprecio.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BEActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
+    private javax.swing.JButton BE;
     private javax.swing.JLabel JCE;
     private javax.swing.JLabel JN;
     private javax.swing.JLabel LCODIGO;
     private javax.swing.JButton cancelar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtcodigo;
