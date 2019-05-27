@@ -19,6 +19,8 @@ public class Cliente extends Persona {
     public Cliente (){
         
     }
+    
+    //Constructor
 
     public Cliente(String direccion, String telefono, String genero, Persona persona) {
         this.direccion = direccion;
@@ -27,7 +29,7 @@ public class Cliente extends Persona {
         this.persona = persona;
     }
     
-
+       // get and set 
     public String getDireccion() {
         return direccion;
     }
@@ -59,7 +61,7 @@ public class Cliente extends Persona {
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
-
+        // hascode y el equals
     @Override
     public int hashCode() {
         int hash = 5;
