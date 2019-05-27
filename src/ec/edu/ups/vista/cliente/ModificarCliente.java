@@ -67,19 +67,19 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        labelcodigo.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelcodigo.setText("Código:");
 
-        labelnombre.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelnombre.setText("Nombre:");
 
-        labeldireccion.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeldireccion.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labeldireccion.setText("Dirección:");
 
-        labeledad.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeledad.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labeledad.setText("Edad:");
 
-        labelgenero.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelgenero.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelgenero.setText("Género:");
 
         botoncancelar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
@@ -90,10 +90,10 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        labeltelefono.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeltelefono.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labeltelefono.setText("Teléfono:");
 
-        labelapellido.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelapellido.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelapellido.setText("Apellido:");
 
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -116,7 +116,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         txttelefono.setToolTipText("");
         txttelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        labelcedula.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelcedula.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelcedula.setText("Cedula:");
 
         txtcedula.setToolTipText("");
@@ -187,7 +187,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
                         .addComponent(labeltelefono)
                         .addGap(18, 18, 18)
                         .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

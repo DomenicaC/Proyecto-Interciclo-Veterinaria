@@ -162,11 +162,13 @@
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labeldireccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtdireccion" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txttelefono" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="labeltelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labeldireccion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtdireccion" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="labeltelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">

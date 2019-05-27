@@ -41,7 +41,7 @@
               <Component id="clientetitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="77" max="32767" attributes="0"/>
+              <EmptySpace pref="78" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -51,7 +51,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
+            <LineBorder thickness="3"/>
           </Border>
         </Property>
       </Properties>
@@ -105,7 +105,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -171,7 +171,7 @@
         <Component class="javax.swing.JLabel" name="labelcodigo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="2"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
           </Properties>
@@ -179,7 +179,7 @@
         <Component class="javax.swing.JLabel" name="labelnombre">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="2"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre:"/>
           </Properties>
@@ -187,7 +187,7 @@
         <Component class="javax.swing.JLabel" name="labeldireccion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="2"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
           </Properties>
@@ -195,7 +195,7 @@
         <Component class="javax.swing.JLabel" name="labeledad">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="2"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Edad:"/>
           </Properties>
@@ -203,7 +203,7 @@
         <Component class="javax.swing.JLabel" name="labelgenero">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="2"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="G&#xe9;nero:"/>
           </Properties>
@@ -222,7 +222,7 @@
         <Component class="javax.swing.JLabel" name="labeltelefono">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="2"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
           </Properties>
@@ -230,7 +230,7 @@
         <Component class="javax.swing.JLabel" name="labelapellido">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="2"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Apellido:"/>
           </Properties>
@@ -314,7 +314,7 @@
         <Component class="javax.swing.JLabel" name="labelcedula">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="18" style="2"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cedula:"/>
           </Properties>

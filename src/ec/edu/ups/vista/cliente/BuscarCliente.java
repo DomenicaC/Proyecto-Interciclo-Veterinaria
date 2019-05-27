@@ -62,21 +62,21 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        labelcodigo.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelcodigo.setText("Código:");
 
-        labelnombre.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelnombre.setText("Nombre:");
 
-        labeldireccion.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeldireccion.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labeldireccion.setText("Dirección:");
 
-        labeledad.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeledad.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labeledad.setText("Edad:");
 
-        labelgenero.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelgenero.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelgenero.setText("Género:");
 
         botoncancelar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
@@ -87,10 +87,10 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        labeltelefono.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labeltelefono.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labeltelefono.setText("Teléfono:");
 
-        labelapellido.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelapellido.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelapellido.setText("Apellido:");
 
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -120,7 +120,7 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         txttelefono.setToolTipText("");
         txttelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        labelcedula.setFont(new java.awt.Font("Serif", 2, 18)); // NOI18N
+        labelcedula.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelcedula.setText("Cedula:");
 
         txtcedula.setToolTipText("");
@@ -177,7 +177,7 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
                             .addComponent(labelapellido)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botoncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,7 +247,7 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
                 .addComponent(clientetitulo)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
