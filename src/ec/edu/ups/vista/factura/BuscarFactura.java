@@ -492,9 +492,6 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         lblRuc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblRuc.setText("RUC Factura");
 
-        txtRuc.setEditable(false);
-        txtRuc.setEnabled(false);
-
         btnBuscarRF.setText("Buscar");
         btnBuscarRF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

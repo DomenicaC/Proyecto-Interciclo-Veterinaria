@@ -11,6 +11,8 @@ import ec.edu.ups.Modelo.FacturaDetalle;
 import ec.edu.ups.Modelo.Mascota;
 import ec.edu.ups.Modelo.Veterinario;
 import ec.edu.ups.controladores.ControladorFactura;
+import ec.edu.ups.vista.InicioSecion;
+import ec.edu.ups.vista.VerificarEliminar;
 import ec.edu.ups.vista.VistaPrincipal;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -174,9 +176,6 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
 
         txtIva.setEditable(false);
         txtIva.setEnabled(false);
-
-        txtRuc.setEditable(false);
-        txtRuc.setEnabled(false);
 
         lblTot.setBackground(new java.awt.Color(255, 255, 255));
         lblTot.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -721,6 +720,24 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblServKeyReleased
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
+        VerificarEliminar verificar = new VerificarEliminar();
+        verificar.setVisible(true);
+        
+        verificar.ingresaEliminar();
+        /*
+        int ruc = Integer.parseInt(txtRuc.getText());
+        Factura fact = controladorFactura.read(ruc);
+        
+        controladorFactura.delete(ruc);
+        JOptionPane.showMessageDialog(this, "Factura ELiminada");
+        
+        vaciarDatos();
+        vaciarTabla();*/
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    public void eliminar(){
         int ruc = Integer.parseInt(txtRuc.getText());
         Factura fact = controladorFactura.read(ruc);
         
@@ -729,9 +746,7 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
         
         vaciarDatos();
         vaciarTabla();
-        
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarRF;

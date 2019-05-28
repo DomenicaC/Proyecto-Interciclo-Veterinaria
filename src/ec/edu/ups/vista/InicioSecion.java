@@ -5,7 +5,10 @@
  */
 package ec.edu.ups.vista;
 
+
+
 import static ec.edu.ups.vista.VistaPrincipal.DesktopPane;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -20,15 +23,15 @@ public class InicioSecion extends javax.swing.JFrame {
     /**
      * Creates new form InicioSecion
      */
+    
     public InicioSecion() {
         initComponents();
         this.setLocationRelativeTo(null);
-        JOptionPane.showMessageDialog(null,"Bienvenido a la veterinaria Babas´s para"
+        JOptionPane.showMessageDialog(null, "Bienvenido a la veterinaria Babas´s para"
                 + " continuar digite su usuario");
-        
+
         setIconImage(new ImageIcon(("src/ec/edu/ups/vista/veterinari.png")).getImage());
         this.setTitle("***** BABAS`S VETERINARIA *****");
-        
 
     }
 
@@ -148,16 +151,18 @@ public class InicioSecion extends javax.swing.JFrame {
         String Usuario = "Admin";
         String Contraseña = "programacion";
         String Pass = new String(txtcontraseña.getPassword());
-        if(txtusuario.getText().equals(Usuario)&& Pass.equals(Contraseña)){
+        if (txtusuario.getText().equals(Usuario) && Pass.equals(Contraseña)) {
             VistaPrincipal si = new VistaPrincipal();
             si.setVisible(true);
             dispose();
 
-        }else {
-            JOptionPane.showMessageDialog(this,"Usuario / Contraseña Incorrecta");
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario / Contraseña Incorrecta");
         }
 
     }//GEN-LAST:event_botoningresarMouseClicked
+
+    
 
     /**
      * @param args the command line arguments
