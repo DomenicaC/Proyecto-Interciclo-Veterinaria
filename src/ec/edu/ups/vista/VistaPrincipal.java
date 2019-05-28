@@ -480,7 +480,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (eliF == null || eliF.isVisible() == false) {
-                    eliF = new EliminarFactura();
+                    eliF = new EliminarFactura(controladorFactura);
                     DesktopPane.add(eliF);
                 }
             } else {

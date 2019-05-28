@@ -59,11 +59,6 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 lista.get(i).getTotal()};
             modelo.addRow(datos);
         }
-        /*
-         txtSub.setText(Double.toString(factura.getSubtotal()));
-         txtIva.setText(Double.toString(factura.getIva()));
-         txtTot.setText(Double.toString(factura.getTotal()));
-         */
     }
 
     public void vaciarTabla() {
@@ -382,7 +377,8 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         txtSub.setEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("Crear Factura");
+        jLabel1.setText("Buscar Factura");
+        jLabel1.setToolTipText("");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -677,12 +673,13 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         if (fact == null) {
             JOptionPane.showMessageDialog(this, "RUC no existe");
         } else {
-
+            //factura
             txtFecha.setText(factura.getFecha());
             txtSub.setText(Double.toString(fact.getSubtotal()));
             txtIva.setText(Double.toString(fact.getIva()));
             txtTot.setText(Double.toString(fact.getTotal()));
 
+            //cliente
             Cliente cliente = factura.getCliente();
             txtCodC.setText(Integer.toString(cliente.getCodigo()));
             txtNomC.setText(cliente.getNombre());
@@ -690,17 +687,20 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
             txtDirC.setText(cliente.getDireccion());
             txtTelC.setText(cliente.getTelefono());
 
+            //veterinario
             Veterinario vet = factura.getVet();
             txtCodV.setText(Integer.toString(vet.getCodigo()));
             txtNomV.setText(vet.getNombre());
             txtApeV.setText(vet.getApellido());
 
+            //mascota
             Mascota mas = factura.getMasc();
             txtCodM.setText(Integer.toString(mas.getCodigo()));
             txtEdadM.setText(Integer.toString(mas.getEdad()));
             txtNomM.setText(mas.getNombre());
             txtPesoM.setText(Double.toString(mas.getPeso()));
 
+            //datos tabla
             vaciarTabla();
             llenarTabla();
 
