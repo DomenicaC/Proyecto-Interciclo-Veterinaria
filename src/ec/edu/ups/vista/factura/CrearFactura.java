@@ -116,11 +116,6 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     }
 
     public void vaciarDatos() {
-        DefaultTableModel modelo = (DefaultTableModel) tblServ.getModel();
-        int filas = tblServ.getRowCount();
-        for (int i = 0; i < filas; i++) {
-            modelo.removeRow(0);
-        }
 
         txtApeC.setText("");
         txtApeV.setText("");
@@ -140,6 +135,17 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         txtSub.setText("");
         txtTelC.setText("");
         txtTot.setText("");
+
+    }
+    
+    public void vaciarTabla(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblServ.getModel();
+        int filas = tblServ.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            modelo.removeRow(0);
+        }
+        
     }
 
     /**
@@ -776,7 +782,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         if (cliente == null) {
             JOptionPane.showMessageDialog(null, "Cedula no Existe");
         } else {
-            txtCodC.setText(Integer.toString(cliente.getCodigo()));
+            //txtCodC.setText(Integer.toString(cliente.getCodigo()));
             txtNomC.setText(cliente.getNombre());
             txtApeC.setText(cliente.getApellido());
             txtDirC.setText(cliente.getDireccion());
@@ -842,6 +848,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
         llenarDatos();
         vaciarDatos();
+        vaciarTabla();
 
         txtRuc.setText(Integer.toString(controladorFactura.getCodigo()));
         fac.setRuc(Integer.parseInt(txtRuc.getText()));

@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.Modelo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Factura {
     private Date fecha;
     private Cliente cliente;
     private Veterinario vet;
+    private Mascota masc;
     private List<FacturaDetalle> detalle;
     private double subtotal;
 
@@ -31,13 +33,14 @@ public class Factura {
     }
 
     //contructor
-    public Factura(double iva, double total, int ruc, Date fecha, Cliente cliente, Veterinario vet, List<FacturaDetalle> detalle, double subtotal) {
+    public Factura(double iva, double total, int ruc, Date fecha, Cliente cliente, Veterinario vet, Mascota masc, List<FacturaDetalle> detalle, double subtotal) {
         this.iva = iva;
         this.total = total;
         this.ruc = ruc;
         this.fecha = fecha;
         this.cliente = cliente;
         this.vet = vet;
+        this.masc = masc;
         this.detalle = detalle;
         this.subtotal = subtotal;
     }
@@ -86,8 +89,10 @@ public class Factura {
         this.ruc = ruc;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public String getFecha() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaTexto = formato.format(fecha.getTime());
+        return fechaTexto;
     }
 
     public void setFecha(Date fecha) {
@@ -110,6 +115,14 @@ public class Factura {
         this.vet = vet;
     }
 
+    public Mascota getMasc() {
+        return masc;
+    }
+
+    public void setMasc(Mascota masc) {
+        this.masc = masc;
+    }
+
     public List<FacturaDetalle> getDetalle() {
         return detalle;
     }
@@ -117,8 +130,8 @@ public class Factura {
     public void setDetalle(List<FacturaDetalle> detalle) {
         this.detalle = detalle;
     }
-    
-    public void añadirFacturaDetalle(FacturaDetalle facturaDetalle){
+
+    public void añadirFacturaDetalle(FacturaDetalle facturaDetalle) {
         detalle.add(facturaDetalle);
     }
 

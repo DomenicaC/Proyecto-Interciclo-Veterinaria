@@ -560,7 +560,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (buscarF == null || buscarF.isVisible() == false) {
-                    buscarF = new BuscarFactura();
+                    buscarF = new BuscarFactura(controladorFactura);
                     DesktopPane.add(buscarF);
                 }
             } else {
