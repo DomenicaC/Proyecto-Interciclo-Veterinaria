@@ -7,6 +7,7 @@ package ec.edu.ups.vista;
 
 import static ec.edu.ups.vista.VistaPrincipal.DesktopPane;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sun.security.util.Password;
 
@@ -26,7 +27,7 @@ public class InicioSecion extends javax.swing.JFrame {
                 + " continuar digite su usuario");
         
         setIconImage(new ImageIcon(("src/ec/edu/ups/vista/veterinari.png")).getImage());
-       
+        this.setTitle("***** BABAS`S VETERINARIA *****");
         
 
     }
@@ -50,6 +51,7 @@ public class InicioSecion extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
         jLabel1.setText("Baba´s Veterinaria");
