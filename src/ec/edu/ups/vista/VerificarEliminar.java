@@ -19,10 +19,10 @@ public class VerificarEliminar extends javax.swing.JFrame {
     /**
      * Creates new form VerificarEliminar
      */
-    
     private Factura factura = new Factura();
     private ControladorFactura controladorFactura;
     private EliminarFactura eli;
+
     public VerificarEliminar() {
         initComponents();
     }
@@ -37,12 +37,12 @@ public class VerificarEliminar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        labelusuario = new javax.swing.JLabel();
-        labelcontraseña = new javax.swing.JLabel();
-        txtusuario = new javax.swing.JTextField();
-        txtcontraseña = new javax.swing.JPasswordField();
+        lblUsuario = new javax.swing.JLabel();
+        lblContra = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        txtContra = new javax.swing.JPasswordField();
         btnVerificar = new javax.swing.JButton();
-        botonsalir = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,11 +50,11 @@ public class VerificarEliminar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
         jLabel1.setText("Baba´s Veterinaria");
 
-        labelusuario.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        labelusuario.setText("Usuario:");
+        lblUsuario.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        lblUsuario.setText("Usuario:");
 
-        labelcontraseña.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        labelcontraseña.setText("Contraseña:");
+        lblContra.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        lblContra.setText("Contraseña:");
 
         btnVerificar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         btnVerificar.setText("Verificar");
@@ -69,11 +69,11 @@ public class VerificarEliminar extends javax.swing.JFrame {
             }
         });
 
-        botonsalir.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        botonsalir.setText("Salir");
-        botonsalir.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        btnSalir.setText("Cancelar");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonsalirActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -86,12 +86,12 @@ public class VerificarEliminar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(labelusuario)
+                        .addComponent(lblUsuario)
                         .addGap(30, 30, 30)
-                        .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -100,12 +100,12 @@ public class VerificarEliminar extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnVerificar)
-                                .addGap(87, 87, 87)
-                                .addComponent(botonsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(86, 86, 86)
+                                .addComponent(btnSalir))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelcontraseña)
+                                .addComponent(lblContra)
                                 .addGap(30, 30, 30)
-                                .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(73, 73, 73))))
         );
         layout.setVerticalGroup(
@@ -117,20 +117,20 @@ public class VerificarEliminar extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(86, 86, 86)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelusuario)
-                            .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblUsuario)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelcontraseña)
-                            .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblContra)
+                            .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnVerificar)
-                            .addComponent(botonsalir)))
+                            .addComponent(btnSalir)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,40 +139,44 @@ public class VerificarEliminar extends javax.swing.JFrame {
     private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
         // TODO add your handling code here:
         /*String Usuario = "Admin";
-        String Contraseña = "programacion";
-        String Pass = new String(txtcontraseña.getPassword());
-        if (txtusuario.getText().equals(Usuario) && Pass.equals(Contraseña)) {
-            VistaPrincipal si = new VistaPrincipal();
-            si.setVisible(true);
-            dispose();
+         String Contraseña = "programacion";
+         String Pass = new String(txtcontraseña.getPassword());
+         if (txtusuario.getText().equals(Usuario) && Pass.equals(Contraseña)) {
+         VistaPrincipal si = new VistaPrincipal();
+         si.setVisible(true);
+         dispose();
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario / Contraseña Incorrecta");
-        }*/
+         } else {
+         JOptionPane.showMessageDialog(this, "Usuario / Contraseña Incorrecta");
+         }*/
     }//GEN-LAST:event_btnVerificarMouseClicked
 
-    private void botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonsalirActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
+        q = null;
+        JOptionPane.showMessageDialog(this, "No se puede eliminar");
         dispose();
-    }//GEN-LAST:event_botonsalirActionPerformed
 
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    public static String q;
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-        ingresaEliminar();
-    }//GEN-LAST:event_btnVerificarActionPerformed
-
-    public void ingresaEliminar() {
-        String Usuario = "Admin";
-        String Contraseña = "programacion";
-        String Pass = new String(txtcontraseña.getPassword());
-        if (txtusuario.getText().equals(Usuario) && Pass.equals(Contraseña)) {
-            
-            eli.eliminar();
+        //ingresaEliminar();
+        String usuario = "Admin";
+        String contraseña = "programacion";
+        String Pass1 = new String(txtContra.getPassword());
+        if (txtUsuario.getText().equals(usuario) && Pass1.equals(contraseña)) {
+            q = "q";
+//            eli.eliminar();
+            JOptionPane.showMessageDialog(this, "Factura ELiminada");
             dispose();
 
         } else {
             JOptionPane.showMessageDialog(this, "Usuario / Contraseña Incorrecta");
+            q = null;
         }
-    }
+    }//GEN-LAST:event_btnVerificarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,13 +213,13 @@ public class VerificarEliminar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonsalir;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnVerificar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel labelcontraseña;
-    private javax.swing.JLabel labelusuario;
-    private javax.swing.JPasswordField txtcontraseña;
-    private javax.swing.JTextField txtusuario;
+    private javax.swing.JLabel lblContra;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPasswordField txtContra;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

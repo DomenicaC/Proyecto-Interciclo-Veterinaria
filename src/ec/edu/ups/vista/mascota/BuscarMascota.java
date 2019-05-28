@@ -15,20 +15,22 @@ import javax.swing.JOptionPane;
  * @author Byron PC
  */
 public class BuscarMascota extends javax.swing.JInternalFrame {
-private ControladorMascota controladorMascota;
-public static String x;
+
+    private ControladorMascota controladorMascota;
+    public static String x;
+
     /**
      * Creates new form BuscarMascota
      */
     public BuscarMascota(ControladorMascota controladorMascota) {
         initComponents();
         this.controladorMascota = controladorMascota;
-        x="x";
-        int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
-        int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
-        setLocation(a/2,b/2);
+        x = "x";
+        int a = VistaPrincipal.DesktopPane.getWidth() - this.getWidth();
+        int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
+        setLocation(a / 2, b / 2);
         setVisible(true);
-        
+
     }
 
     /**
@@ -208,16 +210,16 @@ public static String x;
     }//GEN-LAST:event_txtnombreActionPerformed
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-    int codigo= Integer.parseInt(txtcodigo2.getText());
+        int codigo = Integer.parseInt(txtcodigo2.getText());
         Mascota mascota = controladorMascota.read(codigo);
-        if(mascota == null){
+        if (mascota == null) {
             JOptionPane.showMessageDialog(null, "Su mascota no ha sido registrada");
-        }else{
+        } else {
             txtedad.setText(Integer.toString(mascota.getEdad()));
             txtnombre.setText(mascota.getNombre());
             txtpeso.setText(Double.toString(mascota.getPeso()));
         }
-        
+
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
