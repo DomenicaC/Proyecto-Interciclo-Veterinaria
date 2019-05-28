@@ -33,7 +33,7 @@ public class FacturaDetalle {
      return serv;
      }
 
-     public void setProd(Servicio serv) {
+     public void setServ(Servicio serv) {
      this.serv = serv;
      }
 
