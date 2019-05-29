@@ -52,7 +52,7 @@ public class Veterinario extends Persona{
 
     @Override
     public String toString() {
-        return "Veterinario{" + "sueldo=" + sueldo + ", titulo=" + titulo + '}';
+        return super.toString()+"Veterinario{" + "sueldo=" + sueldo + ", titulo=" + titulo + '}';
     }
     //////hashcode///////
 

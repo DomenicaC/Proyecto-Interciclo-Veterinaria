@@ -98,6 +98,11 @@ public class Cliente extends Persona {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+ "Cliente{" + "direccion=" + direccion + ", telefono=" + telefono + ", genero=" + genero + ", persona=" + persona + '}';
+    }
     
      
 }

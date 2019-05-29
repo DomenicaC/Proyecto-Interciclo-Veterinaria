@@ -821,9 +821,13 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         String cedulaV = txtCedV.getText();
         Veterinario vet = controladorVeterinario.readCedula(cedulaV);
 
+        int codidgo = Integer.parseInt(txtCodM.getText());
+        Mascota masc = controladorMascota.read(codidgo);
+        
         factura.setCliente(cliente);
         factura.setVet(vet);
-        //factura.setFecha(fecha);
+        factura.setMasc(masc);
+        factura.setFecha(fecha);
         factura.setIva(iva);
         factura.setSubtotal(subtotal1);
         factura.setTotal(total1);
@@ -854,7 +858,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         fac.setRuc(Integer.parseInt(txtRuc.getText()));
 
         JOptionPane.showMessageDialog(this, "Factura Creada");
-        System.out.println("factura \n" + factura);
+        System.out.println("factura \n" + factura.toString());
         //txtRuc.setText(Integer.toString(controladorFactura.getCodigo() - 1));
 
     }//GEN-LAST:event_btnCrearFActionPerformed
