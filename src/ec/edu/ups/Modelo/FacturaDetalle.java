@@ -15,18 +15,18 @@ public class FacturaDetalle {
 
     private int codigo;
     private int cantidad;
-    private double subtotal;
-    private double total;
+    private double subtotal2;
+    private double total3;
 
     public FacturaDetalle() {
     }
 
-    public FacturaDetalle(Servicio serv,int codigo, int cantidad, double subtotal, double total) {
+    public FacturaDetalle(Servicio serv,int codigo, int cantidad, double subtotal2, double total3) {
         this.serv = serv;
         this.codigo = codigo;
         this.cantidad = cantidad;
-        this.subtotal = subtotal;
-        this.total = total;
+        this.subtotal2 = subtotal2;
+        this.total3 = total3;
     }
     
      public Servicio getServ() {
@@ -54,19 +54,19 @@ public class FacturaDetalle {
     }
 
     public double getSubtotal() {
-        return subtotal;
+        return subtotal2;
     }
 
     public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+        this.subtotal2 = subtotal2;
     }
 
     public double getTotal() {
-        return total;
+        return total3;
     }
 
     public void setTotal(double total) {
-        this.total = total;
+        this.total3 = total3;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class FacturaDetalle {
 
     @Override
     public String toString() {
-        return "FacturaDetalle{" + "serv=" + serv + ", codigo=" + codigo + ", cantidad=" + cantidad + ", subtotal=" + subtotal + ", total=" + total + '}';
+        return "FacturaDetalle{" + "serv=" + serv + ", codigo=" + codigo + ", cantidad=" + cantidad + ", subtotal=" + subtotal2 + ", total=" + total3 + '}';
     }
     
     

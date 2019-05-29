@@ -619,9 +619,9 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         } else {
             //factura
             txtFecha.setText(fact.getFecha());
-            txtSub.setText(Double.toString(fact.getSubtotal()));
+            txtSub.setText(String.valueOf(fact.getSubtotal()));
             txtIva.setText(Double.toString(fact.getIva()));
-            txtTot.setText(Double.toString(fact.getTotal()));
+            txtTot.setText(String.valueOf(fact.getTotal()));
 
             //cliente
             Cliente cliente = fact.getCliente();

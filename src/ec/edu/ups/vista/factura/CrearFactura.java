@@ -828,8 +828,8 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         factura.setVet(vet);
         factura.setMasc(masc);
         factura.setFecha(fecha);
-         factura.setSubtotal(subtotal1);
-        
+        factura.setSubtotal(Double.parseDouble(txtSub.getText()));
+        factura.setSubtotal(subtotal1);
         factura.setIva(iva);
         factura.setTotal(total2);
         
@@ -850,14 +850,14 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         controladorFactura.create(factura);
         contador = 0;
 
-        Factura fac = new Factura();
+        //Factura fac = new Factura();
 
         llenarDatos();
         vaciarDatos();
         vaciarTabla();
 
         txtRuc.setText(Integer.toString(controladorFactura.getCodigo()));
-        fac.setRuc(Integer.parseInt(txtRuc.getText()));
+        factura.setRuc(Integer.parseInt(txtRuc.getText()));
 
         JOptionPane.showMessageDialog(this, "Factura Creada");
         System.out.println("factura \n" + factura.toString());
