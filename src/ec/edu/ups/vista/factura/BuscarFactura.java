@@ -665,16 +665,16 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         int ruc = Integer.parseInt(txtRuc.getText());
         Factura fact = controladorFactura.read(ruc);
 
-        vaciarDatos();
+        //vaciarDatos();
 
         if (fact == null) {
             JOptionPane.showMessageDialog(this, "RUC no existe");
         } else {
             //factura
             txtFecha.setText(factura.getFecha());
-            txtSub.setText(Double.toString(fact.getSubtotal()));
-            txtIva.setText(Double.toString(fact.getIva()));
-            txtTot.setText(Double.toString(fact.getTotal()));
+            txtSub.setText(Double.toString(factura.getSubtotal()));
+            txtIva.setText(Double.toString(factura.getIva()));
+            txtTot.setText(Double.toString(factura.getTotal()));
 
             //cliente
             Cliente cliente = factura.getCliente();
@@ -698,7 +698,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
             txtPesoM.setText(Double.toString(mas.getPeso()));
 
             //datos tabla
-            vaciarTabla();
+            //vaciarTabla();
             llenarTabla();
 
         }

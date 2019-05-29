@@ -111,6 +111,11 @@ public  class Persona {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "codigo=" + codigo + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", edad=" + edad + '}';
+    }
     
     
     

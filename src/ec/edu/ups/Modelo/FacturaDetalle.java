@@ -90,4 +90,11 @@ public class FacturaDetalle {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "FacturaDetalle{" + "serv=" + serv + ", codigo=" + codigo + ", cantidad=" + cantidad + ", subtotal=" + subtotal + ", total=" + total + '}';
+    }
+    
+    
 }

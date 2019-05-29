@@ -164,4 +164,11 @@ public class Factura {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "Factura{" + "iva=" + iva + ", total=" + total + ", ruc=" + ruc + ", fecha=" + fecha + ", cliente=" + cliente + ", vet=" + vet + ", masc=" + masc + ", detalle=" + detalle + ", subtotal=" + subtotal + '}';
+    }
+    
+    
 }
