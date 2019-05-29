@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListarCliente extends javax.swing.JInternalFrame {
      private ControladorCliente controladorCliente;
+     public static String x;
 
     /**
      * Creates new form ListarCliente
@@ -27,7 +28,7 @@ public class ListarCliente extends javax.swing.JInternalFrame {
         llenarDatos();
         int a = VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
         int b = VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
-        
+        x = "x";
         setLocation(a/2, b/2);
         setVisible(true);
     }
@@ -66,6 +67,23 @@ public class ListarCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
@@ -127,6 +145,11 @@ public class ListarCliente extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+x = null;
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
     
     
 

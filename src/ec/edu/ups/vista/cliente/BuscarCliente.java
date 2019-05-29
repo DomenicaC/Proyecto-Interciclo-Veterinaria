@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 public class BuscarCliente extends javax.swing.JInternalFrame {
 
       private ControladorCliente controladorCliente;
+      public static String x ;
     /**
      * Creates new form BuscarCliente
      */
@@ -25,7 +26,9 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
          this.controladorCliente = controladorCliente;
          int a = VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
         int b = VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
-        
+        x = "x";
+                
+               
         setLocation(a/2, b/2);
         setVisible(true);
     }
@@ -63,6 +66,23 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
@@ -285,7 +305,13 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
     private void botoncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncancelarActionPerformed
         // TODO add your handling code here:
         dispose();
+        x = null;
     }//GEN-LAST:event_botoncancelarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x = null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

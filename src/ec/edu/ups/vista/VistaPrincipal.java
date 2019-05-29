@@ -462,9 +462,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        ModificarCliente crear = new ModificarCliente(controladorCliente);
-        crear.setVisible(true);
-        DesktopPane.add(crear);
+        String x = ModificarCliente.x;
+        try {
+            if (x == null) {
+                if (modificarCliente == null || modificarCliente.isVisible() == false) {
+                    modificarCliente = new ModificarCliente(controladorCliente);
+                    DesktopPane.add(modificarCliente);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
@@ -530,10 +540,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
         // TODO add your handling code here:
-        BuscarCliente crear = new BuscarCliente(controladorCliente);
-        crear.setVisible(true);
-        DesktopPane.add(crear);
-
+        
+        String x = BuscarCliente.x;
+        try {
+            if (x == null) {
+                if (buscarCliente == null || buscarCliente.isVisible() == false) {
+                    buscarCliente = new BuscarCliente(controladorCliente);
+                    DesktopPane.add(buscarCliente);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
@@ -610,16 +630,39 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        ListarCliente crear = new ListarCliente(controladorCliente);
-        crear.setVisible(true);
-        DesktopPane.add(crear);
+        String x = ListarCliente.x;
+        try {
+            if (x == null) {
+                if (listarCliente == null || listarCliente.isVisible() == false) {
+                    listarCliente = new ListarCliente(controladorCliente);
+                    DesktopPane.add(listarCliente);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        EliminarCliente crear = new EliminarCliente(controladorCliente);
-        crear.setVisible(true);
-        DesktopPane.add(crear);
+        String x = EliminarCliente.x;
+        try {
+            if (x == null) {
+                if (eliminarCliente == null || eliminarCliente.isVisible() == false) {
+                    eliminarCliente = new EliminarCliente(controladorCliente);
+                    DesktopPane.add(eliminarCliente);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed

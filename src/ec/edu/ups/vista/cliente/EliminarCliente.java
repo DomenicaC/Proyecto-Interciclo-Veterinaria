@@ -6,9 +6,11 @@
 package ec.edu.ups.vista.cliente;
 
 import ec.edu.ups.Modelo.Cliente;
+import ec.edu.ups.Modelo.Mascota;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.vista.VistaPrincipal;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
 public class EliminarCliente extends javax.swing.JInternalFrame {
     
     private ControladorCliente controladorCliente;
+    public static String x ;
     /**
      * Creates new form EliminarCliente
      */
@@ -25,7 +28,7 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
         this.controladorCliente = controladorCliente;
         int a = VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
         int b = VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
-        
+        x = "x";
         setLocation(a/2, b/2);
         setVisible(true);
     }
@@ -64,6 +67,24 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         clientetitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
         clientetitulo.setText("Eliminar Cliente");
@@ -276,7 +297,31 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
 
     private void botoneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoneliminarActionPerformed
         // TODO add your handling code here:
+         JPasswordField admin = new JPasswordField();
+      
+if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar",JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION){
+    
+}
+     
+     int codigo = Integer.parseInt(txtcedula.getText());
+     Cliente cliente= controladorCliente.read(codigo);
+     if (cliente == null) {
+            JOptionPane.showMessageDialog(null, "Cliente no ha sido registrada");
+        } else {
+         JOptionPane.showMessageDialog(null, "El cliente ha sido eliminada");
+         controladorCliente.delete(codigo);
+         txtcedula.setText("");
+        txtnombre.setText("");
+        txtdireccion.setText("");
+        txtcodigo.setText("");
+        txttelefono.setText("");
+        txtapellido.setText("");
+        txtedad.setText("");
+        txtgenero.setText("");
+        }
         
+        
+        /*
         String cedula = txtcedula.getText();
         Cliente cliente = controladorCliente.read1(cedula);
         int codigo = cliente.getCodigo();
@@ -290,6 +335,7 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
         txtedad.setText("");
         txtgenero.setText("");
         JOptionPane.showMessageDialog(this, "Cliente Eliminado exitosamente", "Eliminar cliente", JOptionPane.OK_OPTION);
+*/
     }//GEN-LAST:event_botoneliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -309,7 +355,17 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
     private void botoncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncancelarActionPerformed
         // TODO add your handling code here:
         dispose();
+        x = null;
     }//GEN-LAST:event_botoncancelarActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x = null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

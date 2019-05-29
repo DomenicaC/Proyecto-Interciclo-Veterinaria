@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 public class ModificarCliente extends javax.swing.JInternalFrame {
     
      private ControladorCliente controladorCliente;
+     public static String x ;
+     
 
     /**
      * Creates new form ModificarCliente
@@ -26,7 +28,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         this.controladorCliente = controladorCliente;
         int a = VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
         int b = VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
-        
+        x = "x";
         setLocation(a/2, b/2);
         setVisible(true);
     }
@@ -65,6 +67,23 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         clientetitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
         clientetitulo.setText("Modificar Cliente");
@@ -281,6 +300,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
     private void botoncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncancelarActionPerformed
         // TODO add your handling code here:
         dispose();
+        x = null;
     }//GEN-LAST:event_botoncancelarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -329,6 +349,11 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         txtgenero.setText("");
         txtapellido.setText("");
     }//GEN-LAST:event_botonactualizarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x = null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
