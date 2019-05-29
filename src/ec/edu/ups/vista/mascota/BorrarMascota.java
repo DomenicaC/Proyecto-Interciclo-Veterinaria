@@ -10,6 +10,7 @@ import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.mascota.BuscarMascota.x;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -240,18 +241,13 @@ private ControladorMascota controladorMascota;
     }//GEN-LAST:event_txtnombreActionPerformed
 
     private void bnteliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnteliminarActionPerformed
-     String pass = "";
-     do{
-         pass=JOptionPane.showInputDialog("Contraseña: ");
-         if(pass.equals("admin")){
-             JOptionPane.showMessageDialog(null, "Correcto");
-            
-         }else{
-             JOptionPane.showMessageDialog(null, "Incorrecto");
-         
-         }
+     //Contraseña para eliminar
+        JPasswordField admin = new JPasswordField();
+      
+if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar",JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION){
+    
+}
      
-     }while(pass.equals("admin")==false);
         int codigo = Integer.parseInt(txtcodigoeliminar.getText());
      Mascota mascota= controladorMascota.read(codigo);
      if (mascota == null) {
