@@ -19,8 +19,10 @@ import ec.edu.ups.vista.factura.BuscarFactura;
 import ec.edu.ups.vista.factura.CrearFactura;
 import ec.edu.ups.vista.factura.EliminarFactura;
 import ec.edu.ups.vista.mascota.ActualizarMascota;
+import ec.edu.ups.vista.mascota.BorrarMascota;
 import ec.edu.ups.vista.mascota.BuscarMascota;
 import ec.edu.ups.vista.mascota.CrearMascota;
+import ec.edu.ups.vista.mascota.ListarMascota;
 import ec.edu.ups.vista.servicio.BuscarServicio;
 import ec.edu.ups.vista.servicio.CrearServicio;
 import ec.edu.ups.vista.servicio.EliminarServicio;
@@ -47,6 +49,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private EliminarFactura eliF;
     private BuscarMascota buscarMascota;
     private ActualizarMascota actualizarMascota;
+    private BorrarMascota borrarMascota;
+    private ListarMascota listarMascota;
     /**
      * Creates new form VistaPrincipal
      */
@@ -56,6 +60,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ControladorCliente controladorCliente;
     private ControladorVeterinario controladorVeterinario;
     private ControladorFactura controladorFactura;
+    
     
 
     public VistaPrincipal() {
@@ -248,11 +253,21 @@ public class VistaPrincipal extends javax.swing.JFrame {
         deleteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
         deleteMenuItem.setMnemonic('d');
         deleteMenuItem.setText("Eliminar");
+        deleteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(deleteMenuItem);
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
         jMenuItem3.setText("Listar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         editMenu.add(jMenuItem3);
 
         menuBar.add(editMenu);
@@ -660,6 +675,42 @@ public class VistaPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_pasteMenuItemActionPerformed
+
+    private void deleteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItemActionPerformed
+        // TODO add your handling code here:
+        String x = borrarMascota.x;
+        try {
+            if (x == null) {
+                if (borrarMascota == null || borrarMascota.isVisible() == false) {
+                    borrarMascota = new BorrarMascota(controladorMascota);
+                    DesktopPane.add(borrarMascota);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_deleteMenuItemActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        String x = listarMascota.x;
+        try {
+            if (x == null) {
+                if (listarMascota == null || listarMascota.isVisible() == false) {
+                    listarMascota = new ListarMascota(controladorMascota);
+                    listarMascota.setVisible(true);
+                    DesktopPane.add(listarMascota);
+                    DesktopPane.moveToFront(listarMascota);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana esta en ejecucion");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
