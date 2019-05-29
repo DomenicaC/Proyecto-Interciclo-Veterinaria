@@ -59,6 +59,10 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 lista.get(i).getTotal()};
             modelo.addRow(datos);
         }
+        
+        txtSub.setText(Double.toString(factura.getSubtotal()));
+        txtTot.setText(Double.toString(factura.getTotal()));
+        
     }
 
     public void vaciarTabla() {
