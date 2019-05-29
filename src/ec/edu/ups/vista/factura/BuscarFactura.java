@@ -605,60 +605,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarFActionPerformed
 
     private void tblServKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServKeyReleased
-        /*   int key = evt.getKeyCode();
-         if (key == KeyEvent.VK_ENTER) {
-         int fila = tblServ.getSelectedRow();
-         int columna = tblServ.getSelectedColumn();
-         int codigoServ = 0;
-
-         Object[] datos1 = {"", 0, "", "", ""};
-
-         if (columna == 0) {
-         codigoServ = Integer.parseInt(tblServ.getValueAt(fila, columna).toString());
-         servicio = controladorServicio.read(codigoServ);
-
-         double precio = servicio.getPrecio();
-         int cant = Integer.parseInt(tblServ.getValueAt(fila, 1).toString());
-
-         tablaF = (DefaultTableModel) tblServ.getModel();
-         tablaF.removeRow(fila);
-         total1 = precio * cant;
-
-         Object[] datos = {codigoServ,
-         cant,
-         servicio.getNombreservicio(),
-         servicio.getPrecio(),
-         total1};
-
-         tablaF.addRow(datos);
-         tablaF.addRow(datos1);
-
-         } else if (columna == 1) {
-         codigoServ = Integer.parseInt(tblServ.getValueAt(fila, columna - 1).toString());
-         int cant = Integer.parseInt(tblServ.getValueAt(fila, columna).toString());
-         tablaF.removeRow(fila);
-         tablaF.removeRow(tblServ.getRowCount() - 1);
-
-         total1 = servicio.getPrecio() * cant;
-
-         Object[] datos = {codigoServ,
-         cant,
-         servicio.getNombreservicio(),
-         servicio.getPrecio(),
-         total1};
-
-         tablaF.addRow(datos);
-         tablaF.addRow(datos1);
-         }
-
-         subtotal1 = subtotal1 + total1;
-         iva = subtotal1 * 0.12;
-         total2 = subtotal1 + iva;
-
-         txtSub.setText(String.valueOf(subtotal1));
-         txtIva.setText(String.valueOf(iva));
-         txtTot.setText(String.valueOf(total2));
-         }*/
+        
     }//GEN-LAST:event_tblServKeyReleased
 
     private void btnBuscarRFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRFActionPerformed
@@ -671,27 +618,28 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "RUC no existe");
         } else {
             //factura
-            txtFecha.setText(factura.getFecha());
-            txtSub.setText(Double.toString(factura.getSubtotal()));
-            txtIva.setText(Double.toString(factura.getIva()));
-            txtTot.setText(Double.toString(factura.getTotal()));
+            txtFecha.setText(fact.getFecha());
+            txtSub.setText(Double.toString(fact.getSubtotal()));
+            txtIva.setText(Double.toString(fact.getIva()));
+            txtTot.setText(Double.toString(fact.getTotal()));
 
             //cliente
-            Cliente cliente = factura.getCliente();
+            Cliente cliente = fact.getCliente();
             txtCodC.setText(Integer.toString(cliente.getCodigo()));
             txtNomC.setText(cliente.getNombre());
             txtApeC.setText(cliente.getApellido());
             txtDirC.setText(cliente.getDireccion());
             txtTelC.setText(cliente.getTelefono());
+            txtCedC.setText(cliente.getCedula());
 
             //veterinario
-            Veterinario vet = factura.getVet();
+            Veterinario vet = fact.getVet();
             txtCodV.setText(Integer.toString(vet.getCodigo()));
             txtNomV.setText(vet.getNombre());
             txtApeV.setText(vet.getApellido());
-
+            txtCedV.setText(vet.getCedula());
             //mascota
-            Mascota mas = factura.getMasc();
+            Mascota mas = fact.getMasc();
             txtCodM.setText(Integer.toString(mas.getCodigo()));
             txtEdadM.setText(Integer.toString(mas.getEdad()));
             txtNomM.setText(mas.getNombre());

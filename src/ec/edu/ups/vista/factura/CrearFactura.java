@@ -823,14 +823,16 @@ public class CrearFactura extends javax.swing.JInternalFrame {
 
         int codidgo = Integer.parseInt(txtCodM.getText());
         Mascota masc = controladorMascota.read(codidgo);
-        
+       
         factura.setCliente(cliente);
         factura.setVet(vet);
         factura.setMasc(masc);
         factura.setFecha(fecha);
+         factura.setSubtotal(subtotal1);
+        
         factura.setIva(iva);
-        factura.setSubtotal(subtotal1);
-        factura.setTotal(total1);
+        factura.setTotal(total2);
+        
 
         for (int i = 0; i < tblServ.getRowCount() - 1; i++) {
             System.out.println(i);
