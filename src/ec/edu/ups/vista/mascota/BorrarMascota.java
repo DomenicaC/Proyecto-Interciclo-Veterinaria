@@ -240,7 +240,19 @@ private ControladorMascota controladorMascota;
     }//GEN-LAST:event_txtnombreActionPerformed
 
     private void bnteliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnteliminarActionPerformed
-     int codigo = Integer.parseInt(txtcodigoeliminar.getText());
+     String pass = "";
+     do{
+         pass=JOptionPane.showInputDialog("Contraseña: ");
+         if(pass.equals("admin")){
+             JOptionPane.showMessageDialog(null, "Correcto");
+            
+         }else{
+             JOptionPane.showMessageDialog(null, "Incorrecto");
+         
+         }
+     
+     }while(pass.equals("admin")==false);
+        int codigo = Integer.parseInt(txtcodigoeliminar.getText());
      Mascota mascota= controladorMascota.read(codigo);
      if (mascota == null) {
             JOptionPane.showMessageDialog(null, "Su mascota no ha sido registrada");
