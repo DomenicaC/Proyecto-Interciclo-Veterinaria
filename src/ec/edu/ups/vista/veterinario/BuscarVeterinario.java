@@ -7,6 +7,7 @@ package ec.edu.ups.vista.veterinario;
 
 import ec.edu.ups.Modelo.Veterinario;
 import ec.edu.ups.controladores.ControladorVeterinario;
+import ec.edu.ups.vista.VistaPrincipal;
 
 /**
  *
@@ -21,6 +22,9 @@ public class BuscarVeterinario extends javax.swing.JInternalFrame {
     public BuscarVeterinario(ControladorVeterinario controladorveterinario) {
         initComponents();
         this.controladorveterinario = controladorveterinario;
+         int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
+        int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
     }
 
     /**

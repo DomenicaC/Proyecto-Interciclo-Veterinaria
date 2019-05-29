@@ -7,6 +7,7 @@ package ec.edu.ups.vista.servicio;
 
 import ec.edu.ups.Modelo.Servicio;
 import ec.edu.ups.controladores.ControladorServicio;
+import ec.edu.ups.vista.VistaPrincipal;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,9 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
     public ModificarServicio(ControladorServicio controladorservicio) {
         initComponents();
         this.controladorservicio = controladorservicio;
+         int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
+        int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
     }
 
     /**

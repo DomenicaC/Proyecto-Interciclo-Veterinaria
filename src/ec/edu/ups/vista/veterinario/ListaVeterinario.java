@@ -7,6 +7,7 @@ package ec.edu.ups.vista.veterinario;
 
 import ec.edu.ups.Modelo.Veterinario;
 import ec.edu.ups.controladores.ControladorVeterinario;
+import ec.edu.ups.vista.VistaPrincipal;
 import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,6 +24,9 @@ public class ListaVeterinario extends javax.swing.JInternalFrame {
     
     public ListaVeterinario(ControladorVeterinario controladorveterinario) {
         initComponents();
+         int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
+        int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
         this.controladorveterinario = controladorveterinario;
         llenarDatos();
     }
@@ -66,6 +70,7 @@ public void llenarDatos() {
                 "CODIGO", "NOMBRE", "APELLIDO", "CEDULA", "EDAD", "SUELDO", "TITULO"
             }
         ));
+        tablaveterinario.setEnabled(false);
         jScrollPane1.setViewportView(tablaveterinario);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 860, -1));

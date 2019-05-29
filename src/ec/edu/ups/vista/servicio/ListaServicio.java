@@ -7,6 +7,7 @@ package ec.edu.ups.vista.servicio;
 
 import ec.edu.ups.Modelo.Servicio;
 import ec.edu.ups.controladores.ControladorServicio;
+import ec.edu.ups.vista.VistaPrincipal;
 import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +23,9 @@ public class ListaServicio extends javax.swing.JInternalFrame {
     private ControladorServicio controladorservicio;
     public ListaServicio(ControladorServicio controladorservicio) {
         initComponents();
+         int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
+        int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
+        setLocation(a/2,b/2);
         this.controladorservicio = controladorservicio;
          llenarDatos();
     }
@@ -63,6 +67,7 @@ public void llenarDatos() {
                 "Codigo", "Nombre", "Precio"
             }
         ));
+        tablaservicio.setEnabled(false);
         tablaservicio.setGridColor(new java.awt.Color(102, 204, 0));
         jScrollPane1.setViewportView(tablaservicio);
 
