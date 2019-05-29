@@ -148,8 +148,8 @@ public class InicioSecion extends javax.swing.JFrame {
 
     private void botoningresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botoningresarMouseClicked
         // TODO add your handling code here:
-        String Usuario = "Admin";
-        String Contraseña = "programacion";
+        String Usuario = "admin";
+        String Contraseña = "admin";
         String Pass = new String(txtcontraseña.getPassword());
         if (txtusuario.getText().equals(Usuario) && Pass.equals(Contraseña)) {
             VistaPrincipal si = new VistaPrincipal();

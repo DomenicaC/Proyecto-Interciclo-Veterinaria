@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class CrearCliente extends javax.swing.JInternalFrame {
     private ControladorCliente controladorCliente;
+    public static String x;
     
    // private ResourceBundle mensajes;
 
@@ -28,7 +29,7 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCliente=ControladorCliente;
        txtcodigo.setText(Integer.toString(this.controladorCliente.getCodigo()));
-       
+       x = "x";
      //  this.mensajes = mensajes;
       // cambiarIdioma(mensajes);
       
@@ -310,6 +311,7 @@ public class CrearCliente extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         // TODO add your handling code here:
+        x=null;
          
     }//GEN-LAST:event_formInternalFrameClosing
 
@@ -317,6 +319,7 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         this.dispose();
+        x = null;
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

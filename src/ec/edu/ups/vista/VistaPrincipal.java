@@ -51,6 +51,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ActualizarMascota actualizarMascota;
     private BorrarMascota borrarMascota;
     private ListarMascota listarMascota;
+    private CrearCliente crearCliente;
+    private BuscarCliente buscarCliente;
+    private EliminarCliente eliminarCliente;
+    private ModificarCliente modificarCliente;
+    private ListarCliente listarCliente;
+
     /**
      * Creates new form VistaPrincipal
      */
@@ -463,11 +469,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         // TODO add your handling code here:
-
-        CrearCliente crear = new CrearCliente(controladorCliente);
-        crear.setVisible(true);
-        DesktopPane.add(crear);
-
+    String x = CrearCliente.x;
+        try {
+            if (x == null) {
+                if (crearCliente == null || crearCliente.isVisible() == false) {
+                    crearCliente = new CrearCliente(controladorCliente);
+                    DesktopPane.add(crearCliente);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
