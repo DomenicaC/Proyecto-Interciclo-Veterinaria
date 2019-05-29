@@ -64,6 +64,8 @@ public class ListarCliente extends javax.swing.JInternalFrame {
         clientetitulo = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
@@ -76,6 +78,7 @@ public class ListarCliente extends javax.swing.JInternalFrame {
                 "Código", "Nombre", "Apellido", "Cedula", "Teléfono", "Dirección", "Edad", "Género"
             }
         ));
+        tablacliente.setEnabled(false);
         jScrollPane1.setViewportView(tablacliente);
 
         clientetitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N

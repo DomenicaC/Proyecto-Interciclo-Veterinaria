@@ -85,6 +85,8 @@ public class CrearCliente extends javax.swing.JInternalFrame {
         jTextField7.setToolTipText("");
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
