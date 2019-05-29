@@ -18,6 +18,7 @@ import ec.edu.ups.vista.cliente.ModificarCliente;
 import ec.edu.ups.vista.factura.BuscarFactura;
 import ec.edu.ups.vista.factura.CrearFactura;
 import ec.edu.ups.vista.factura.EliminarFactura;
+import ec.edu.ups.vista.mascota.ActualizarMascota;
 import ec.edu.ups.vista.mascota.BuscarMascota;
 import ec.edu.ups.vista.mascota.CrearMascota;
 import ec.edu.ups.vista.servicio.BuscarServicio;
@@ -45,6 +46,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private BuscarFactura buscarF;
     private EliminarFactura eliF;
     private BuscarMascota buscarMascota;
+    private ActualizarMascota actualizarMascota;
     /**
      * Creates new form VistaPrincipal
      */
@@ -54,6 +56,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ControladorCliente controladorCliente;
     private ControladorVeterinario controladorVeterinario;
     private ControladorFactura controladorFactura;
+    
 
     public VistaPrincipal() {
         //Titulo
@@ -133,15 +136,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         DesktopPaneLayout.setHorizontalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
-                .addContainerGap(447, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(425, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
         DesktopPaneLayout.setVerticalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
-                .addContainerGap(207, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap(189, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -234,6 +237,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pasteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar.png"))); // NOI18N
         pasteMenuItem.setMnemonic('p');
         pasteMenuItem.setText("Actualizar");
+        pasteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pasteMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(pasteMenuItem);
 
         deleteMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -635,6 +643,23 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
+        // TODO add your handling code here:
+        String x = actualizarMascota.x;
+        try {
+            if (x == null) {
+                if (actualizarMascota == null || actualizarMascota.isVisible() == false) {
+                    actualizarMascota = new ActualizarMascota(controladorMascota);
+                    DesktopPane.add(actualizarMascota);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_pasteMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
