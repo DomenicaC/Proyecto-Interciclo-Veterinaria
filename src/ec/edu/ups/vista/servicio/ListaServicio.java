@@ -49,8 +49,12 @@ public void llenarDatos() {
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tablaservicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        tablaservicio.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         tablaservicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -64,10 +68,9 @@ public void llenarDatos() {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 580, 340));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
         jLabel1.setText("LISTA DE SERVICIO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 250, 50));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 460, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

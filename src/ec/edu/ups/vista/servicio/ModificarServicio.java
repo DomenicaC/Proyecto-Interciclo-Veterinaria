@@ -35,7 +35,6 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         cancelar = new javax.swing.JButton();
         Aceptar = new javax.swing.JButton();
         txtprecio = new javax.swing.JTextField();
@@ -45,82 +44,83 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         LCODIGO = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(10, 10, 10, 10, new java.awt.Color(204, 255, 153)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("MODIFICAR SERVICIO");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 280, 50));
-
-        cancelar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        cancelar.setForeground(new java.awt.Color(0, 255, 204));
+        cancelar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 150, 40));
+        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 150, 40));
 
-        Aceptar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        Aceptar.setForeground(new java.awt.Color(0, 255, 204));
+        Aceptar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         Aceptar.setText("Buscar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 150, 40));
+        jPanel1.add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 150, 40));
 
-        txtprecio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtprecio.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtprecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtprecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtprecioActionPerformed(evt);
             }
         });
-        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 220, 50));
+        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 220, 40));
 
-        JCE.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        JCE.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         JCE.setText("PRECIO:");
         JCE.setToolTipText("");
-        jPanel1.add(JCE, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 120, 30));
+        jPanel1.add(JCE, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 90, 40));
 
-        txtnombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 220, 50));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 220, 40));
 
-        JN.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        JN.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         JN.setText("NOMBRE:");
-        jPanel1.add(JN, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 120, 30));
+        jPanel1.add(JN, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 100, 40));
 
-        LCODIGO.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        LCODIGO.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         LCODIGO.setText("CODIGO:");
-        jPanel1.add(LCODIGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 120, 30));
+        jPanel1.add(LCODIGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 90, 40));
 
-        txtcodigo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 220, 50));
+        txtcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 40));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 255, 204));
+        jButton1.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         jButton1.setText("Modificar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 311, 140, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 140, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 400));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 480, 330));
+
+        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 36)); // NOI18N
+        jLabel1.setText("MODIFICAR SERVICIO");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 410, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
