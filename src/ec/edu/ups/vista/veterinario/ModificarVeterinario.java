@@ -51,7 +51,7 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
         txttitulo = new javax.swing.JTextField();
         cancelar = new javax.swing.JButton();
         BM = new javax.swing.JButton();
-        BB = new javax.swing.JButton();
+        Aceptar1 = new javax.swing.JButton();
 
         setClosable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,11 +66,11 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
 
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 162, 28));
+        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 162, 28));
 
         labelcodigo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelcodigo.setText("Código:");
-        jPanel1.add(labelcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, 30));
+        jPanel1.add(labelcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
 
         txtnombre.setToolTipText("");
         txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -90,11 +90,11 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
 
         txtcedula.setToolTipText("");
         txtcedula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 196, 30));
+        jPanel1.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 196, 30));
 
         labelcedula.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelcedula.setText("Cedula:");
-        jPanel1.add(labelcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
+        jPanel1.add(labelcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, 30));
 
         txtedad.setToolTipText("");
         txtedad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -140,15 +140,15 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
         });
         jPanel1.add(BM, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 150, 50));
 
-        BB.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        BB.setForeground(new java.awt.Color(0, 255, 204));
-        BB.setText("Buscar");
-        BB.addActionListener(new java.awt.event.ActionListener() {
+        Aceptar1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Aceptar1.setForeground(new java.awt.Color(0, 255, 204));
+        Aceptar1.setText("Buscar");
+        Aceptar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BBActionPerformed(evt);
+                Aceptar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(BB, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 140, 30));
+        jPanel1.add(Aceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 140, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 290));
 
@@ -160,19 +160,6 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
 
         dispose();
     }//GEN-LAST:event_cancelarActionPerformed
-
-    private void BBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBActionPerformed
-        // TODO add your handling code here:
-        int codigo = Integer.parseInt(txtcodigo.getText());
-        Veterinario buscarv = controladorveterinario.read(codigo);
-         System.out.println(buscarv);
-        txtnombre.setText(buscarv.getNombre());
-        txtapellido.setText(buscarv.getApellido());
-        txtcedula.setText(buscarv.getCedula());
-        txtedad.setText(String.valueOf(buscarv.getEdad()));
-        txtsueldo.setText(String.valueOf(buscarv.getSueldo()));
-        txttitulo.setText(buscarv.getTitulo());
-    }//GEN-LAST:event_BBActionPerformed
 
     private void BMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMActionPerformed
         // TODO add your handling code here:
@@ -194,9 +181,21 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
        txttitulo.setText("");
     }//GEN-LAST:event_BMActionPerformed
 
+    private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
+        // TODO add your handling code here:
+        String cedula = txtcedula.getText();
+        Veterinario buscarv = controladorveterinario.readCedula(cedula);
+        txtnombre.setText(buscarv.getNombre());
+        txtapellido.setText(buscarv.getApellido());
+        txtcodigo.setText(String.valueOf(buscarv.getCodigo()));
+        txtedad.setText(String.valueOf(buscarv.getEdad()));
+        txtsueldo.setText(String.valueOf(buscarv.getSueldo()));
+        txttitulo.setText(buscarv.getTitulo());
+    }//GEN-LAST:event_Aceptar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BB;
+    private javax.swing.JButton Aceptar1;
     private javax.swing.JButton BM;
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel jLabel1;

@@ -64,11 +64,12 @@ public class BuscarVeterinario extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, -1));
 
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 162, 28));
+        txtcodigo.setEnabled(false);
+        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 162, 28));
 
         labelcodigo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelcodigo.setText("Código:");
-        jPanel1.add(labelcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, 30));
+        jPanel1.add(labelcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
 
         txtnombre.setToolTipText("");
         txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -90,12 +91,11 @@ public class BuscarVeterinario extends javax.swing.JInternalFrame {
 
         txtcedula.setToolTipText("");
         txtcedula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtcedula.setEnabled(false);
-        jPanel1.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 196, 30));
+        jPanel1.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 196, 30));
 
         labelcedula.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelcedula.setText("Cedula:");
-        jPanel1.add(labelcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
+        jPanel1.add(labelcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, 30));
 
         txtedad.setToolTipText("");
         txtedad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -157,11 +157,11 @@ public class BuscarVeterinario extends javax.swing.JInternalFrame {
 
     private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
         // TODO add your handling code here:
-        int codigo = Integer.parseInt(txtcodigo.getText());
-        Veterinario buscarv = controladorveterinario.read(codigo);
+        String cedula = txtcedula.getText();
+        Veterinario buscarv = controladorveterinario.readCedula(cedula);
         txtnombre.setText(buscarv.getNombre());
         txtapellido.setText(buscarv.getApellido());
-        txtcedula.setText(buscarv.getCedula());
+        txtcodigo.setText(String.valueOf(buscarv.getCodigo()));
         txtedad.setText(String.valueOf(buscarv.getEdad()));
         txtsueldo.setText(String.valueOf(buscarv.getSueldo()));
         txttitulo.setText(buscarv.getTitulo());
