@@ -9,6 +9,7 @@ import ec.edu.ups.Modelo.Cliente;
 import ec.edu.ups.Modelo.Mascota;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.vista.VistaPrincipal;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -20,10 +21,11 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
     
     private ControladorCliente controladorCliente;
     public static String x ;
+    private ResourceBundle mensajes;
     /**
      * Creates new form EliminarCliente
      */
-    public EliminarCliente(ControladorCliente controladorCliente) {
+    public EliminarCliente(ControladorCliente controladorCliente,ResourceBundle mensajes) {
         initComponents();
         this.controladorCliente = controladorCliente;
         int a = VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
@@ -31,8 +33,25 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
         x = "x";
         setLocation(a/2, b/2);
         setVisible(true);
+        this.mensajes = mensajes;
+        cambiarIdioma(mensajes);
     }
-
+    public void cambiarIdioma(ResourceBundle mensajes){
+        
+        tituloeliminar.setText(mensajes.getString("eliminar.cliente.titulo"));
+        labelcodigo.setText(mensajes.getString("cliente.codigo"));
+        labelnombre.setText(mensajes.getString("cliente.nombre"));
+        labelapellido.setText(mensajes.getString("cliente.apellido"));
+        labelcedula.setText(mensajes.getString("cliente.cedula"));
+        labeledad.setText(mensajes.getString("cliente.edad"));
+        labeldireccion.setText(mensajes.getString("cliente.direccion"));
+        labeltelefono.setText(mensajes.getString("cliente.telefono"));
+        labelgenero.setText(mensajes.getString("cliente.genero"));
+        botoneliminar.setText(mensajes.getString("boton.eliminar"));
+        botoncancelar.setText(mensajes.getString("boton.cancelar"));
+        botonbuscar.setText(mensajes.getString("boton.buscar"));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +61,7 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        clientetitulo = new javax.swing.JLabel();
+        tituloeliminar = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         labelcodigo = new javax.swing.JLabel();
         labelnombre = new javax.swing.JLabel();
@@ -61,7 +80,7 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
         txttelefono = new javax.swing.JTextField();
         labelcedula = new javax.swing.JLabel();
         txtcedula = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botonbuscar = new javax.swing.JButton();
         botoncancelar = new javax.swing.JButton();
 
         setClosable(true);
@@ -86,8 +105,8 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        clientetitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        clientetitulo.setText("Eliminar Cliente");
+        tituloeliminar.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        tituloeliminar.setText("Eliminar Cliente");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
@@ -153,11 +172,11 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
         txtcedula.setToolTipText("");
         txtcedula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonbuscar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        botonbuscar.setText("Buscar");
+        botonbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonbuscarActionPerformed(evt);
             }
         });
 
@@ -184,7 +203,7 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21)
-                                .addComponent(jButton1))
+                                .addComponent(botonbuscar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(labelnombre)
                                 .addGap(269, 269, 269)
@@ -200,10 +219,10 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(18, 18, 18)
                                                 .addComponent(labeledad))
                                             .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -228,7 +247,7 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelcedula)
                     .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(botonbuscar))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
@@ -274,22 +293,22 @@ public class EliminarCliente extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(212, 212, 212)
-                .addComponent(clientetitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(248, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tituloeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(219, 219, 219))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(clientetitulo)
+                .addComponent(tituloeliminar)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -307,9 +326,9 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
      Cliente cliente= controladorCliente.read1(cedula);
       int codigo = cliente.getCodigo();
      if (cliente == null) {
-            JOptionPane.showMessageDialog(null, "Cliente no ha sido registrada");
+            JOptionPane.showMessageDialog(null, "Cliente no ha sido registrado");
         } else {
-         JOptionPane.showMessageDialog(null, "El cliente ha sido eliminada");
+         JOptionPane.showMessageDialog(null, "El cliente ha sido eliminado");
          controladorCliente.delete(codigo);
          txtcedula.setText("");
         txtnombre.setText("");
@@ -339,7 +358,7 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
 */
     }//GEN-LAST:event_botoneliminarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarActionPerformed
         // TODO add your handling code here:
         String cedula = txtcedula.getText();
         Cliente cliente = controladorCliente.read1(cedula);
@@ -351,7 +370,7 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
         txtgenero.setText(cliente.getGenero());
         txtedad.setText(Integer.toString(cliente.getEdad()));
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonbuscarActionPerformed
 
     private void botoncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncancelarActionPerformed
         // TODO add your handling code here:
@@ -370,10 +389,9 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonbuscar;
     private javax.swing.JButton botoncancelar;
     private javax.swing.JButton botoneliminar;
-    private javax.swing.JLabel clientetitulo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelapellido;
     private javax.swing.JLabel labelcedula;
@@ -383,6 +401,7 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
     private javax.swing.JLabel labelgenero;
     private javax.swing.JLabel labelnombre;
     private javax.swing.JLabel labeltelefono;
+    private javax.swing.JLabel tituloeliminar;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtcodigo;

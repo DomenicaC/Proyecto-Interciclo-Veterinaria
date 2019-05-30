@@ -131,6 +131,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         menuidioma.setText(mensajes.getString("menu.idioma"));
         itemespañol.setText(mensajes.getString("item.español"));
         itemingles.setText(mensajes.getString("item.ingles"));
+        
+        menucliente.setText(mensajes.getString("menu.cliente"));
+        itemcrearcliente.setText(mensajes.getString("menu.item.crear"));
+        itembuscarcliente.setText(mensajes.getString("menu.item.buscar"));
+        itemactualizarcliente.setText(mensajes.getString("menu.item.modificar"));
+        itemborrarcliente.setText(mensajes.getString("menu.item.eliminar"));
+        itemlistarcliente.setText(mensajes.getString("menu.item.lista"));
     }
 
  
@@ -148,11 +155,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menucliente = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itemcrearcliente = new javax.swing.JMenuItem();
+        itembuscarcliente = new javax.swing.JMenuItem();
+        itemactualizarcliente = new javax.swing.JMenuItem();
+        itemborrarcliente = new javax.swing.JMenuItem();
+        itemlistarcliente = new javax.swing.JMenuItem();
         menumascota = new javax.swing.JMenu();
         itemcrear = new javax.swing.JMenuItem();
         itembuscar = new javax.swing.JMenuItem();
@@ -197,7 +204,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         DesktopPaneLayout.setHorizontalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
-                .addContainerGap(425, Short.MAX_VALUE)
+                .addContainerGap(451, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -213,58 +220,58 @@ public class VistaPrincipal extends javax.swing.JFrame {
         menucliente.setMnemonic('f');
         menucliente.setText("Cliente");
 
-        openMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        openMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/crearcliente.png"))); // NOI18N
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Crear");
-        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itemcrearcliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemcrearcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/crearcliente.png"))); // NOI18N
+        itemcrearcliente.setMnemonic('o');
+        itemcrearcliente.setText("Crear");
+        itemcrearcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openMenuItemActionPerformed(evt);
+                itemcrearclienteActionPerformed(evt);
             }
         });
-        menucliente.add(openMenuItem);
+        menucliente.add(itemcrearcliente);
 
-        saveAsMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        saveAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/busacar2.png"))); // NOI18N
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Buscar");
-        saveAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itembuscarcliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itembuscarcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/busacar2.png"))); // NOI18N
+        itembuscarcliente.setMnemonic('a');
+        itembuscarcliente.setText("Buscar");
+        itembuscarcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveAsMenuItemActionPerformed(evt);
+                itembuscarclienteActionPerformed(evt);
             }
         });
-        menucliente.add(saveAsMenuItem);
+        menucliente.add(itembuscarcliente);
 
-        exitMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/modificarcliente.png"))); // NOI18N
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Actualizar");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itemactualizarcliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemactualizarcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/modificarcliente.png"))); // NOI18N
+        itemactualizarcliente.setMnemonic('x');
+        itemactualizarcliente.setText("Actualizar");
+        itemactualizarcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                itemactualizarclienteActionPerformed(evt);
             }
         });
-        menucliente.add(exitMenuItem);
+        menucliente.add(itemactualizarcliente);
 
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/eliminarcliente.png"))); // NOI18N
-        jMenuItem1.setText("Borrar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemborrarcliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemborrarcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/eliminarcliente.png"))); // NOI18N
+        itemborrarcliente.setText("Borrar");
+        itemborrarcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemborrarclienteActionPerformed(evt);
             }
         });
-        menucliente.add(jMenuItem1);
+        menucliente.add(itemborrarcliente);
 
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarcliente.png"))); // NOI18N
-        jMenuItem2.setText("Listar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itemlistarcliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemlistarcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarcliente.png"))); // NOI18N
+        itemlistarcliente.setText("Listar");
+        itemlistarcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itemlistarclienteActionPerformed(evt);
             }
         });
-        menucliente.add(jMenuItem2);
+        menucliente.add(itemlistarcliente);
 
         menuBar.add(menucliente);
 
@@ -516,12 +523,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+    private void itemactualizarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemactualizarclienteActionPerformed
         String x = ModificarCliente.x;
         try {
             if (x == null) {
                 if (modificarCliente == null || modificarCliente.isVisible() == false) {
-                    modificarCliente = new ModificarCliente(controladorCliente);
+                    modificarCliente = new ModificarCliente(controladorCliente,mensajes);
                     DesktopPane.add(modificarCliente);
                 }
             } else {
@@ -530,15 +537,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    }//GEN-LAST:event_itemactualizarclienteActionPerformed
 
-    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+    private void itemcrearclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemcrearclienteActionPerformed
         // TODO add your handling code here:
         String x = CrearCliente.x;
         try {
             if (x == null) {
                 if (crearCliente == null || crearCliente.isVisible() == false) {
-                    crearCliente = new CrearCliente(controladorCliente);
+                    crearCliente = new CrearCliente(controladorCliente,mensajes);
                     DesktopPane.add(crearCliente);
                 }
             } else {
@@ -547,7 +554,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_openMenuItemActionPerformed
+    }//GEN-LAST:event_itemcrearclienteActionPerformed
 
     private void vcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vcActionPerformed
         // TODO add your handling code here:
@@ -633,14 +640,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_EliFMenuItemActionPerformed
 
-    private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
+    private void itembuscarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itembuscarclienteActionPerformed
         // TODO add your handling code here:
 
         String x = BuscarCliente.x;
         try {
             if (x == null) {
                 if (buscarCliente == null || buscarCliente.isVisible() == false) {
-                    buscarCliente = new BuscarCliente(controladorCliente);
+                    buscarCliente = new BuscarCliente(controladorCliente,mensajes);
                     DesktopPane.add(buscarCliente);
                 }
             } else {
@@ -650,7 +657,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-    }//GEN-LAST:event_saveAsMenuItemActionPerformed
+    }//GEN-LAST:event_itembuscarclienteActionPerformed
 
     private void itemcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemcrearActionPerformed
         // TODO add your handling code here:
@@ -723,13 +730,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BuscarFMenuItemActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itemlistarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemlistarclienteActionPerformed
         // TODO add your handling code here:
         String x = ListarCliente.x;
         try {
             if (x == null) {
                 if (listarCliente == null || listarCliente.isVisible() == false) {
-                    listarCliente = new ListarCliente(controladorCliente);
+                    listarCliente = new ListarCliente(controladorCliente,mensajes);
                     DesktopPane.add(listarCliente);
                 }
             } else {
@@ -740,15 +747,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itemlistarclienteActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemborrarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemborrarclienteActionPerformed
         // TODO add your handling code here:
         String x = EliminarCliente.x;
         try {
             if (x == null) {
                 if (eliminarCliente == null || eliminarCliente.isVisible() == false) {
-                    eliminarCliente = new EliminarCliente(controladorCliente);
+                    eliminarCliente = new EliminarCliente(controladorCliente,mensajes);
                     DesktopPane.add(eliminarCliente);
                 }
             } else {
@@ -758,7 +765,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itemborrarclienteActionPerformed
 
     private void saActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saActionPerformed
         // TODO add your handling code here:
@@ -995,25 +1002,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem CrearFMenuItem;
     public static javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JMenuItem EliFMenuItem;
-    private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenuItem itemactualizar;
+    private javax.swing.JMenuItem itemactualizarcliente;
+    private javax.swing.JMenuItem itemborrarcliente;
     private javax.swing.JMenuItem itembuscar;
+    private javax.swing.JMenuItem itembuscarcliente;
     private javax.swing.JMenuItem itemcrear;
+    private javax.swing.JMenuItem itemcrearcliente;
     private javax.swing.JMenuItem itemeliminar;
     private javax.swing.JMenuItem itemespañol;
     private javax.swing.JMenuItem itemingles;
     private javax.swing.JMenuItem itemlistar;
+    private javax.swing.JMenuItem itemlistarcliente;
     private javax.swing.JButton jButton1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menucliente;
     private javax.swing.JMenu menufactura;
     private javax.swing.JMenu menuidioma;
     private javax.swing.JMenu menumascota;
-    private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem sa;
-    private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem sb;
     private javax.swing.JMenuItem sc;
     private javax.swing.JMenuItem se;
