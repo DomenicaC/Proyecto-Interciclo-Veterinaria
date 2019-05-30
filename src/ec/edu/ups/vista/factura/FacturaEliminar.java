@@ -21,6 +21,7 @@ import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.factura.FacturaBuscar.x;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -60,7 +61,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         setLocation(a / 2, b / 2);
         setVisible(true);
     }
-    
+
     public void llenarTabla() {
         DefaultTableModel modelo = (DefaultTableModel) tblServF.getModel();
         List<FDetalle> lista = factura.getDetalle();
@@ -75,10 +76,10 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
             modelo.addRow(datos3);
         }
         /*
-        txtSub.setText(Double.toString(factura.getSubtotal()));
-        txtTot.setText(Double.toString(factura.getTotal()));*/
+         txtSub.setText(Double.toString(factura.getSubtotal()));
+         txtTot.setText(Double.toString(factura.getTotal()));*/
     }
-    
+
     public void vaciarDatos() {
 
         txtApeC.setText("");
@@ -101,15 +102,15 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         txtTotal.setText("");
 
     }
-    
-    public void vaciarTabla(){
-        
+
+    public void vaciarTabla() {
+
         DefaultTableModel modelo = (DefaultTableModel) tblServF.getModel();
         int filas = tblServF.getRowCount();
         for (int i = 0; i < filas; i++) {
             modelo.removeRow(0);
         }
-        
+
     }
 
     /**
@@ -167,6 +168,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         btnCancelarF = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblServF = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
 
         lblRuc.setBackground(new java.awt.Color(255, 255, 255));
         lblRuc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -496,6 +498,14 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblServF);
 
+        btnEliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -512,9 +522,11 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(178, 178, 178)
+                                        .addGap(131, 131, 131)
+                                        .addComponent(btnEliminar)
+                                        .addGap(18, 18, 18)
                                         .addComponent(btnCancelarF)
-                                        .addGap(161, 161, 161)
+                                        .addGap(89, 89, 89)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblSub)
                                             .addGroup(layout.createSequentialGroup()
@@ -584,10 +596,11 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblIva)
-                            .addComponent(btnCancelarF))
+                            .addComponent(btnCancelarF)
+                            .addComponent(btnEliminar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTot)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -634,6 +647,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
             llenarTabla();
 
         }
+
     }//GEN-LAST:event_btnBuscarRFActionPerformed
 
     private void btnCancelarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarFActionPerformed
@@ -643,13 +657,35 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarFActionPerformed
 
     private void tblServFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServFKeyReleased
-        
+
     }//GEN-LAST:event_tblServFKeyReleased
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        JPasswordField admin = new JPasswordField();
+
+        if (JOptionPane.showConfirmDialog(null, admin, "Ingrese su contraseña", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+            int codi = Integer.parseInt(txtRuc.getText());
+            factura = controladorFactura.read(codi);
+            if (factura == null) {
+                JOptionPane.showMessageDialog(this, "RUC no Existe");
+            } else {
+                JOptionPane.showMessageDialog(this, "Factura Eliminada");
+                controladorFactura.delete(codi);
+                vaciarDatos();
+                vaciarTabla();
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "No se puede eliminar");
+        }
+
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarRF;
     private javax.swing.JButton btnCancelarF;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
