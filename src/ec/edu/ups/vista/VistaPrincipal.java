@@ -68,6 +68,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ModificarServicio modificarservicio;
     private EliminarServicio eliminarservicio;
     private ListaServicio listaservicio;
+    
     /**
      * Creates new form VistaPrincipal
      */
@@ -961,6 +962,28 @@ public class VistaPrincipal extends javax.swing.JFrame {
         if(listarMascota != null && listarMascota.isVisible()){
             listarMascota.cambiaridioma(mensajes);
         }
+        if (crearCliente != null && crearCliente.isVisible()){
+            crearCliente.cambiarIdioma(mensajes);
+        }
+        if(buscarCliente != null && buscarCliente.isVisible()){
+            buscarCliente.cambiarIdioma(mensajes);
+        }
+        if(modificarCliente != null && modificarCliente.isVisible()){
+            modificarCliente.cambiarIdioma(mensajes);
+        }
+        if(eliminarCliente != null && eliminarCliente.isVisible()){
+            eliminarCliente.cambiarIdioma(mensajes);
+        }
+        if(listarCliente != null && listarCliente.isVisible()){
+            listarCliente.cambiarIdioma(mensajes);
+        }
+        
+        
+        
+        
+        
+        
+        
     }
     /**
      * @param args the command line arguments
