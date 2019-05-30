@@ -8,6 +8,7 @@ package ec.edu.ups.vista.veterinario;
 import ec.edu.ups.Modelo.Veterinario;
 import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
+import static ec.edu.ups.vista.veterinario.CrearVeterinario.x;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
@@ -200,8 +201,9 @@ public class BuscarVeterinario extends javax.swing.JInternalFrame {
 
     private void bcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcActionPerformed
         // TODO add your handling code here:
-
-        dispose();
+    dispose();
+        this.setVisible(false);
+        x = null;
     }//GEN-LAST:event_bcActionPerformed
 
     private void bbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbActionPerformed
