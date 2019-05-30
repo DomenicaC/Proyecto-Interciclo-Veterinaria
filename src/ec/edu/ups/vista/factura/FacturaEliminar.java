@@ -20,9 +20,13 @@ import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.factura.FacturaBuscar.x;
 import java.util.List;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -49,9 +53,14 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
     private Cliente cliente;
     private Veterinario veterinario;
 
-    public FacturaEliminar(ControladorFactura controladorFactura) {
+    private ResourceBundle mensajes;
+
+    public FacturaEliminar(ResourceBundle mensajes, ControladorFactura controladorFactura) {
         initComponents();
         this.controladorFactura = controladorFactura;
+
+        this.mensajes = mensajes;
+        cambiarIdioma(mensajes);
 
         x = "x";
 
@@ -113,6 +122,58 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
 
     }
 
+    public void cambiarIdioma(ResourceBundle mensajes) {
+        //titulo
+        lblTitulo.setText(mensajes.getString("tituloF.Eliminar"));
+
+        //Veterinario
+        lblCedV.setText(mensajes.getString("labelF.cedV"));
+        lblCodV.setText(mensajes.getString("labelF.codV"));
+        lblNomV.setText(mensajes.getString("labelF.nomV"));
+        lblApeV.setText(mensajes.getString("labelF.apeV"));
+
+        //Cliente
+        lblCedC.setText(mensajes.getString("labelF.cedC"));
+        lblCodC.setText(mensajes.getString("labelF.codC"));
+        lblNomC.setText(mensajes.getString("labelF.nomC"));
+        lblApeC.setText(mensajes.getString("labelF.apeC"));
+        lblDirC.setText(mensajes.getString("labelF.dirC"));
+        lblTelC.setText(mensajes.getString("labelF.telC"));
+
+        //Mascota
+        lblCodM.setText(mensajes.getString("labelF.codM"));
+        lblNomM.setText(mensajes.getString("labelF.nomM"));
+        lblEdadM.setText(mensajes.getString("labelF.edadM"));
+        lblPesoM.setText(mensajes.getString("labelF.pesoM"));
+
+        //Tabla
+        JTableHeader tableHeader = tblServF.getTableHeader();
+        TableColumnModel tableColumnModel = tableHeader.getColumnModel();
+
+        TableColumn tableColum;
+
+        tableColum = tableColumnModel.getColumn(0);
+        tableColum.setHeaderValue(mensajes.getString("label.codigo"));
+
+        tableColum = tableColumnModel.getColumn(1);
+        tableColum.setHeaderValue(mensajes.getString("labelFD.cant"));
+
+        tableColum = tableColumnModel.getColumn(2);
+        tableColum.setHeaderValue(mensajes.getString("servicio.nombre"));
+
+        tableColum = tableColumnModel.getColumn(3);
+        tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
+
+        tableColum = tableColumnModel.getColumn(4);
+        tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
+
+        //factura
+        lblSub.setText(mensajes.getString("labelF.sub"));
+        lblIva.setText(mensajes.getString("labelF.iva"));
+        lblTot.setText(mensajes.getString("labelF.tot"));
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -134,7 +195,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         txtApeV = new javax.swing.JTextField();
         lblCedV = new javax.swing.JLabel();
         txtCedV = new javax.swing.JTextField();
-        lblCodC1 = new javax.swing.JLabel();
+        lblCodV = new javax.swing.JLabel();
         txtCodV = new javax.swing.JTextField();
         lblTot = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
@@ -150,7 +211,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         txtPesoM = new javax.swing.JTextField();
         lblSub = new javax.swing.JLabel();
         txtSubtotal = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblCedC = new javax.swing.JLabel();
         txtCedC = new javax.swing.JTextField();
@@ -171,13 +232,16 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
 
         lblRuc.setBackground(new java.awt.Color(255, 255, 255));
-        lblRuc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblRuc.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblRuc.setText("RUC Factura");
 
+        txtRuc.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+
         lblIva.setBackground(new java.awt.Color(255, 255, 255));
-        lblIva.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblIva.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblIva.setText("I.V.A");
 
+        btnBuscarRF.setFont(new java.awt.Font("Elephant", 3, 18)); // NOI18N
         btnBuscarRF.setText("Buscar");
         btnBuscarRF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,36 +250,41 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         });
 
         txtIva.setEditable(false);
+        txtIva.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtIva.setEnabled(false);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         lblNomV.setBackground(new java.awt.Color(255, 255, 255));
-        lblNomV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomV.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblNomV.setText("Nombre Veterinario");
 
         txtNomV.setEditable(false);
+        txtNomV.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtNomV.setEnabled(false);
 
         lblApeV.setBackground(new java.awt.Color(255, 255, 255));
-        lblApeV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblApeV.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblApeV.setText("Apellido Veterinario");
 
         txtApeV.setEditable(false);
+        txtApeV.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtApeV.setEnabled(false);
 
         lblCedV.setBackground(new java.awt.Color(255, 255, 255));
-        lblCedV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCedV.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblCedV.setText("Cedula Veterinario");
 
         txtCedV.setEditable(false);
+        txtCedV.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtCedV.setEnabled(false);
 
-        lblCodC1.setBackground(new java.awt.Color(255, 255, 255));
-        lblCodC1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblCodC1.setText("Codigo Veterinario");
+        lblCodV.setBackground(new java.awt.Color(255, 255, 255));
+        lblCodV.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        lblCodV.setText("Codigo Veterinario");
 
         txtCodV.setEditable(false);
+        txtCodV.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtCodV.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -238,10 +307,10 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
-                        .addComponent(lblCodC1)
+                        .addComponent(lblCodV)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +318,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCodC1)
+                        .addComponent(lblCodV)
                         .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCedV)
@@ -264,44 +333,49 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         );
 
         lblTot.setBackground(new java.awt.Color(255, 255, 255));
-        lblTot.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblTot.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblTot.setText("Total");
 
         lblFecha.setBackground(new java.awt.Color(255, 255, 255));
-        lblFecha.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblFecha.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblFecha.setText("Fecha");
 
         txtTotal.setEditable(false);
+        txtTotal.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtTotal.setEnabled(false);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         lblCodM.setBackground(new java.awt.Color(255, 255, 255));
-        lblCodM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCodM.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblCodM.setText("Codigo Mascota");
 
         txtCodM.setEditable(false);
+        txtCodM.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtCodM.setEnabled(false);
 
         txtNomM.setEditable(false);
+        txtNomM.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtNomM.setEnabled(false);
 
         lblNomM.setBackground(new java.awt.Color(255, 255, 255));
-        lblNomM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomM.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblNomM.setText("Nombre Mascota");
 
         txtEdadM.setEditable(false);
+        txtEdadM.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtEdadM.setEnabled(false);
 
         lblEdadM.setBackground(new java.awt.Color(255, 255, 255));
-        lblEdadM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblEdadM.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblEdadM.setText("Edad Mascota");
 
         lblPesoM.setBackground(new java.awt.Color(255, 255, 255));
-        lblPesoM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblPesoM.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblPesoM.setText("Peso Mascota");
 
         txtPesoM.setEditable(false);
+        txtPesoM.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtPesoM.setEnabled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -354,58 +428,65 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         );
 
         lblSub.setBackground(new java.awt.Color(255, 255, 255));
-        lblSub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblSub.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblSub.setText("Subtotal");
 
         txtSubtotal.setEditable(false);
+        txtSubtotal.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtSubtotal.setEnabled(false);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("Buscar Factura");
-        jLabel1.setToolTipText("");
+        lblTitulo.setFont(new java.awt.Font("Rockwell", 1, 48)); // NOI18N
+        lblTitulo.setText("Eliminar Factura");
+        lblTitulo.setToolTipText("");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         lblCedC.setBackground(new java.awt.Color(255, 255, 255));
-        lblCedC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCedC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblCedC.setText("Cedula Cliente");
 
         txtCedC.setEditable(false);
+        txtCedC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtCedC.setEnabled(false);
 
         lblCodC.setBackground(new java.awt.Color(255, 255, 255));
-        lblCodC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCodC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblCodC.setText("Codigo Cliente");
 
         txtCodC.setEditable(false);
+        txtCodC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtCodC.setEnabled(false);
 
         lblNomC.setBackground(new java.awt.Color(255, 255, 255));
-        lblNomC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblNomC.setText("Nombre Cliente");
 
         txtNomC.setEditable(false);
+        txtNomC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtNomC.setEnabled(false);
 
         lblTelC.setBackground(new java.awt.Color(255, 255, 255));
-        lblTelC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblTelC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblTelC.setText("Telefono Cliente");
 
         txtTelC.setEditable(false);
+        txtTelC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtTelC.setEnabled(false);
 
         txtApeC.setEditable(false);
+        txtApeC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtApeC.setEnabled(false);
 
         lblApeC.setBackground(new java.awt.Color(255, 255, 255));
-        lblApeC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblApeC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblApeC.setText("Apellido Cliente");
 
         lblDirC.setBackground(new java.awt.Color(255, 255, 255));
-        lblDirC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblDirC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblDirC.setText("Direccion Cliente");
 
         txtDirC.setEditable(false);
+        txtDirC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtDirC.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -473,9 +554,10 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         );
 
         txtFecha.setEditable(false);
+        txtFecha.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtFecha.setEnabled(false);
 
-        btnCancelarF.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnCancelarF.setFont(new java.awt.Font("Elephant", 3, 18)); // NOI18N
         btnCancelarF.setText("Cancelar");
         btnCancelarF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -483,6 +565,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
             }
         });
 
+        tblServF.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         tblServF.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, "0", null, null, null}
@@ -498,7 +581,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblServF);
 
-        btnEliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Elephant", 3, 18)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -515,9 +598,6 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(185, 185, 185)
-                                .addComponent(jLabel1))
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,6 +621,8 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
                                     .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(106, 106, 106)
                                 .addComponent(lblRuc)
@@ -552,8 +634,9 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
                                 .addComponent(lblFecha)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblTitulo)
+                                .addGap(122, 122, 122)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -561,9 +644,9 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1)
-                .addGap(7, 7, 7)
+                .addGap(8, 8, 8)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -600,7 +683,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
                             .addComponent(btnEliminar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTot)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -674,7 +757,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
                 vaciarDatos();
                 vaciarTabla();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No se puede eliminar");
         }
 
@@ -686,7 +769,6 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscarRF;
     private javax.swing.JButton btnCancelarF;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -696,8 +778,8 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCedC;
     private javax.swing.JLabel lblCedV;
     private javax.swing.JLabel lblCodC;
-    private javax.swing.JLabel lblCodC1;
     private javax.swing.JLabel lblCodM;
+    private javax.swing.JLabel lblCodV;
     private javax.swing.JLabel lblDirC;
     private javax.swing.JLabel lblEdadM;
     private javax.swing.JLabel lblFecha;
@@ -709,6 +791,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblRuc;
     private javax.swing.JLabel lblSub;
     private javax.swing.JLabel lblTelC;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTot;
     private javax.swing.JTable tblServF;
     private javax.swing.JTextField txtApeC;

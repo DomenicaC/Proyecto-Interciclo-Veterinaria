@@ -110,7 +110,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         mensajes = ResourceBundle.getBundle("ec.edu.ups.idioma.mensajes", Locale.getDefault());
         veterinario.setText(mensajes.getString("veterinario"));
         menucliente.setText(mensajes.getString("menu.cliente"));
-        menufactura.setText(mensajes.getString("menu.factura"));
 
         vc.setText(mensajes.getString("veterinario.crear"));
         vb.setText(mensajes.getString("veterinario.buscar"));
@@ -141,6 +140,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         itemactualizarcliente.setText(mensajes.getString("menu.item.modificar"));
         itemborrarcliente.setText(mensajes.getString("menu.item.eliminar"));
         itemlistarcliente.setText(mensajes.getString("menu.item.lista"));
+        
+        menufactura.setText(mensajes.getString("menu.factura"));
+        CrearFMenuItem.setText(mensajes.getString("item.crear"));
+        BuscarFMenuItem.setText(mensajes.getString("menu.item.buscar"));
+        EliFMenuItem.setText(mensajes.getString("menu.item.eliminar"));
     }
 
  
@@ -691,7 +695,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (eliF == null || eliF.isVisible() == false) {
-                    eliF = new FacturaEliminar(controladorFactura);
+                    eliF = new FacturaEliminar(mensajes, controladorFactura);
                     DesktopPane.add(eliF);
                 }
             } else {
@@ -764,7 +768,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (crearF == null || crearF.isVisible() == false) {
-                    crearF = new FacturaCrear(controladorFactura, null, controladorCliente, controladorVeterinario, controladorMascota, controladorServicio);
+                    crearF = new FacturaCrear(mensajes, controladorFactura, null, controladorCliente, controladorVeterinario, controladorMascota, controladorServicio);
                     DesktopPane.add(crearF);
                 }
             } else {
@@ -781,7 +785,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (buscarF == null || buscarF.isVisible() == false) {
-                    buscarF = new FacturaBuscar(controladorFactura);
+                    buscarF = new FacturaBuscar(mensajes, controladorFactura);
                     DesktopPane.add(buscarF);
                 }
             } else {
@@ -1025,32 +1029,55 @@ public class VistaPrincipal extends javax.swing.JFrame {
         if(crearMascota != null && crearMascota.isVisible()){
             crearMascota.cambiaridioma(mensajes);
         }
+        
         if(buscarMascota != null && buscarMascota.isVisible()){
             buscarMascota.cambiaridioma(mensajes);
         }
+        
         if(actualizarMascota != null && actualizarMascota.isVisible()){
             actualizarMascota.cambiaridioma(mensajes);
         }
+        
         if(borrarMascota != null && borrarMascota.isVisible()){
             borrarMascota.cambiaridioma(mensajes);
         }
+        
         if(listarMascota != null && listarMascota.isVisible()){
             listarMascota.cambiaridioma(mensajes);
         }
+        
+        //cliente
         if (crearCliente != null && crearCliente.isVisible()){
             crearCliente.cambiarIdioma(mensajes);
         }
+        
         if(buscarCliente != null && buscarCliente.isVisible()){
             buscarCliente.cambiarIdioma(mensajes);
         }
+        
         if(modificarCliente != null && modificarCliente.isVisible()){
             modificarCliente.cambiarIdioma(mensajes);
         }
+        
         if(eliminarCliente != null && eliminarCliente.isVisible()){
             eliminarCliente.cambiarIdioma(mensajes);
         }
+        
         if(listarCliente != null && listarCliente.isVisible()){
             listarCliente.cambiarIdioma(mensajes);
+        }
+        
+        //Factura
+        if(crearF != null && crearF.isVisible()){
+            crearF.cambiarIdioma(mensajes);
+        }
+        
+        if(buscarF != null && buscarF.isVisible()){
+            buscarF.cambiarIdioma(mensajes);
+        }
+        
+        if(eliF != null && eliF.isVisible()){
+            eliF.cambiarIdioma(mensajes);
         }
 
     }

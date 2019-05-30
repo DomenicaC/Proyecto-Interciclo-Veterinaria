@@ -21,8 +21,12 @@ import ec.edu.ups.vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -55,7 +59,9 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
     private double totalCP, subtotal, iva, total;
     private DefaultTableModel tablaF;
 
-    public FacturaCrear(ControladorFactura controladorFactura, ControladorFacDetalle controladorFDetalle, ControladorCliente controladorCliente, ControladorVeterinario controladorVeterinario, ControladorMascota controladorMascota, ControladorServicio controladorServicio) {
+    private ResourceBundle mensajes;
+
+    public FacturaCrear(ResourceBundle mensajes, ControladorFactura controladorFactura, ControladorFacDetalle controladorFDetalle, ControladorCliente controladorCliente, ControladorVeterinario controladorVeterinario, ControladorMascota controladorMascota, ControladorServicio controladorServicio) {
         initComponents();
 
         this.controladorFactura = controladorFactura;
@@ -64,6 +70,9 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         this.controladorVeterinario = controladorVeterinario;
         this.controladorMascota = controladorMascota;
         this.controladorServicio = controladorServicio;
+        
+        this.mensajes = mensajes;
+        cambiarIdioma(mensajes);
 
         this.factura = new FFactura();
 
@@ -121,7 +130,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         lblCedV = new javax.swing.JLabel();
         txtCedV = new javax.swing.JTextField();
         btnBuscarVF = new javax.swing.JButton();
-        lblCodC1 = new javax.swing.JLabel();
+        lblCodV = new javax.swing.JLabel();
         txtCodV = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         lblCodM = new javax.swing.JLabel();
@@ -136,7 +145,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         lblRuc = new javax.swing.JLabel();
         txtRuc = new javax.swing.JTextField();
         lblFecha = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblServF = new javax.swing.JTable();
@@ -147,6 +156,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         txtIva = new javax.swing.JTextField();
         lblTot = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
+        btnCancelarF = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,11 +171,17 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         lblCedC.setBackground(new java.awt.Color(255, 255, 255));
-        lblCedC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCedC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblCedC.setText("Cedula Cliente");
+
+        txtCedC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
 
         btnBuscarCF.setText("Buscar");
         btnBuscarCF.addActionListener(new java.awt.event.ActionListener() {
@@ -175,38 +191,43 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         });
 
         lblCodC.setBackground(new java.awt.Color(255, 255, 255));
-        lblCodC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCodC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblCodC.setText("Codigo Cliente");
 
         txtCodC.setEditable(false);
+        txtCodC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtCodC.setEnabled(false);
 
         lblNomC.setBackground(new java.awt.Color(255, 255, 255));
-        lblNomC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblNomC.setText("Nombre Cliente");
 
         txtNomC.setEditable(false);
+        txtNomC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtNomC.setEnabled(false);
 
         lblTelC.setBackground(new java.awt.Color(255, 255, 255));
-        lblTelC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblTelC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblTelC.setText("Telefono Cliente");
 
         txtTelC.setEditable(false);
+        txtTelC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtTelC.setEnabled(false);
 
         txtApeC.setEditable(false);
+        txtApeC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtApeC.setEnabled(false);
 
         lblApeC.setBackground(new java.awt.Color(255, 255, 255));
-        lblApeC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblApeC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblApeC.setText("Apellido Cliente");
 
         lblDirC.setBackground(new java.awt.Color(255, 255, 255));
-        lblDirC.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblDirC.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblDirC.setText("Direccion Cliente");
 
         txtDirC.setEditable(false);
+        txtDirC.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtDirC.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -245,7 +266,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
                             .addComponent(lblDirC)
                             .addGap(18, 18, 18)
                             .addComponent(txtDirC, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,22 +300,26 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         lblNomV.setBackground(new java.awt.Color(255, 255, 255));
-        lblNomV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomV.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblNomV.setText("Nombre Veterinario");
 
         txtNomV.setEditable(false);
+        txtNomV.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtNomV.setEnabled(false);
 
         lblApeV.setBackground(new java.awt.Color(255, 255, 255));
-        lblApeV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblApeV.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblApeV.setText("Apellido Veterinario");
 
         txtApeV.setEditable(false);
+        txtApeV.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtApeV.setEnabled(false);
 
         lblCedV.setBackground(new java.awt.Color(255, 255, 255));
-        lblCedV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCedV.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblCedV.setText("Cedula Veterinario");
+
+        txtCedV.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
 
         btnBuscarVF.setText("Buscar");
         btnBuscarVF.addActionListener(new java.awt.event.ActionListener() {
@@ -303,11 +328,12 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
             }
         });
 
-        lblCodC1.setBackground(new java.awt.Color(255, 255, 255));
-        lblCodC1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblCodC1.setText("Codigo Veterinario");
+        lblCodV.setBackground(new java.awt.Color(255, 255, 255));
+        lblCodV.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        lblCodV.setText("Codigo Veterinario");
 
         txtCodV.setEditable(false);
+        txtCodV.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtCodV.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -332,10 +358,10 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscarVF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCodC1)
+                        .addComponent(lblCodV)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +369,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCodC1)
+                        .addComponent(lblCodV)
                         .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCedV)
@@ -361,21 +387,25 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         lblCodM.setBackground(new java.awt.Color(255, 255, 255));
-        lblCodM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCodM.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblCodM.setText("Codigo Mascota");
 
+        txtCodM.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+
         txtNomM.setEditable(false);
+        txtNomM.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtNomM.setEnabled(false);
 
         lblNomM.setBackground(new java.awt.Color(255, 255, 255));
-        lblNomM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomM.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblNomM.setText("Nombre Mascota");
 
         txtEdadM.setEditable(false);
+        txtEdadM.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtEdadM.setEnabled(false);
 
         lblEdadM.setBackground(new java.awt.Color(255, 255, 255));
-        lblEdadM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblEdadM.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblEdadM.setText("Edad Mascota");
 
         btnBuscarMF.setText("Buscar");
@@ -386,10 +416,11 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         });
 
         lblPesoM.setBackground(new java.awt.Color(255, 255, 255));
-        lblPesoM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblPesoM.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblPesoM.setText("Peso Mascota");
 
         txtPesoM.setEditable(false);
+        txtPesoM.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtPesoM.setEnabled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -419,7 +450,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
                         .addComponent(lblPesoM)
                         .addGap(18, 18, 18)
                         .addComponent(txtPesoM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,20 +476,22 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         );
 
         lblRuc.setBackground(new java.awt.Color(255, 255, 255));
-        lblRuc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblRuc.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblRuc.setText("RUC Factura");
 
         txtRuc.setEditable(false);
+        txtRuc.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtRuc.setEnabled(false);
 
         lblFecha.setBackground(new java.awt.Color(255, 255, 255));
-        lblFecha.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblFecha.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblFecha.setText("Fecha");
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("Crear Factura");
+        lblTitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        lblTitulo.setText("Crear Factura");
 
         txtFecha.setEditable(false);
+        txtFecha.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtFecha.setEnabled(false);
 
         tblServF.setModel(new javax.swing.table.DefaultTableModel(
@@ -476,6 +509,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblServF);
 
+        btnCrear.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         btnCrear.setText("Crear");
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -484,75 +518,96 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         });
 
         lblSub.setBackground(new java.awt.Color(255, 255, 255));
-        lblSub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblSub.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblSub.setText("Subtotal");
 
         txtSubtotal.setEditable(false);
+        txtSubtotal.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtSubtotal.setEnabled(false);
 
         lblIva.setBackground(new java.awt.Color(255, 255, 255));
-        lblIva.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblIva.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblIva.setText("I.V.A");
 
         txtIva.setEditable(false);
+        txtIva.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtIva.setEnabled(false);
 
         lblTot.setBackground(new java.awt.Color(255, 255, 255));
-        lblTot.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblTot.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblTot.setText("Total");
 
         txtTotal.setEditable(false);
+        txtTotal.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         txtTotal.setEnabled(false);
+
+        btnCancelarF.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        btnCancelarF.setText("Cancelar");
+        btnCancelarF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarFActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(lblRuc)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblFecha)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addGap(443, 443, 443))
             .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblRuc)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblFecha)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(lblTitulo)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCrear)
-                .addGap(171, 171, 171)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(34, 34, 34)
+                .addComponent(btnCancelarF)
+                .addGap(81, 81, 81)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblSub)
                         .addGap(18, 18, 18)
                         .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
+                            .addGap(27, 27, 27)
                             .addComponent(lblIva)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(16, 16, 16)
                             .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
+                            .addGap(25, 25, 25)
                             .addComponent(lblTot)
                             .addGap(18, 18, 18)
                             .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGap(11, 11, 11)
+                .addComponent(lblTitulo)
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -564,30 +619,33 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
                             .addComponent(lblFecha))))
                 .addGap(4, 4, 4)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(btnCrear))
+                        .addGap(1, 1, 1)
+                        .addComponent(lblSub))
+                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblIva)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCrear)
+                            .addComponent(btnCancelarF))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSub)
-                            .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblIva)
-                            .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTot)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(177, 177, 177))
+                        .addGap(6, 6, 6)
+                        .addComponent(lblTot))
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -762,11 +820,71 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         for (int i = 0; i < filas; i++) {
             modelo.removeRow(0);
         }
-        
+
         Object[] datos1 = {"", 0, "", "", ""};
         tablaF.addRow(datos1);
 
     }
+
+    public void cambiarIdioma(ResourceBundle mensajes) {
+        //titulo
+        lblTitulo.setText(mensajes.getString("tituloF.crear"));
+        
+        //Veterinario
+        lblCedV.setText(mensajes.getString("labelF.cedV"));
+        lblCodV.setText(mensajes.getString("labelF.codV"));
+        lblNomV.setText(mensajes.getString("labelF.nomV"));
+        lblApeV.setText(mensajes.getString("labelF.apeV"));
+        
+        //Cliente
+        lblCedC.setText(mensajes.getString("labelF.cedC"));
+        lblCodC.setText(mensajes.getString("labelF.codC"));
+        lblNomC.setText(mensajes.getString("labelF.nomC"));
+        lblApeC.setText(mensajes.getString("labelF.apeC"));
+        lblDirC.setText(mensajes.getString("labelF.dirC"));
+        lblTelC.setText(mensajes.getString("labelF.telC"));
+        
+        //Mascota
+        lblCodM.setText(mensajes.getString("labelF.codM"));
+        lblNomM.setText(mensajes.getString("labelF.nomM"));
+        lblEdadM.setText(mensajes.getString("labelF.edadM"));
+        lblPesoM.setText(mensajes.getString("labelF.pesoM"));
+        
+        //Tabla
+        JTableHeader tableHeader = tblServF.getTableHeader();
+        TableColumnModel tableColumnModel = tableHeader.getColumnModel();
+        
+        TableColumn tableColum;
+        
+        tableColum = tableColumnModel.getColumn(0);
+        tableColum.setHeaderValue(mensajes.getString("label.codigo"));
+        
+        tableColum = tableColumnModel.getColumn(1);
+        tableColum.setHeaderValue(mensajes.getString("labelFD.cant"));
+        
+        tableColum = tableColumnModel.getColumn(2);
+        tableColum.setHeaderValue(mensajes.getString("servicio.nombre"));
+        
+        tableColum = tableColumnModel.getColumn(3);
+        tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
+        
+        tableColum = tableColumnModel.getColumn(4);
+        tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
+        
+        //factura
+        lblSub.setText(mensajes.getString("labelF.sub"));
+        lblIva.setText(mensajes.getString("labelF.iva"));
+        lblTot.setText(mensajes.getString("labelF.tot"));
+        
+        //boton
+        btnBuscarCF.setText(mensajes.getString("menu.item.eliminar"));
+        btnBuscarMF.setText(mensajes.getString("menu.item.eliminar"));
+        btnBuscarVF.setText(mensajes.getString("menu.item.eliminar"));
+        btnCrear.setText(mensajes.getString("boton.crear"));
+        btnCancelarF.setText(mensajes.getString("boton.cancelar"));
+        
+    }
+
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         //obtener fecha
         fecha = new Date();
@@ -827,13 +945,19 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnCrearActionPerformed
 
+    private void btnCancelarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarFActionPerformed
+        // TODO add your handling code here:
+        //x = null;
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarFActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarCF;
     private javax.swing.JButton btnBuscarMF;
     private javax.swing.JButton btnBuscarVF;
+    private javax.swing.JButton btnCancelarF;
     private javax.swing.JButton btnCrear;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -845,8 +969,8 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCedC;
     private javax.swing.JLabel lblCedV;
     private javax.swing.JLabel lblCodC;
-    private javax.swing.JLabel lblCodC1;
     private javax.swing.JLabel lblCodM;
+    private javax.swing.JLabel lblCodV;
     private javax.swing.JLabel lblDirC;
     private javax.swing.JLabel lblEdadM;
     private javax.swing.JLabel lblFecha;
@@ -858,6 +982,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblRuc;
     private javax.swing.JLabel lblSub;
     private javax.swing.JLabel lblTelC;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTot;
     private javax.swing.JTable tblServF;
     private javax.swing.JTextField txtApeC;
