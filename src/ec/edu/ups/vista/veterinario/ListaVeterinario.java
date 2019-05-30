@@ -68,7 +68,7 @@ public class ListaVeterinario extends javax.swing.JInternalFrame {
         tableColumn = tableColumnModel.getColumn(1);
         tableColumn.setHeaderValue(mensajes.getString("veterinario.nombre"));
         tableColumn = tableColumnModel.getColumn(2);
-        
+
         tableColumn.setHeaderValue(mensajes.getString("veterinario.apellido"));
         tableColumn = tableColumnModel.getColumn(3);
         tableColumn.setHeaderValue(mensajes.getString("veterinario.cedula"));

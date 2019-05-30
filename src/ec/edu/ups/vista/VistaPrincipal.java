@@ -114,11 +114,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         vl.setText(mensajes.getString("veterinario.lista"));
         
         servicio.setText(mensajes.getString("servicio"));
-        sc.setText(mensajes.getString("veterinario.crear"));
-        sb.setText(mensajes.getString("veterinario.buscar"));
-        sa.setText(mensajes.getString("veterinario.modificar"));
-        se.setText(mensajes.getString("veterinario.eliminar"));
-        sl.setText(mensajes.getString("veterinario.lista"));
+        sc.setText(mensajes.getString("servicio.crear"));
+        sb.setText(mensajes.getString("servicio.buscar"));
+        sa.setText(mensajes.getString("servicio.modificar"));
+        se.setText(mensajes.getString("servicio.eliminar"));
+        sl.setText(mensajes.getString("servicio.lista"));
     }
 
  
@@ -594,7 +594,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (crearservicio == null || crearservicio.isVisible() == false) {
-                    crearservicio = new CrearServicio(controladorServicio);
+                    crearservicio = new CrearServicio(controladorServicio,mensajes);
                     DesktopPane.add(crearservicio);
                 }
             } else {
@@ -754,7 +754,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (modificarservicio == null || modificarservicio.isVisible() == false) {
-                    modificarservicio = new ModificarServicio(controladorServicio);
+                    modificarservicio = new ModificarServicio(controladorServicio,mensajes);
                     DesktopPane.add(modificarservicio);
                 }
             } else {
@@ -771,7 +771,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (buscarservicio == null || buscarservicio.isVisible() == false) {
-                    buscarservicio = new BuscarServicio(controladorServicio);
+                    buscarservicio = new BuscarServicio(controladorServicio, mensajes);
                     DesktopPane.add(buscarservicio);
                 }
             } else {
@@ -788,7 +788,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (eliminarservicio == null || eliminarservicio.isVisible() == false) {
-                    eliminarservicio = new EliminarServicio(controladorServicio);
+                    eliminarservicio = new EliminarServicio(controladorServicio,mensajes);
                     DesktopPane.add(eliminarservicio);
                 }
             } else {
@@ -805,7 +805,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (listaservicio == null || listaservicio.isVisible() == false) {
-                    listaservicio = new ListaServicio(controladorServicio);
+                    listaservicio = new ListaServicio(controladorServicio, mensajes);
                     DesktopPane.add(listaservicio);
                 }
             } else {

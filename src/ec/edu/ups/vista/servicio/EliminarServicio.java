@@ -9,6 +9,7 @@ import ec.edu.ups.Modelo.Servicio;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.cliente.CrearCliente.x;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +23,9 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
      */
     private ControladorServicio controladorservicio;
         public static String x;
-    public EliminarServicio(ControladorServicio controladorservicio) {
+        
+        private ResourceBundle mensajes;
+    public EliminarServicio(ControladorServicio controladorservicio,ResourceBundle mensajes) {
         initComponents();
         this.controladorservicio = controladorservicio;
         x="x";
@@ -30,6 +33,19 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
         int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
         setLocation(a/2,b/2);
         setVisible(true);
+     this.mensajes = mensajes;
+        cambiarIdioma(mensajes);
+    }
+
+    public void cambiarIdioma(ResourceBundle mensajes) {
+        le.setText(mensajes.getString("titulos.eliminar"));
+        labelc.setText(mensajes.getString("servicio.codigo"));
+        labeln.setText(mensajes.getString("servicio.nombre"));
+        labelp.setText(mensajes.getString("servicio.precio"));
+
+        bb.setText(mensajes.getString("servicio.bbuscar"));
+        bc.setText(mensajes.getString("servicio.bcancelar"));
+        be.setText(mensajes.getString("servicio.beliminar"));
     }
 
     /**
@@ -42,16 +58,16 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        cancelar = new javax.swing.JButton();
-        Aceptar = new javax.swing.JButton();
+        bc = new javax.swing.JButton();
+        bb = new javax.swing.JButton();
         txtprecio = new javax.swing.JTextField();
-        JCE = new javax.swing.JLabel();
+        labelp = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
-        JN = new javax.swing.JLabel();
-        LCODIGO = new javax.swing.JLabel();
+        labeln = new javax.swing.JLabel();
+        labelc = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
-        BE = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        be = new javax.swing.JButton();
+        le = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -80,25 +96,27 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
         jPanel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cancelar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        cancelar.setText("Cancelar");
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
+        bc.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        bc.setText("Cancelar");
+        bc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarActionPerformed(evt);
+                bcActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 150, 40));
+        jPanel1.add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 150, 40));
 
-        Aceptar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        Aceptar.setText("Buscar");
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        bb.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        bb.setText("Buscar");
+        bb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                bbActionPerformed(evt);
             }
         });
-        jPanel1.add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 150, 40));
+        jPanel1.add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 150, 40));
 
         txtprecio.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtprecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtprecio.setEnabled(false);
         txtprecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtprecioActionPerformed(evt);
@@ -106,12 +124,14 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 210, 40));
 
-        JCE.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        JCE.setText("PRECIO:");
-        JCE.setToolTipText("");
-        jPanel1.add(JCE, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, 40));
+        labelp.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labelp.setText("PRECIO:");
+        labelp.setToolTipText("");
+        jPanel1.add(labelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, 40));
 
         txtnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtnombre.setEnabled(false);
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
@@ -119,49 +139,50 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 210, 40));
 
-        JN.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        JN.setText("NOMBRE:");
-        jPanel1.add(JN, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, 40));
+        labeln.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labeln.setText("NOMBRE:");
+        jPanel1.add(labeln, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, 40));
 
-        LCODIGO.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        LCODIGO.setText("CODIGO:");
-        jPanel1.add(LCODIGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 90, 40));
+        labelc.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labelc.setText("CODIGO:");
+        jPanel1.add(labelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 90, 40));
 
         txtcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 210, 40));
 
-        BE.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        BE.setText("Eliminar");
-        BE.addActionListener(new java.awt.event.ActionListener() {
+        be.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        be.setText("Eliminar");
+        be.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BEActionPerformed(evt);
+                beActionPerformed(evt);
             }
         });
-        jPanel1.add(BE, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 140, 40));
+        jPanel1.add(be, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 140, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 500, 320));
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        jLabel1.setText("ELIMINAR SERVICIO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 500, 50));
+        le.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        le.setText("ELIMINAR SERVICIO");
+        getContentPane().add(le, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 500, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+    private void bcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcActionPerformed
         // TODO add your handling code here:
   this.setVisible(false);
         this.dispose();
         x = null;
-    }//GEN-LAST:event_cancelarActionPerformed
+    }//GEN-LAST:event_bcActionPerformed
 
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+    private void bbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(txtcodigo.getText());
         Servicio buscarProducto = controladorservicio.read(codigo);
         txtnombre.setText(buscarProducto.getNombreservicio());
         txtprecio.setText(String.valueOf(buscarProducto.getPrecio()));
-    }//GEN-LAST:event_AceptarActionPerformed
+    }//GEN-LAST:event_bbActionPerformed
 
     private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
         // TODO add your handling code here:
@@ -171,7 +192,7 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
 
-    private void BEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEActionPerformed
+    private void beActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(txtcodigo.getText());
         controladorservicio.delete(codigo);
@@ -179,7 +200,7 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
        txtcodigo.setText("");
         txtnombre.setText("");
         txtprecio.setText("");
-    }//GEN-LAST:event_BEActionPerformed
+    }//GEN-LAST:event_beActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         // TODO add your handling code here:
@@ -188,14 +209,14 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JButton BE;
-    private javax.swing.JLabel JCE;
-    private javax.swing.JLabel JN;
-    private javax.swing.JLabel LCODIGO;
-    private javax.swing.JButton cancelar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bb;
+    private javax.swing.JButton bc;
+    private javax.swing.JButton be;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelc;
+    private javax.swing.JLabel labeln;
+    private javax.swing.JLabel labelp;
+    private javax.swing.JLabel le;
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtprecio;

@@ -9,6 +9,7 @@ import ec.edu.ups.Modelo.Servicio;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.cliente.CrearCliente.x;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,15 +23,30 @@ public class CrearServicio extends javax.swing.JInternalFrame {
      */
     private ControladorServicio controladorservicio;
     public static String x;
-    public CrearServicio(ControladorServicio controladorservicio) {
+    private ResourceBundle mensajes;
+
+    public CrearServicio(ControladorServicio controladorservicio, ResourceBundle mensajes) {
         initComponents();
-    this.controladorservicio = controladorservicio;
-     txtcp.setText(Integer.toString(this.controladorservicio.getCodigo()));
-     x="x";
-      int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
-        int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
-        setLocation(a/2,b/2);
+        this.controladorservicio = controladorservicio;
+        txtcp.setText(Integer.toString(this.controladorservicio.getCodigo()));
+        x = "x";
+        int a = VistaPrincipal.DesktopPane.getWidth() - this.getWidth();
+        int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
+        setLocation(a / 2, b / 2);
         setVisible(true);
+        this.mensajes = mensajes;
+        cambiarIdioma(mensajes);
+    }
+
+    public void cambiarIdioma(ResourceBundle mensajes) {
+        labels.setText(mensajes.getString("titulos.crear"));
+        labelc.setText(mensajes.getString("servicio.codigo"));
+        labeln.setText(mensajes.getString("servicio.nombre"));
+        labelp.setText(mensajes.getString("servicio.precio"));
+
+        bc.setText(mensajes.getString("servicio.bcrear"));
+        bca.setText(mensajes.getString("servicio.bcancelar"));
+
     }
 
     /**
@@ -43,15 +59,15 @@ public class CrearServicio extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        cancelar = new javax.swing.JButton();
-        Aceptar = new javax.swing.JButton();
+        bca = new javax.swing.JButton();
+        bc = new javax.swing.JButton();
         txtp = new javax.swing.JTextField();
-        JCE = new javax.swing.JLabel();
+        labelp = new javax.swing.JLabel();
         txtnp = new javax.swing.JTextField();
-        JN = new javax.swing.JLabel();
-        LCODIGO = new javax.swing.JLabel();
+        labeln = new javax.swing.JLabel();
+        labelc = new javax.swing.JLabel();
         txtcp = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        labels = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -78,25 +94,25 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cancelar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        cancelar.setText("Cancelar");
-        cancelar.setBorder(null);
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
+        bca.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        bca.setText("Cancelar");
+        bca.setBorder(null);
+        bca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarActionPerformed(evt);
+                bcaActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 150, 40));
+        jPanel1.add(bca, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 150, 40));
 
-        Aceptar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        Aceptar.setText("Crear");
-        Aceptar.setBorder(null);
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        bc.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        bc.setText("Crear");
+        bc.setBorder(null);
+        bc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                bcActionPerformed(evt);
             }
         });
-        jPanel1.add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 150, 40));
+        jPanel1.add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 150, 40));
 
         txtp.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -107,10 +123,10 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtp, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 220, 40));
 
-        JCE.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        JCE.setText("PRECIO:");
-        JCE.setToolTipText("");
-        jPanel1.add(JCE, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, 40));
+        labelp.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labelp.setText("PRECIO:");
+        labelp.setToolTipText("");
+        jPanel1.add(labelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, 40));
 
         txtnp.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtnp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -121,13 +137,13 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtnp, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 220, 40));
 
-        JN.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        JN.setText("NOMBRE:");
-        jPanel1.add(JN, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 100, 40));
+        labeln.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labeln.setText("NOMBRE:");
+        jPanel1.add(labeln, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 100, 40));
 
-        LCODIGO.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        LCODIGO.setText("CODIGO:");
-        jPanel1.add(LCODIGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, 40));
+        labelc.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labelc.setText("CODIGO:");
+        jPanel1.add(labelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, 40));
 
         txtcp.setEditable(false);
         txtcp.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -136,23 +152,23 @@ public class CrearServicio extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 480, 270));
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        jLabel1.setText("CREAR SERVICIO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 420, 50));
+        labels.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        labels.setText("CREAR SERVICIO");
+        getContentPane().add(labels, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 420, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+    private void bcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcaActionPerformed
         // TODO add your handling code here:
-  this.setVisible(false);
+        this.setVisible(false);
         this.dispose();
         x = null;
-    }//GEN-LAST:event_cancelarActionPerformed
+    }//GEN-LAST:event_bcaActionPerformed
 
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+    private void bcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcActionPerformed
         // TODO add your handling code here:
-        Servicio servicio =new Servicio();
+        Servicio servicio = new Servicio();
         System.out.println(servicio.getCodigo());
         servicio.setCodigo(Integer.parseInt(txtcp.getText()));
         servicio.setNombreservicio(txtnp.getText());
@@ -163,8 +179,8 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         txtnp.setText("");
         txtp.setText("");
         txtcp.setText(String.valueOf(this.controladorservicio.getCodigo()));
-        JOptionPane.showMessageDialog(this, "Servicio creado exitosamente!!", "Crear servicio" , JOptionPane.OK_OPTION);
-    }//GEN-LAST:event_AceptarActionPerformed
+        JOptionPane.showMessageDialog(this, "Servicio creado exitosamente!!", "Crear servicio", JOptionPane.OK_OPTION);
+    }//GEN-LAST:event_bcActionPerformed
 
     private void txtpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpActionPerformed
         // TODO add your handling code here:
@@ -176,18 +192,18 @@ public class CrearServicio extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         // TODO add your handling code here:
-        x=null;
+        x = null;
     }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JLabel JCE;
-    private javax.swing.JLabel JN;
-    private javax.swing.JLabel LCODIGO;
-    private javax.swing.JButton cancelar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bc;
+    private javax.swing.JButton bca;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelc;
+    private javax.swing.JLabel labeln;
+    private javax.swing.JLabel labelp;
+    private javax.swing.JLabel labels;
     private javax.swing.JTextField txtcp;
     private javax.swing.JTextField txtnp;
     private javax.swing.JTextField txtp;

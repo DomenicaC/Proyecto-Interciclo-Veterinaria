@@ -21,18 +21,18 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
      * Creates new form ModificarVeterinario
      */
     private ControladorVeterinario controladorveterinario;
-   public static String x;
+    public static String x;
     private ResourceBundle mensajes;
-    
+
     public ModificarVeterinario(ControladorVeterinario controladorveterinario, ResourceBundle mensajes) {
         initComponents();
-        this.controladorveterinario=controladorveterinario;
-        x="x";
-         int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
-        int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
-        setLocation(a/2,b/2);
+        this.controladorveterinario = controladorveterinario;
+        x = "x";
+        int a = VistaPrincipal.DesktopPane.getWidth() - this.getWidth();
+        int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
+        setLocation(a / 2, b / 2);
         setVisible(true);
-   this.mensajes = mensajes;
+        this.mensajes = mensajes;
         cambiarIdioma(mensajes);
     }
 
@@ -216,18 +216,18 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
         veterinario.setNombre(txtnombre.getText());
         veterinario.setApellido(txtapellido.getText());
         veterinario.setCedula(txtcedula.getText());
-       veterinario.setEdad(Integer.parseInt(txtedad.getText()));
+        veterinario.setEdad(Integer.parseInt(txtedad.getText()));
         veterinario.setSueldo(Double.valueOf(txtsueldo.getText()));
         veterinario.setTitulo(txttitulo.getText());
         controladorveterinario.update(veterinario);
-        JOptionPane.showMessageDialog(this, "Veterinario actualizado exitosamente!!", "veterinario cliente" , JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(this, "Veterinario actualizado exitosamente!!", "veterinario cliente", JOptionPane.OK_OPTION);
         txtcodigo.setText("");
         txtcedula.setText("");
         txtnombre.setText("");
         txtapellido.setText("");
         txtedad.setText("");
         txtsueldo.setText("");
-       txttitulo.setText("");
+        txttitulo.setText("");
     }//GEN-LAST:event_bmActionPerformed
 
     private void bbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbActionPerformed
@@ -244,7 +244,7 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         // TODO add your handling code here:
-        x=null;
+        x = null;
     }//GEN-LAST:event_formInternalFrameClosing
 
 

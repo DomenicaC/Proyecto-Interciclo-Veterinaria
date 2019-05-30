@@ -8,8 +8,12 @@ package ec.edu.ups.vista.servicio;
 import ec.edu.ups.Modelo.Servicio;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.VistaPrincipal;
+import java.util.ResourceBundle;
 import java.util.Set;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -22,7 +26,8 @@ public class ListaServicio extends javax.swing.JInternalFrame {
      */
     private ControladorServicio controladorservicio;
         public static String x;
-    public ListaServicio(ControladorServicio controladorservicio) {
+        private ResourceBundle mensajes;
+    public ListaServicio(ControladorServicio controladorservicio, ResourceBundle mensajes) {
         initComponents();
         x="x";
          int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
@@ -31,6 +36,9 @@ public class ListaServicio extends javax.swing.JInternalFrame {
         setVisible(true);
         this.controladorservicio = controladorservicio;
          llenarDatos();
+         
+         this.mensajes = mensajes;
+        cambiarIdioma(mensajes);
     }
 public void llenarDatos() {
         DefaultTableModel modelo = (DefaultTableModel) tablaservicio.getModel();
@@ -42,6 +50,22 @@ public void llenarDatos() {
             modelo.addRow(datos);
         }
 }
+ public void cambiarIdioma(ResourceBundle mensajes) {
+        labell.setText(mensajes.getString("titulos.lista"));
+        JTableHeader tableHeader = tablaservicio.getTableHeader();
+        TableColumnModel tableColumnModel = tableHeader.getColumnModel();
+        TableColumn tableColumn;
+        tableColumn = tableColumnModel.getColumn(0);
+        tableColumn.setHeaderValue(mensajes.getString("servicio.codigo"));
+        tableColumn = tableColumnModel.getColumn(1);
+        tableColumn.setHeaderValue(mensajes.getString("servicio.nombre"));
+        tableColumn = tableColumnModel.getColumn(2);
+        
+        tableColumn.setHeaderValue(mensajes.getString("servicio.precio"));
+      
+        tableHeader.repaint();
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +77,7 @@ public void llenarDatos() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaservicio = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        labell = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -93,9 +117,9 @@ public void llenarDatos() {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 580, 340));
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        jLabel1.setText("LISTA DE SERVICIO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 460, 50));
+        labell.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        labell.setText("LISTA DE SERVICIO");
+        getContentPane().add(labell, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 460, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -107,8 +131,8 @@ public void llenarDatos() {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labell;
     private javax.swing.JTable tablaservicio;
     // End of variables declaration//GEN-END:variables
 }
