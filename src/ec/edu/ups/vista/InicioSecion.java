@@ -27,8 +27,6 @@ public class InicioSecion extends javax.swing.JFrame {
     public InicioSecion() {
         initComponents();
         this.setLocationRelativeTo(null);
-        JOptionPane.showMessageDialog(null, "Bienvenido a la veterinaria Babas´s para"
-                + " continuar digite su usuario");
 
         setIconImage(new ImageIcon(("src/ec/edu/ups/vista/veterinari.png")).getImage());
         this.setTitle("***** BABAS`S VETERINARIA *****");
