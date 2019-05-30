@@ -6,13 +6,19 @@
 package ec.edu.ups.vista.factura;
 
 import ec.edu.ups.Modelo.Cliente;
-import ec.edu.ups.Modelo.Factura;
-import ec.edu.ups.Modelo.FacturaDetalle;
+import ec.edu.ups.Modelo.FDetalle;
+import ec.edu.ups.Modelo.FFactura;
 import ec.edu.ups.Modelo.Mascota;
+import ec.edu.ups.Modelo.Servicio;
 import ec.edu.ups.Modelo.Veterinario;
+import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.controladores.ControladorFacDetalle;
 import ec.edu.ups.controladores.ControladorFactura;
+import ec.edu.ups.controladores.ControladorMascota;
+import ec.edu.ups.controladores.ControladorServicio;
+import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
-import java.util.Date;
+import static ec.edu.ups.vista.factura.FacturaCrear.x;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,81 +27,39 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Domenica Cañizares
  */
-public class BuscarFactura extends javax.swing.JInternalFrame {
+public class FacturaBuscar extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form BuscarFactura
+     * Creates new form FacturaBuscar
      */
+    
     public static String x;
-
+    
     private ControladorFactura controladorFactura;
-    private Factura factura;
+    private ControladorCliente controladorCliente;
+    private ControladorVeterinario controladorVeterinario;
+    private ControladorMascota controladorMascota;
+    private ControladorServicio controladorServicio;
+    private ControladorFacDetalle controladorFDetalle;
 
-    public BuscarFactura(ControladorFactura controladorFactura) {
+    private FFactura factura;
+    private Servicio servicio;
+    private FDetalle facDet;
+    private Mascota mascota;
+    private Cliente cliente;
+    private Veterinario veterinario;
+
+    public FacturaBuscar(ControladorFactura controladorFactura) {
         initComponents();
-
         this.controladorFactura = controladorFactura;
-
+        
         x = "x";
 
-        //centrar ventana
+        //centrar pantalla
         int a = VistaPrincipal.DesktopPane.getWidth() - this.getWidth();
         int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
-
         setLocation(a / 2, b / 2);
-
         setVisible(true);
-    }
-
-    public void llenarTabla() {
-        DefaultTableModel modelo = (DefaultTableModel) tblServ.getModel();
-        List<FacturaDetalle> lista = factura.getDetalles();
-
-        for (int i = 0; i < lista.size(); i++) {
-            Object[] datos = {lista.get(i).getServ().getCodigo(),
-                lista.get(i).getCantidad(),
-                lista.get(i).getServ().getNombreservicio(),
-                lista.get(i).getServ().getPrecio(),
-                lista.get(i).getTotal()};
-            modelo.addRow(datos);
-        }
-        
-        txtSub.setText(Double.toString(factura.getSubtotal()));
-        txtTot.setText(Double.toString(factura.getTotal()));
-        
-    }
-
-    public void vaciarTabla() {
-
-        DefaultTableModel modelo = (DefaultTableModel) tblServ.getModel();
-        int filas = tblServ.getRowCount();
-        for (int i = 0; i < filas; i++) {
-            modelo.removeRow(0);
-        }
-
-    }
-
-    public void vaciarDatos() {
-
-        txtApeC.setText("");
-        txtApeV.setText("");
-        txtCedC.setText("");
-        txtCedV.setText("");
-        txtCodC.setText("");
-        txtCodM.setText("");
-        txtCodV.setText("");
-        txtDirC.setText("");
-        txtEdadM.setText("");
-        txtFecha.setText("");
-        txtIva.setText("");
-        txtNomC.setText("");
-        txtNomM.setText("");
-        txtNomV.setText("");
-        txtPesoM.setText("");
-        txtSub.setText("");
-        txtTelC.setText("");
-        txtTot.setText("");
-
     }
 
     /**
@@ -107,20 +71,11 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtFecha = new javax.swing.JTextField();
-        btnCancelarF = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblServ = new javax.swing.JTable();
-        lblFecha = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        lblCodM = new javax.swing.JLabel();
-        txtCodM = new javax.swing.JTextField();
-        txtNomM = new javax.swing.JTextField();
-        lblNomM = new javax.swing.JLabel();
-        txtEdadM = new javax.swing.JTextField();
-        lblEdadM = new javax.swing.JLabel();
-        lblPesoM = new javax.swing.JLabel();
-        txtPesoM = new javax.swing.JTextField();
+        lblRuc = new javax.swing.JLabel();
+        txtRuc = new javax.swing.JTextField();
+        lblIva = new javax.swing.JLabel();
+        btnBuscarRF = new javax.swing.JButton();
+        txtIva = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         lblNomV = new javax.swing.JLabel();
         txtNomV = new javax.swing.JTextField();
@@ -130,12 +85,20 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         txtCedV = new javax.swing.JTextField();
         lblCodC1 = new javax.swing.JLabel();
         txtCodV = new javax.swing.JTextField();
-        lblIva = new javax.swing.JLabel();
-        txtIva = new javax.swing.JTextField();
         lblTot = new javax.swing.JLabel();
-        txtTot = new javax.swing.JTextField();
+        lblFecha = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        lblCodM = new javax.swing.JLabel();
+        txtCodM = new javax.swing.JTextField();
+        txtNomM = new javax.swing.JTextField();
+        lblNomM = new javax.swing.JLabel();
+        txtEdadM = new javax.swing.JTextField();
+        lblEdadM = new javax.swing.JLabel();
+        lblPesoM = new javax.swing.JLabel();
+        txtPesoM = new javax.swing.JTextField();
         lblSub = new javax.swing.JLabel();
-        txtSub = new javax.swing.JTextField();
+        txtSubtotal = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblCedC = new javax.swing.JLabel();
@@ -150,60 +113,114 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
         lblApeC = new javax.swing.JLabel();
         lblDirC = new javax.swing.JLabel();
         txtDirC = new javax.swing.JTextField();
-        lblRuc = new javax.swing.JLabel();
-        txtRuc = new javax.swing.JTextField();
-        btnBuscarRF = new javax.swing.JButton();
+        txtFecha = new javax.swing.JTextField();
+        btnCancelarF = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblServF = new javax.swing.JTable();
 
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameClosing(evt);
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-        });
+        lblRuc.setBackground(new java.awt.Color(255, 255, 255));
+        lblRuc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblRuc.setText("RUC Factura");
 
-        txtFecha.setEditable(false);
-        txtFecha.setEnabled(false);
+        lblIva.setBackground(new java.awt.Color(255, 255, 255));
+        lblIva.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblIva.setText("I.V.A");
 
-        btnCancelarF.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnCancelarF.setText("Cancelar");
-        btnCancelarF.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarRF.setText("Buscar");
+        btnBuscarRF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarFActionPerformed(evt);
+                btnBuscarRFActionPerformed(evt);
             }
         });
 
-        tblServ.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
-        tblServ.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        tblServ.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, "0", null, null, null}
-            },
-            new String [] {
-                "Codigo", "Cantidad", "Nombre", "Precio Unitario", "Total"
-            }
-        ));
-        tblServ.setEnabled(false);
-        tblServ.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblServKeyReleased(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblServ);
+        txtIva.setEditable(false);
+        txtIva.setEnabled(false);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        lblNomV.setBackground(new java.awt.Color(255, 255, 255));
+        lblNomV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomV.setText("Nombre Veterinario");
+
+        txtNomV.setEditable(false);
+        txtNomV.setEnabled(false);
+
+        lblApeV.setBackground(new java.awt.Color(255, 255, 255));
+        lblApeV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblApeV.setText("Apellido Veterinario");
+
+        txtApeV.setEditable(false);
+        txtApeV.setEnabled(false);
+
+        lblCedV.setBackground(new java.awt.Color(255, 255, 255));
+        lblCedV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCedV.setText("Cedula Veterinario");
+
+        txtCedV.setEditable(false);
+        txtCedV.setEnabled(false);
+
+        lblCodC1.setBackground(new java.awt.Color(255, 255, 255));
+        lblCodC1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCodC1.setText("Codigo Veterinario");
+
+        txtCodV.setEditable(false);
+        txtCodV.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblNomV)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNomV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(lblApeV)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtApeV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblCedV)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(lblCodC1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCodC1)
+                        .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCedV)
+                        .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNomV)
+                    .addComponent(txtNomV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblApeV)
+                    .addComponent(txtApeV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblTot.setBackground(new java.awt.Color(255, 255, 255));
+        lblTot.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblTot.setText("Total");
 
         lblFecha.setBackground(new java.awt.Color(255, 255, 255));
         lblFecha.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblFecha.setText("Fecha");
+
+        txtTotal.setEditable(false);
+        txtTotal.setEnabled(false);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -284,101 +301,12 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        lblNomV.setBackground(new java.awt.Color(255, 255, 255));
-        lblNomV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblNomV.setText("Nombre Veterinario");
-
-        txtNomV.setEditable(false);
-        txtNomV.setEnabled(false);
-
-        lblApeV.setBackground(new java.awt.Color(255, 255, 255));
-        lblApeV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblApeV.setText("Apellido Veterinario");
-
-        txtApeV.setEditable(false);
-        txtApeV.setEnabled(false);
-
-        lblCedV.setBackground(new java.awt.Color(255, 255, 255));
-        lblCedV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblCedV.setText("Cedula Veterinario");
-
-        txtCedV.setEditable(false);
-        txtCedV.setEnabled(false);
-
-        lblCodC1.setBackground(new java.awt.Color(255, 255, 255));
-        lblCodC1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblCodC1.setText("Codigo Veterinario");
-
-        txtCodV.setEditable(false);
-        txtCodV.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblNomV)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNomV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(lblApeV)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtApeV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblCedV)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(lblCodC1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCodC1)
-                        .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCedV)
-                        .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNomV)
-                    .addComponent(txtNomV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblApeV)
-                    .addComponent(txtApeV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        lblIva.setBackground(new java.awt.Color(255, 255, 255));
-        lblIva.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblIva.setText("I.V.A");
-
-        txtIva.setEditable(false);
-        txtIva.setEnabled(false);
-
-        lblTot.setBackground(new java.awt.Color(255, 255, 255));
-        lblTot.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblTot.setText("Total");
-
-        txtTot.setEditable(false);
-        txtTot.setEnabled(false);
-
         lblSub.setBackground(new java.awt.Color(255, 255, 255));
         lblSub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblSub.setText("Subtotal");
 
-        txtSub.setEditable(false);
-        txtSub.setEnabled(false);
+        txtSubtotal.setEditable(false);
+        txtSubtotal.setEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setText("Buscar Factura");
@@ -492,52 +420,46 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lblRuc.setBackground(new java.awt.Color(255, 255, 255));
-        lblRuc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblRuc.setText("RUC Factura");
+        txtFecha.setEditable(false);
+        txtFecha.setEnabled(false);
 
-        btnBuscarRF.setText("Buscar");
-        btnBuscarRF.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarF.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnCancelarF.setText("Cancelar");
+        btnCancelarF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarRFActionPerformed(evt);
+                btnCancelarFActionPerformed(evt);
             }
         });
+
+        tblServF.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, "0", null, null, null}
+            },
+            new String [] {
+                "codigo", "cantidad", "nombre", "precio u", "totalCP"
+            }
+        ));
+        tblServF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblServFKeyReleased(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblServF);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(185, 185, 185)
                         .addComponent(jLabel1))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(178, 178, 178)
-                                .addComponent(btnCancelarF)
-                                .addGap(161, 161, 161)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblSub)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(lblIva)))
-                                .addGap(14, 14, 14))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(465, 465, 465)
-                                .addComponent(lblTot)
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTot, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(lblRuc)
@@ -548,13 +470,34 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblFecha)
                         .addGap(18, 18, 18)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(178, 178, 178)
+                            .addComponent(btnCancelarF)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblSub)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(20, 20, 20)
+                                            .addComponent(lblIva)))
+                                    .addGap(14, 14, 14))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(25, 25, 25)
+                                    .addComponent(lblTot)
+                                    .addGap(18, 18, 18)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -573,16 +516,16 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTot, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(lblSub)
@@ -592,43 +535,79 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
                             .addComponent(btnCancelarF))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTot)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-        x = null;
-    }//GEN-LAST:event_formInternalFrameClosing
+    public void llenarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) tblServF.getModel();
+        List<FDetalle> lista = factura.getDetalle();
 
-    private void btnCancelarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarFActionPerformed
-        // TODO add your handling code here:
-        x = null;
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarFActionPerformed
+        for (int i = 0; i < lista.size(); i++) {
+            Object[] datos3 = {lista.get(i).getServ().getCodigo(),
+                lista.get(i).getCantidad(),
+                lista.get(i).getServ().getNombreservicio(),
+                lista.get(i).getServ().getPrecio(),
+                lista.get(i).getTotalCP()
+            };
+            modelo.addRow(datos3);
+        }
+        /*
+        txtSub.setText(Double.toString(factura.getSubtotal()));
+        txtTot.setText(Double.toString(factura.getTotal()));*/
+    }
+    
+    public void vaciarDatos() {
 
-    private void tblServKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServKeyReleased
+        txtApeC.setText("");
+        txtApeV.setText("");
+        txtCedC.setText("");
+        txtCedV.setText("");
+        txtCodC.setText("");
+        txtCodM.setText("");
+        txtCodV.setText("");
+        txtDirC.setText("");
+        txtEdadM.setText("");
+        txtFecha.setText("");
+        txtIva.setText("");
+        txtNomC.setText("");
+        txtNomM.setText("");
+        txtNomV.setText("");
+        txtPesoM.setText("");
+        txtSubtotal.setText("");
+        txtTelC.setText("");
+        txtTotal.setText("");
+
+    }
+    
+    public void vaciarTabla(){
         
-    }//GEN-LAST:event_tblServKeyReleased
+        DefaultTableModel modelo = (DefaultTableModel) tblServF.getModel();
+        int filas = tblServF.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            modelo.removeRow(0);
+        }
+        
+    }
 
     private void btnBuscarRFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRFActionPerformed
         int ruc = Integer.parseInt(txtRuc.getText());
-        Factura fact = controladorFactura.read(ruc);
+        factura = controladorFactura.read(ruc);
 
-        //vaciarDatos();
-
-        if (fact == null) {
+        vaciarDatos();
+        if (factura == null) {
             JOptionPane.showMessageDialog(this, "RUC no existe");
         } else {
             //factura
-            txtFecha.setText(fact.getFecha());
-            txtSub.setText(String.valueOf(fact.getSubtotal()));
-            txtIva.setText(Double.toString(fact.getIva()));
-            txtTot.setText(String.valueOf(fact.getTotal()));
+            txtFecha.setText(factura.getFecha());
+            txtSubtotal.setText(String.valueOf(factura.getSubtotal()));
+            txtIva.setText(Double.toString(factura.getIva()));
+            txtTotal.setText(String.valueOf(factura.getTotal()));
 
             //cliente
-            Cliente cliente = fact.getCliente();
+            cliente = factura.getCli();
             txtCodC.setText(Integer.toString(cliente.getCodigo()));
             txtNomC.setText(cliente.getNombre());
             txtApeC.setText(cliente.getApellido());
@@ -637,25 +616,34 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
             txtCedC.setText(cliente.getCedula());
 
             //veterinario
-            Veterinario vet = fact.getVet();
-            txtCodV.setText(Integer.toString(vet.getCodigo()));
-            txtNomV.setText(vet.getNombre());
-            txtApeV.setText(vet.getApellido());
-            txtCedV.setText(vet.getCedula());
+            veterinario = factura.getVet();
+            txtCodV.setText(Integer.toString(veterinario.getCodigo()));
+            txtNomV.setText(veterinario.getNombre());
+            txtApeV.setText(veterinario.getApellido());
+            txtCedV.setText(veterinario.getCedula());
             //mascota
-            Mascota mas = fact.getMasc();
-            txtCodM.setText(Integer.toString(mas.getCodigo()));
-            txtEdadM.setText(Integer.toString(mas.getEdad()));
-            txtNomM.setText(mas.getNombre());
-            txtPesoM.setText(Double.toString(mas.getPeso()));
+            mascota = factura.getMasc();
+            txtCodM.setText(Integer.toString(mascota.getCodigo()));
+            txtEdadM.setText(Integer.toString(mascota.getEdad()));
+            txtNomM.setText(mascota.getNombre());
+            txtPesoM.setText(Double.toString(mascota.getPeso()));
 
             //datos tabla
-            //vaciarTabla();
+            vaciarTabla();
             llenarTabla();
 
         }
-
     }//GEN-LAST:event_btnBuscarRFActionPerformed
+
+    private void btnCancelarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarFActionPerformed
+        // TODO add your handling code here:
+        //x = null;
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarFActionPerformed
+
+    private void tblServFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServFKeyReleased
+        
+    }//GEN-LAST:event_tblServFKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -665,7 +653,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblApeC;
     private javax.swing.JLabel lblApeV;
     private javax.swing.JLabel lblCedC;
@@ -685,7 +673,7 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblSub;
     private javax.swing.JLabel lblTelC;
     private javax.swing.JLabel lblTot;
-    private javax.swing.JTable tblServ;
+    private javax.swing.JTable tblServF;
     private javax.swing.JTextField txtApeC;
     private javax.swing.JTextField txtApeV;
     private javax.swing.JTextField txtCedC;
@@ -702,8 +690,8 @@ public class BuscarFactura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNomV;
     private javax.swing.JTextField txtPesoM;
     private javax.swing.JTextField txtRuc;
-    private javax.swing.JTextField txtSub;
+    private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTelC;
-    private javax.swing.JTextField txtTot;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

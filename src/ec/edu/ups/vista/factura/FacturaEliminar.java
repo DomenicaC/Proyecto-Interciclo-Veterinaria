@@ -6,14 +6,19 @@
 package ec.edu.ups.vista.factura;
 
 import ec.edu.ups.Modelo.Cliente;
-import ec.edu.ups.Modelo.Factura;
-import ec.edu.ups.Modelo.FacturaDetalle;
+import ec.edu.ups.Modelo.FDetalle;
+import ec.edu.ups.Modelo.FFactura;
 import ec.edu.ups.Modelo.Mascota;
+import ec.edu.ups.Modelo.Servicio;
 import ec.edu.ups.Modelo.Veterinario;
+import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.controladores.ControladorFacDetalle;
 import ec.edu.ups.controladores.ControladorFactura;
-import ec.edu.ups.vista.InicioSecion;
-import ec.edu.ups.vista.VerificarEliminar;
+import ec.edu.ups.controladores.ControladorMascota;
+import ec.edu.ups.controladores.ControladorServicio;
+import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
+import static ec.edu.ups.vista.factura.FacturaBuscar.x;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,57 +27,58 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Domenica Cañizares
  */
-public class EliminarFactura extends javax.swing.JInternalFrame {
+public class FacturaEliminar extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form EliminarFactura
+     * Creates new form FacturaEliminar
      */
     public static String x;
-    private VerificarEliminar veri;
 
     private ControladorFactura controladorFactura;
-    private Factura factura;
+    private ControladorCliente controladorCliente;
+    private ControladorVeterinario controladorVeterinario;
+    private ControladorMascota controladorMascota;
+    private ControladorServicio controladorServicio;
+    private ControladorFacDetalle controladorFDetalle;
 
-    public EliminarFactura(ControladorFactura controladorFactura) {
+    private FFactura factura;
+    private Servicio servicio;
+    private FDetalle facDet;
+    private Mascota mascota;
+    private Cliente cliente;
+    private Veterinario veterinario;
+
+    public FacturaEliminar(ControladorFactura controladorFactura) {
         initComponents();
-
         this.controladorFactura = controladorFactura;
 
         x = "x";
 
-        //centrar ventana
+        //centrar pantalla
         int a = VistaPrincipal.DesktopPane.getWidth() - this.getWidth();
         int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
-
         setLocation(a / 2, b / 2);
-
         setVisible(true);
     }
-
+    
     public void llenarTabla() {
-        DefaultTableModel modelo = (DefaultTableModel) tblServ.getModel();
-        List<FacturaDetalle> lista = factura.getDetalles();
+        DefaultTableModel modelo = (DefaultTableModel) tblServF.getModel();
+        List<FDetalle> lista = factura.getDetalle();
 
         for (int i = 0; i < lista.size(); i++) {
-            Object[] datos = {lista.get(i).getServ().getCodigo(),
+            Object[] datos3 = {lista.get(i).getServ().getCodigo(),
                 lista.get(i).getCantidad(),
                 lista.get(i).getServ().getNombreservicio(),
                 lista.get(i).getServ().getPrecio(),
-                lista.get(i).getTotal()};
-            modelo.addRow(datos);
+                lista.get(i).getTotalCP()
+            };
+            modelo.addRow(datos3);
         }
+        /*
+        txtSub.setText(Double.toString(factura.getSubtotal()));
+        txtTot.setText(Double.toString(factura.getTotal()));*/
     }
-
-    public void vaciarTabla() {
-
-        DefaultTableModel modelo = (DefaultTableModel) tblServ.getModel();
-        int filas = tblServ.getRowCount();
-        for (int i = 0; i < filas; i++) {
-            modelo.removeRow(0);
-        }
-
-    }
-
+    
     public void vaciarDatos() {
 
         txtApeC.setText("");
@@ -90,10 +96,20 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
         txtNomM.setText("");
         txtNomV.setText("");
         txtPesoM.setText("");
-        txtSub.setText("");
+        txtSubtotal.setText("");
         txtTelC.setText("");
-        txtTot.setText("");
+        txtTotal.setText("");
 
+    }
+    
+    public void vaciarTabla(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblServF.getModel();
+        int filas = tblServF.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            modelo.removeRow(0);
+        }
+        
     }
 
     /**
@@ -106,15 +122,34 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblRuc = new javax.swing.JLabel();
-        txtIva = new javax.swing.JTextField();
         txtRuc = new javax.swing.JTextField();
-        lblTot = new javax.swing.JLabel();
+        lblIva = new javax.swing.JLabel();
         btnBuscarRF = new javax.swing.JButton();
-        txtTot = new javax.swing.JTextField();
+        txtIva = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        lblNomV = new javax.swing.JLabel();
+        txtNomV = new javax.swing.JTextField();
+        lblApeV = new javax.swing.JLabel();
+        txtApeV = new javax.swing.JTextField();
+        lblCedV = new javax.swing.JLabel();
+        txtCedV = new javax.swing.JTextField();
+        lblCodC1 = new javax.swing.JLabel();
+        txtCodV = new javax.swing.JTextField();
+        lblTot = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        lblCodM = new javax.swing.JLabel();
+        txtCodM = new javax.swing.JTextField();
+        txtNomM = new javax.swing.JTextField();
+        lblNomM = new javax.swing.JLabel();
+        txtEdadM = new javax.swing.JTextField();
+        lblEdadM = new javax.swing.JLabel();
+        lblPesoM = new javax.swing.JLabel();
+        txtPesoM = new javax.swing.JTextField();
         lblSub = new javax.swing.JLabel();
-        txtSub = new javax.swing.JTextField();
+        txtSubtotal = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         lblCedC = new javax.swing.JLabel();
         txtCedC = new javax.swing.JTextField();
@@ -128,59 +163,18 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
         lblApeC = new javax.swing.JLabel();
         lblDirC = new javax.swing.JLabel();
         txtDirC = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
         btnCancelarF = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblServ = new javax.swing.JTable();
-        lblIva = new javax.swing.JLabel();
-        lblFecha = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        lblNomV = new javax.swing.JLabel();
-        txtNomV = new javax.swing.JTextField();
-        lblApeV = new javax.swing.JLabel();
-        txtApeV = new javax.swing.JTextField();
-        lblCedV = new javax.swing.JLabel();
-        txtCedV = new javax.swing.JTextField();
-        lblCodC1 = new javax.swing.JLabel();
-        txtCodV = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        lblCodM = new javax.swing.JLabel();
-        txtCodM = new javax.swing.JTextField();
-        txtNomM = new javax.swing.JTextField();
-        lblNomM = new javax.swing.JLabel();
-        txtEdadM = new javax.swing.JTextField();
-        lblEdadM = new javax.swing.JLabel();
-        lblPesoM = new javax.swing.JLabel();
-        txtPesoM = new javax.swing.JTextField();
-        btnEliminar = new javax.swing.JButton();
-
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameClosing(evt);
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-        });
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblServF = new javax.swing.JTable();
 
         lblRuc.setBackground(new java.awt.Color(255, 255, 255));
         lblRuc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblRuc.setText("RUC Factura");
 
-        txtIva.setEditable(false);
-        txtIva.setEnabled(false);
-
-        lblTot.setBackground(new java.awt.Color(255, 255, 255));
-        lblTot.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblTot.setText("Total");
+        lblIva.setBackground(new java.awt.Color(255, 255, 255));
+        lblIva.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblIva.setText("I.V.A");
 
         btnBuscarRF.setText("Buscar");
         btnBuscarRF.addActionListener(new java.awt.event.ActionListener() {
@@ -189,22 +183,184 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
             }
         });
 
-        txtTot.setEditable(false);
-        txtTot.setEnabled(false);
+        txtIva.setEditable(false);
+        txtIva.setEnabled(false);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        lblNomV.setBackground(new java.awt.Color(255, 255, 255));
+        lblNomV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomV.setText("Nombre Veterinario");
+
+        txtNomV.setEditable(false);
+        txtNomV.setEnabled(false);
+
+        lblApeV.setBackground(new java.awt.Color(255, 255, 255));
+        lblApeV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblApeV.setText("Apellido Veterinario");
+
+        txtApeV.setEditable(false);
+        txtApeV.setEnabled(false);
+
+        lblCedV.setBackground(new java.awt.Color(255, 255, 255));
+        lblCedV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCedV.setText("Cedula Veterinario");
+
+        txtCedV.setEditable(false);
+        txtCedV.setEnabled(false);
+
+        lblCodC1.setBackground(new java.awt.Color(255, 255, 255));
+        lblCodC1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCodC1.setText("Codigo Veterinario");
+
+        txtCodV.setEditable(false);
+        txtCodV.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblNomV)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNomV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(lblApeV)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtApeV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblCedV)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(lblCodC1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCodC1)
+                        .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCedV)
+                        .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNomV)
+                    .addComponent(txtNomV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblApeV)
+                    .addComponent(txtApeV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblTot.setBackground(new java.awt.Color(255, 255, 255));
+        lblTot.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblTot.setText("Total");
+
+        lblFecha.setBackground(new java.awt.Color(255, 255, 255));
+        lblFecha.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblFecha.setText("Fecha");
+
+        txtTotal.setEditable(false);
+        txtTotal.setEnabled(false);
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        lblCodM.setBackground(new java.awt.Color(255, 255, 255));
+        lblCodM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCodM.setText("Codigo Mascota");
+
+        txtCodM.setEditable(false);
+        txtCodM.setEnabled(false);
+
+        txtNomM.setEditable(false);
+        txtNomM.setEnabled(false);
+
+        lblNomM.setBackground(new java.awt.Color(255, 255, 255));
+        lblNomM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblNomM.setText("Nombre Mascota");
+
+        txtEdadM.setEditable(false);
+        txtEdadM.setEnabled(false);
+
+        lblEdadM.setBackground(new java.awt.Color(255, 255, 255));
+        lblEdadM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblEdadM.setText("Edad Mascota");
+
+        lblPesoM.setBackground(new java.awt.Color(255, 255, 255));
+        lblPesoM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblPesoM.setText("Peso Mascota");
+
+        txtPesoM.setEditable(false);
+        txtPesoM.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblNomM)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNomM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblCodM)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCodM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(75, 75, 75)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblEdadM)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtEdadM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblPesoM)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPesoM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblEdadM)
+                        .addComponent(txtEdadM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCodM)
+                        .addComponent(txtCodM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPesoM)
+                        .addComponent(txtPesoM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNomM)
+                        .addComponent(txtNomM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         lblSub.setBackground(new java.awt.Color(255, 255, 255));
         lblSub.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblSub.setText("Subtotal");
 
-        txtSub.setEditable(false);
-        txtSub.setEnabled(false);
+        txtSubtotal.setEditable(false);
+        txtSubtotal.setEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("Eliminar Factura");
+        jLabel1.setText("Buscar Factura");
         jLabel1.setToolTipText("");
-
-        txtFecha.setEditable(false);
-        txtFecha.setEnabled(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -314,6 +470,9 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtFecha.setEditable(false);
+        txtFecha.setEnabled(false);
+
         btnCancelarF.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnCancelarF.setText("Cancelar");
         btnCancelarF.addActionListener(new java.awt.event.ActionListener() {
@@ -322,214 +481,40 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
             }
         });
 
-        tblServ.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
-        tblServ.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        tblServ.setModel(new javax.swing.table.DefaultTableModel(
+        tblServF.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, "0", null, null, null}
             },
             new String [] {
-                "Codigo", "Cantidad", "Nombre", "Precio Unitario", "Total"
+                "codigo", "cantidad", "nombre", "precio u", "totalCP"
             }
         ));
-        tblServ.setEnabled(false);
-        tblServ.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblServF.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblServKeyReleased(evt);
+                tblServFKeyReleased(evt);
             }
         });
-        jScrollPane1.setViewportView(tblServ);
-
-        lblIva.setBackground(new java.awt.Color(255, 255, 255));
-        lblIva.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblIva.setText("I.V.A");
-
-        lblFecha.setBackground(new java.awt.Color(255, 255, 255));
-        lblFecha.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblFecha.setText("Fecha");
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        lblNomV.setBackground(new java.awt.Color(255, 255, 255));
-        lblNomV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblNomV.setText("Nombre Veterinario");
-
-        txtNomV.setEditable(false);
-        txtNomV.setEnabled(false);
-
-        lblApeV.setBackground(new java.awt.Color(255, 255, 255));
-        lblApeV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblApeV.setText("Apellido Veterinario");
-
-        txtApeV.setEditable(false);
-        txtApeV.setEnabled(false);
-
-        lblCedV.setBackground(new java.awt.Color(255, 255, 255));
-        lblCedV.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblCedV.setText("Cedula Veterinario");
-
-        txtCedV.setEditable(false);
-        txtCedV.setEnabled(false);
-
-        lblCodC1.setBackground(new java.awt.Color(255, 255, 255));
-        lblCodC1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblCodC1.setText("Codigo Veterinario");
-
-        txtCodV.setEditable(false);
-        txtCodV.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblNomV)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNomV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(lblApeV)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtApeV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblCedV)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(lblCodC1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCodC1)
-                        .addComponent(txtCodV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCedV)
-                        .addComponent(txtCedV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNomV)
-                    .addComponent(txtNomV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblApeV)
-                    .addComponent(txtApeV, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        lblCodM.setBackground(new java.awt.Color(255, 255, 255));
-        lblCodM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblCodM.setText("Codigo Mascota");
-
-        txtCodM.setEditable(false);
-        txtCodM.setEnabled(false);
-
-        txtNomM.setEditable(false);
-        txtNomM.setEnabled(false);
-
-        lblNomM.setBackground(new java.awt.Color(255, 255, 255));
-        lblNomM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblNomM.setText("Nombre Mascota");
-
-        txtEdadM.setEditable(false);
-        txtEdadM.setEnabled(false);
-
-        lblEdadM.setBackground(new java.awt.Color(255, 255, 255));
-        lblEdadM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblEdadM.setText("Edad Mascota");
-
-        lblPesoM.setBackground(new java.awt.Color(255, 255, 255));
-        lblPesoM.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblPesoM.setText("Peso Mascota");
-
-        txtPesoM.setEditable(false);
-        txtPesoM.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(lblNomM)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNomM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(lblCodM)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCodM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(75, 75, 75)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(lblEdadM)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtEdadM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(lblPesoM)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPesoM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblEdadM)
-                        .addComponent(txtEdadM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCodM)
-                        .addComponent(txtCodM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblPesoM)
-                        .addComponent(txtPesoM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNomM)
-                        .addComponent(txtNomM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        btnEliminar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setToolTipText("");
-        btnEliminar.setActionCommand("");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
+        jScrollPane2.setViewportView(tblServF);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(185, 185, 185)
+                                .addComponent(jLabel1))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(130, 130, 130)
-                                        .addComponent(btnEliminar)
-                                        .addGap(18, 18, 18)
+                                        .addGap(178, 178, 178)
                                         .addComponent(btnCancelarF)
-                                        .addGap(90, 90, 90)
+                                        .addGap(161, 161, 161)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblSub)
                                             .addGroup(layout.createSequentialGroup()
@@ -541,13 +526,9 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
                                         .addComponent(lblTot)
                                         .addGap(18, 18, 18)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTot, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(106, 106, 106)
                                 .addComponent(lblRuc)
@@ -558,18 +539,19 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(lblFecha)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -586,24 +568,23 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTot, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(lblSub)
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblIva)
-                            .addComponent(btnCancelarF)
-                            .addComponent(btnEliminar))
+                            .addComponent(btnCancelarF))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTot)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -612,45 +593,41 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-        x = null;
-    }//GEN-LAST:event_formInternalFrameClosing
-
     private void btnBuscarRFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRFActionPerformed
         int ruc = Integer.parseInt(txtRuc.getText());
-        Factura fact = controladorFactura.read(ruc);
+        factura = controladorFactura.read(ruc);
 
         vaciarDatos();
-
-        if (fact == null) {
+        if (factura == null) {
             JOptionPane.showMessageDialog(this, "RUC no existe");
         } else {
             //factura
             txtFecha.setText(factura.getFecha());
-            txtSub.setText(Double.toString(fact.getSubtotal()));
-            txtIva.setText(Double.toString(fact.getIva()));
-            txtTot.setText(Double.toString(fact.getTotal()));
+            txtSubtotal.setText(String.valueOf(factura.getSubtotal()));
+            txtIva.setText(Double.toString(factura.getIva()));
+            txtTotal.setText(String.valueOf(factura.getTotal()));
 
             //cliente
-            Cliente cliente = factura.getCliente();
+            cliente = factura.getCli();
             txtCodC.setText(Integer.toString(cliente.getCodigo()));
             txtNomC.setText(cliente.getNombre());
             txtApeC.setText(cliente.getApellido());
             txtDirC.setText(cliente.getDireccion());
             txtTelC.setText(cliente.getTelefono());
+            txtCedC.setText(cliente.getCedula());
 
             //veterinario
-            Veterinario vet = factura.getVet();
-            txtCodV.setText(Integer.toString(vet.getCodigo()));
-            txtNomV.setText(vet.getNombre());
-            txtApeV.setText(vet.getApellido());
-
+            veterinario = factura.getVet();
+            txtCodV.setText(Integer.toString(veterinario.getCodigo()));
+            txtNomV.setText(veterinario.getNombre());
+            txtApeV.setText(veterinario.getApellido());
+            txtCedV.setText(veterinario.getCedula());
             //mascota
-            Mascota mas = factura.getMasc();
-            txtCodM.setText(Integer.toString(mas.getCodigo()));
-            txtEdadM.setText(Integer.toString(mas.getEdad()));
-            txtNomM.setText(mas.getNombre());
-            txtPesoM.setText(Double.toString(mas.getPeso()));
+            mascota = factura.getMasc();
+            txtCodM.setText(Integer.toString(mascota.getCodigo()));
+            txtEdadM.setText(Integer.toString(mascota.getEdad()));
+            txtNomM.setText(mascota.getNombre());
+            txtPesoM.setText(Double.toString(mascota.getPeso()));
 
             //datos tabla
             vaciarTabla();
@@ -665,110 +642,19 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelarFActionPerformed
 
-    private void tblServKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServKeyReleased
-        /*   int key = evt.getKeyCode();
-         if (key == KeyEvent.VK_ENTER) {
-         int fila = tblServ.getSelectedRow();
-         int columna = tblServ.getSelectedColumn();
-         int codigoServ = 0;
-
-         Object[] datos1 = {"", 0, "", "", ""};
-
-         if (columna == 0) {
-         codigoServ = Integer.parseInt(tblServ.getValueAt(fila, columna).toString());
-         servicio = controladorServicio.read(codigoServ);
-
-         double precio = servicio.getPrecio();
-         int cant = Integer.parseInt(tblServ.getValueAt(fila, 1).toString());
-
-         tablaF = (DefaultTableModel) tblServ.getModel();
-         tablaF.removeRow(fila);
-         total1 = precio * cant;
-
-         Object[] datos = {codigoServ,
-         cant,
-         servicio.getNombreservicio(),
-         servicio.getPrecio(),
-         total1};
-
-         tablaF.addRow(datos);
-         tablaF.addRow(datos1);
-
-         } else if (columna == 1) {
-         codigoServ = Integer.parseInt(tblServ.getValueAt(fila, columna - 1).toString());
-         int cant = Integer.parseInt(tblServ.getValueAt(fila, columna).toString());
-         tablaF.removeRow(fila);
-         tablaF.removeRow(tblServ.getRowCount() - 1);
-
-         total1 = servicio.getPrecio() * cant;
-
-         Object[] datos = {codigoServ,
-         cant,
-         servicio.getNombreservicio(),
-         servicio.getPrecio(),
-         total1};
-
-         tablaF.addRow(datos);
-         tablaF.addRow(datos1);
-         }
-
-         subtotal1 = subtotal1 + total1;
-         iva = subtotal1 * 0.12;
-         total2 = subtotal1 + iva;
-
-         txtSub.setText(String.valueOf(subtotal1));
-         txtIva.setText(String.valueOf(iva));
-         txtTot.setText(String.valueOf(total2));
-         }*/
-    }//GEN-LAST:event_tblServKeyReleased
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-
-        VerificarEliminar verificar = new VerificarEliminar();
-        verificar.setVisible(true);
-
-        // verificar.ingresaEliminar();
-        String q = VerificarEliminar.q;
-        /*
-        if (veri.isVisible() == true) {
-            if (q == null) {
-                JOptionPane.showMessageDialog(this, "No se puede eliminar");
-            } else {
-                int ruc = Integer.parseInt(txtRuc.getText());
-                 Factura fact = controladorFactura.read(ruc);
-
-                 controladorFactura.delete(ruc);
-                JOptionPane.showMessageDialog(this, "Factura ELiminada");
-                
-                 vaciarDatos();
-                 vaciarTabla();
-                
-            }
-        }*/
-
-
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    public void eliminar() {
-     /*int ruc = Integer.parseInt(txtRuc.getText());
-     Factura fact = controladorFactura.read(ruc);
+    private void tblServFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServFKeyReleased
         
-     controladorFactura.delete(ruc);*/
-     JOptionPane.showMessageDialog(this, "Factura ELiminada");
-        /*
-     vaciarDatos();
-     vaciarTabla();*/
-     }
+    }//GEN-LAST:event_tblServFKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarRF;
     private javax.swing.JButton btnCancelarF;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblApeC;
     private javax.swing.JLabel lblApeV;
     private javax.swing.JLabel lblCedC;
@@ -788,7 +674,7 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblSub;
     private javax.swing.JLabel lblTelC;
     private javax.swing.JLabel lblTot;
-    private javax.swing.JTable tblServ;
+    private javax.swing.JTable tblServF;
     private javax.swing.JTextField txtApeC;
     private javax.swing.JTextField txtApeV;
     private javax.swing.JTextField txtCedC;
@@ -805,8 +691,8 @@ public class EliminarFactura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNomV;
     private javax.swing.JTextField txtPesoM;
     private javax.swing.JTextField txtRuc;
-    private javax.swing.JTextField txtSub;
+    private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTelC;
-    private javax.swing.JTextField txtTot;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

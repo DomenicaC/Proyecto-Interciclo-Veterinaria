@@ -15,9 +15,9 @@ import ec.edu.ups.vista.cliente.CrearCliente;
 import ec.edu.ups.vista.cliente.EliminarCliente;
 import ec.edu.ups.vista.cliente.ListarCliente;
 import ec.edu.ups.vista.cliente.ModificarCliente;
-import ec.edu.ups.vista.factura.BuscarFactura;
-import ec.edu.ups.vista.factura.CrearFactura;
-import ec.edu.ups.vista.factura.EliminarFactura;
+import ec.edu.ups.vista.factura.FacturaBuscar;
+import ec.edu.ups.vista.factura.FacturaCrear;
+import ec.edu.ups.vista.factura.FacturaEliminar;
 import ec.edu.ups.vista.mascota.ActualizarMascota;
 import ec.edu.ups.vista.mascota.BorrarMascota;
 import ec.edu.ups.vista.mascota.BuscarMascota;
@@ -48,9 +48,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private CrearMascota crearMascota;
 
-    private CrearFactura crearF;
-    private BuscarFactura buscarF;
-    private EliminarFactura eliF;
+    private FacturaCrear crearF;
+    private FacturaBuscar buscarF;
+    private FacturaEliminar eliF;
     private BuscarMascota buscarMascota;
     private ActualizarMascota actualizarMascota;
     private BorrarMascota borrarMascota;
@@ -691,7 +691,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (eliF == null || eliF.isVisible() == false) {
-                    eliF = new EliminarFactura(controladorFactura);
+                    eliF = new FacturaEliminar(controladorFactura);
                     DesktopPane.add(eliF);
                 }
             } else {
@@ -764,7 +764,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (crearF == null || crearF.isVisible() == false) {
-                    crearF = new CrearFactura(controladorFactura, controladorVeterinario, controladorCliente, controladorMascota, controladorServicio);
+                    crearF = new FacturaCrear(controladorFactura, null, controladorCliente, controladorVeterinario, controladorMascota, controladorServicio);
                     DesktopPane.add(crearF);
                 }
             } else {
@@ -781,7 +781,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (buscarF == null || buscarF.isVisible() == false) {
-                    buscarF = new BuscarFactura(controladorFactura);
+                    buscarF = new FacturaBuscar(controladorFactura);
                     DesktopPane.add(buscarF);
                 }
             } else {

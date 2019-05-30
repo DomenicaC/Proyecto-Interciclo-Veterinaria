@@ -5,7 +5,7 @@
  */
 package ec.edu.ups.controladores;
 
-import ec.edu.ups.Modelo.FFactura;
+import ec.edu.ups.Modelo.FDetalle;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -15,19 +15,19 @@ import java.util.Set;
  *
  * @author Domenica Cañizares
  */
-public class ControladorFactura {
-    private Set<FFactura> lista;
+public class ControladorFacDetalle {
+     private Set<FDetalle> lista;
     private int codigo;
+
+    public Set<FDetalle> getLista() {
+        return lista;
+    }
 
     public int getCodigo() {
         return codigo;
     }
-    
-    public Set<FFactura> getFFactura(){
-        return lista;
-    }
-    
-    public ControladorFactura() {
+
+    public ControladorFacDetalle() {
         lista= new HashSet<>();
         codigo = 0;
     }
@@ -40,16 +40,16 @@ public class ControladorFactura {
     }
     
     //crear un nuevo objeto en la lista
-    public void create(FFactura objeto){
+    public void create(FDetalle objeto){
         codigo ++;
-        objeto.setRuc(codigo);
+        objeto.setCodigo(codigo);
         lista.add(objeto);
     }
     
     //leer el codigo para buscar la factura
-    public FFactura read(int codigo){
-        for (FFactura fac : lista) {
-            if (fac.getRuc()== codigo) {
+    public FDetalle read(int codigo){
+        for (FDetalle fac : lista) {
+            if (fac.getCodigo()== codigo) {
                 return fac;
             }
         }
@@ -58,8 +58,8 @@ public class ControladorFactura {
     
     //eliminar la factura si contiene un error
     public void delete(int codigo){
-        for (FFactura fac : lista) {
-            if (fac.getRuc()== codigo){
+        for (FDetalle fac : lista) {
+            if (fac.getCodigo()== codigo){
                 lista.remove(fac);
                 break;
             }

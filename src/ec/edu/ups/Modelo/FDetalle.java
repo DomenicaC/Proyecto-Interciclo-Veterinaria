@@ -9,34 +9,28 @@ package ec.edu.ups.Modelo;
  *
  * @author Domenica Cañizares
  */
-public class FacturaDetalle {
-
-    private Servicio serv;
-
+public class FDetalle {
+    //cosas de la facturaD
     private int codigo;
     private int cantidad;
-    private double subtotal2;
-    private double total3;
+    private int totalCP;
 
-    public FacturaDetalle() {
+    //clase
+    private Servicio serv;
+    
+    public FDetalle() {
     }
 
-    public FacturaDetalle(Servicio serv,int codigo, int cantidad, double subtotal2, double total3) {
-        this.serv = serv;
+    //constructor
+
+    public FDetalle(int codigo, int cantidad, int totalCP, Servicio serv) {
         this.codigo = codigo;
         this.cantidad = cantidad;
-        this.subtotal2 = subtotal2;
-        this.total3 = total3;
+        this.totalCP = totalCP;
+        this.serv = serv;
     }
-    
-     public Servicio getServ() {
-     return serv;
-     }
 
-     public void setServ(Servicio serv) {
-     this.serv = serv;
-     }
-
+    //get and set
     public int getCodigo() {
         return codigo;
     }
@@ -53,25 +47,25 @@ public class FacturaDetalle {
         this.cantidad = cantidad;
     }
 
-    public double getSubtotal() {
-        return subtotal2;
+    public int getTotalCP() {
+        return totalCP;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal2 = subtotal2;
+    public void setTotalCP(int totalCP) {
+        this.totalCP = totalCP;
     }
 
-    public double getTotal() {
-        return total3;
+    public Servicio getServ() {
+        return serv;
     }
 
-    public void setTotal(double total) {
-        this.total3 = total3;
+    public void setServ(Servicio serv) {
+        this.serv = serv;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
         hash = 97 * hash + this.codigo;
         return hash;
     }
@@ -84,7 +78,7 @@ public class FacturaDetalle {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final FacturaDetalle other = (FacturaDetalle) obj;
+        final FDetalle other = (FDetalle) obj;
         if (this.codigo != other.codigo) {
             return false;
         }
@@ -93,8 +87,7 @@ public class FacturaDetalle {
 
     @Override
     public String toString() {
-        return "FacturaDetalle{" + "serv=" + serv + ", codigo=" + codigo + ", cantidad=" + cantidad + ", subtotal=" + subtotal2 + ", total=" + total3 + '}';
+        return "FDetalle{" + "codigo=" + codigo + ", cantidad=" + cantidad + ", totalCP=" + totalCP + ", serv=" + serv + '}';
     }
-    
     
 }
