@@ -46,7 +46,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         labeldireccion.setText(mensajes.getString("cliente.direccion"));
         labeltelefono.setText(mensajes.getString("cliente.telefono"));
         labelgenero.setText(mensajes.getString("cliente.genero"));
-        botonactualizar.setText(mensajes.getString("boton.eliminar"));
+        botonactualizar.setText(mensajes.getString("boton.modificar"));
         botoncancelar.setText(mensajes.getString("boton.cancelar"));
         botonbuscar.setText(mensajes.getString("boton.buscar"));
     }
@@ -318,8 +318,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
             txttelefono.setText(cliente.getTelefono());
             txtedad.setText(Integer.toString(cliente.getEdad()));
             txtgenero.setText(cliente.getGenero());
-            controladorCliente.delete(Integer.parseInt(txtcodigo.getText()));
-
+            
         }
 
     }//GEN-LAST:event_botonbuscarActionPerformed
