@@ -8,6 +8,7 @@ package ec.edu.ups.vista.veterinario;
 import ec.edu.ups.Modelo.Veterinario;
 import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +22,9 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
      */
     private ControladorVeterinario controladorveterinario;
    public static String x;
-    public ModificarVeterinario(ControladorVeterinario controladorveterinario) {
+    private ResourceBundle mensajes;
+    
+    public ModificarVeterinario(ControladorVeterinario controladorveterinario, ResourceBundle mensajes) {
         initComponents();
         this.controladorveterinario=controladorveterinario;
         x="x";
@@ -29,6 +32,23 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
         int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
         setLocation(a/2,b/2);
         setVisible(true);
+   this.mensajes = mensajes;
+        cambiarIdioma(mensajes);
+    }
+
+    public void cambiarIdioma(ResourceBundle mensajes) {
+        labelm.setText(mensajes.getString("titulov.modificar"));
+        labelcodigo.setText(mensajes.getString("veterinario.codigo"));
+        labelnombre.setText(mensajes.getString("veterinario.nombre"));
+        labelapellido.setText(mensajes.getString("veterinario.apellido"));
+        labelcedula.setText(mensajes.getString("veterinario.cedula"));
+        labeledad.setText(mensajes.getString("veterinario.edad"));
+        labelsueldo.setText(mensajes.getString("veterinario.sueldo"));
+        labeltitulo.setText(mensajes.getString("veterinario.titulo"));
+        bb.setText(mensajes.getString("veterinario.bbuscar"));
+        bc.setText(mensajes.getString("veterinario.bcancelar"));
+        bm.setText(mensajes.getString("veterinario.bmodificar"));
+
     }
 
     /**
@@ -52,13 +72,13 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
         txtedad = new javax.swing.JTextField();
         labeledad = new javax.swing.JLabel();
         txtsueldo = new javax.swing.JTextField();
-        labeldireccion = new javax.swing.JLabel();
-        labelgenero = new javax.swing.JLabel();
+        labelsueldo = new javax.swing.JLabel();
+        labeltitulo = new javax.swing.JLabel();
         txttitulo = new javax.swing.JTextField();
-        cancelar = new javax.swing.JButton();
-        BM = new javax.swing.JButton();
-        Aceptar1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        bc = new javax.swing.JButton();
+        bm = new javax.swing.JButton();
+        bb = new javax.swing.JButton();
+        labelm = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -87,6 +107,7 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
 
         txtcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtcodigo.setEnabled(false);
         jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 162, 28));
 
         labelcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -134,62 +155,62 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
         txtsueldo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtsueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 196, 30));
 
-        labeldireccion.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        labeldireccion.setText("Sueldo:");
-        jPanel1.add(labeldireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 30));
+        labelsueldo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labelsueldo.setText("Sueldo:");
+        jPanel1.add(labelsueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 30));
 
-        labelgenero.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        labelgenero.setText("Titulo:");
-        jPanel1.add(labelgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, 30));
+        labeltitulo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labeltitulo.setText("Titulo:");
+        jPanel1.add(labeltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, 30));
 
         txttitulo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txttitulo.setToolTipText("");
         txttitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(txttitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 196, 31));
 
-        cancelar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        cancelar.setText("Cancelar");
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
+        bc.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        bc.setText("Cancelar");
+        bc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarActionPerformed(evt);
+                bcActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 150, 40));
+        jPanel1.add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 150, 40));
 
-        BM.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        BM.setText("Modificar");
-        BM.addActionListener(new java.awt.event.ActionListener() {
+        bm.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        bm.setText("Modificar");
+        bm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BMActionPerformed(evt);
+                bmActionPerformed(evt);
             }
         });
-        jPanel1.add(BM, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 150, 40));
+        jPanel1.add(bm, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 150, 40));
 
-        Aceptar1.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        Aceptar1.setText("Buscar");
-        Aceptar1.addActionListener(new java.awt.event.ActionListener() {
+        bb.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        bb.setText("Buscar");
+        bb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Aceptar1ActionPerformed(evt);
+                bbActionPerformed(evt);
             }
         });
-        jPanel1.add(Aceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 140, 30));
+        jPanel1.add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 140, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 650, 290));
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        jLabel1.setText("MODIFICAR VETERINARIO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+        labelm.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        labelm.setText("MODIFICAR VETERINARIO");
+        getContentPane().add(labelm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+    private void bcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcActionPerformed
         // TODO add your handling code here:
 
         dispose();
-    }//GEN-LAST:event_cancelarActionPerformed
+    }//GEN-LAST:event_bcActionPerformed
 
-    private void BMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMActionPerformed
+    private void bmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmActionPerformed
         // TODO add your handling code here:
         Veterinario veterinario = controladorveterinario.read(Integer.parseInt(txtcodigo.getText()));
         veterinario.setNombre(txtnombre.getText());
@@ -207,9 +228,9 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
         txtedad.setText("");
         txtsueldo.setText("");
        txttitulo.setText("");
-    }//GEN-LAST:event_BMActionPerformed
+    }//GEN-LAST:event_bmActionPerformed
 
-    private void Aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aceptar1ActionPerformed
+    private void bbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbActionPerformed
         // TODO add your handling code here:
         String cedula = txtcedula.getText();
         Veterinario buscarv = controladorveterinario.readCedula(cedula);
@@ -219,7 +240,7 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
         txtedad.setText(String.valueOf(buscarv.getEdad()));
         txtsueldo.setText(String.valueOf(buscarv.getSueldo()));
         txttitulo.setText(buscarv.getTitulo());
-    }//GEN-LAST:event_Aceptar1ActionPerformed
+    }//GEN-LAST:event_bbActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         // TODO add your handling code here:
@@ -228,18 +249,18 @@ public class ModificarVeterinario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar1;
-    private javax.swing.JButton BM;
-    private javax.swing.JButton cancelar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bb;
+    private javax.swing.JButton bc;
+    private javax.swing.JButton bm;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelapellido;
     private javax.swing.JLabel labelcedula;
     private javax.swing.JLabel labelcodigo;
-    private javax.swing.JLabel labeldireccion;
     private javax.swing.JLabel labeledad;
-    private javax.swing.JLabel labelgenero;
+    private javax.swing.JLabel labelm;
     private javax.swing.JLabel labelnombre;
+    private javax.swing.JLabel labelsueldo;
+    private javax.swing.JLabel labeltitulo;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtcodigo;

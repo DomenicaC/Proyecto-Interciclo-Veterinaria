@@ -9,6 +9,7 @@ import ec.edu.ups.Modelo.Veterinario;
 import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.mascota.CrearMascota.x;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,7 +24,8 @@ public class CrearVeterinario extends javax.swing.JInternalFrame {
   
     private ControladorVeterinario controladorveterinario;
      public static String x;
-    public CrearVeterinario(ControladorVeterinario controladorveterinario) {
+       private ResourceBundle mensajes;
+    public CrearVeterinario(ControladorVeterinario controladorveterinario, ResourceBundle mensajes) {
 
         initComponents();
         
@@ -34,6 +36,22 @@ public class CrearVeterinario extends javax.swing.JInternalFrame {
         int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
         setLocation(a / 2, b / 2);
         setVisible(true);
+        
+        this.mensajes = mensajes;
+       cambiarIdioma(mensajes);
+    }
+    public void cambiarIdioma(ResourceBundle mensajes){
+        labelt.setText(mensajes.getString("titulov.crear"));
+        labelcodigo.setText(mensajes.getString("veterinario.codigo"));
+        labelnombre.setText(mensajes.getString("veterinario.nombre"));
+        labelapellido.setText(mensajes.getString("veterinario.apellido"));
+        labelcedula.setText(mensajes.getString("veterinario.cedula"));
+         labeledad.setText(mensajes.getString("veterinario.edad"));
+         labelsueldo.setText(mensajes.getString("veterinario.sueldo"));
+         labeltitulo.setText(mensajes.getString("veterinario.titulo"));
+        bcrear.setText(mensajes.getString("veterinario.bcrear"));
+        bcancelar.setText(mensajes.getString("veterinario.bcancelar"));
+        
     }
 
     /**
@@ -57,12 +75,12 @@ public class CrearVeterinario extends javax.swing.JInternalFrame {
         txtedad = new javax.swing.JTextField();
         labeledad = new javax.swing.JLabel();
         txtsueldo = new javax.swing.JTextField();
-        labeldireccion = new javax.swing.JLabel();
-        labelgenero = new javax.swing.JLabel();
+        labelsueldo = new javax.swing.JLabel();
+        labeltitulo = new javax.swing.JLabel();
         txttitulo = new javax.swing.JTextField();
-        botoncrearcliente = new javax.swing.JButton();
-        cancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        bcrear = new javax.swing.JButton();
+        bcancelar = new javax.swing.JButton();
+        labelt = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -139,47 +157,47 @@ public class CrearVeterinario extends javax.swing.JInternalFrame {
         txtsueldo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtsueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 196, 30));
 
-        labeldireccion.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        labeldireccion.setText("Sueldo:");
-        jPanel1.add(labeldireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 30));
+        labelsueldo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labelsueldo.setText("Sueldo:");
+        jPanel1.add(labelsueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 30));
 
-        labelgenero.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        labelgenero.setText("Titulo:");
-        jPanel1.add(labelgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, 30));
+        labeltitulo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labeltitulo.setText("Titulo:");
+        jPanel1.add(labeltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, 30));
 
         txttitulo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txttitulo.setToolTipText("");
         txttitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(txttitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 196, 31));
 
-        botoncrearcliente.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        botoncrearcliente.setText("Crear ");
-        botoncrearcliente.addActionListener(new java.awt.event.ActionListener() {
+        bcrear.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        bcrear.setText("Crear ");
+        bcrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botoncrearclienteActionPerformed(evt);
+                bcrearActionPerformed(evt);
             }
         });
-        jPanel1.add(botoncrearcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 126, -1));
+        jPanel1.add(bcrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 126, -1));
 
-        cancelar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        cancelar.setText("Cancelar");
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
+        bcancelar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        bcancelar.setText("Cancelar");
+        bcancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarActionPerformed(evt);
+                bcancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 150, -1));
+        jPanel1.add(bcancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 150, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 620, 260));
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        jLabel1.setText("CREAR VETERINARIO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        labelt.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        labelt.setText("CREAR VETERINARIO");
+        getContentPane().add(labelt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botoncrearclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncrearclienteActionPerformed
+    private void bcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcrearActionPerformed
         // TODO add your handling code here:
         Veterinario veterinario = new Veterinario();
         veterinario.setNombre(txtnombre.getText());
@@ -197,15 +215,15 @@ public class CrearVeterinario extends javax.swing.JInternalFrame {
         controladorveterinario.create(veterinario);
         txtcodigo.setText(Integer.toString(this.controladorveterinario.getCodigo()));
         JOptionPane.showMessageDialog(this, "Veterinario creado exitosamente", "Crear veterinario", JOptionPane.OK_OPTION);
-    }//GEN-LAST:event_botoncrearclienteActionPerformed
+    }//GEN-LAST:event_bcrearActionPerformed
 
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+    private void bcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcancelarActionPerformed
         // TODO add your handling code here:
 
         dispose();
         this.setVisible(false);
         x = null;
-    }//GEN-LAST:event_cancelarActionPerformed
+    }//GEN-LAST:event_bcancelarActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         // TODO add your handling code here:
@@ -214,17 +232,17 @@ public class CrearVeterinario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botoncrearcliente;
-    private javax.swing.JButton cancelar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bcancelar;
+    private javax.swing.JButton bcrear;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelapellido;
     private javax.swing.JLabel labelcedula;
     private javax.swing.JLabel labelcodigo;
-    private javax.swing.JLabel labeldireccion;
     private javax.swing.JLabel labeledad;
-    private javax.swing.JLabel labelgenero;
     private javax.swing.JLabel labelnombre;
+    private javax.swing.JLabel labelsueldo;
+    private javax.swing.JLabel labelt;
+    private javax.swing.JLabel labeltitulo;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtcodigo;

@@ -33,6 +33,8 @@ import ec.edu.ups.vista.veterinario.CrearVeterinario;
 import ec.edu.ups.vista.veterinario.EliminarVeterinario;
 import ec.edu.ups.vista.veterinario.ListaVeterinario;
 import ec.edu.ups.vista.veterinario.ModificarVeterinario;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -62,11 +64,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private EliminarVeterinario eliminarveterinario;
     private ListaVeterinario listaveterinario;
     private CrearServicio crearservicio;
-   private BuscarServicio buscarservicio;
-private ModificarServicio modificarservicio;
-            private EliminarServicio eliminarservicio;
-            private ListaServicio listaservicio;
-            /**
+    private BuscarServicio buscarservicio;
+    private ModificarServicio modificarservicio;
+    private EliminarServicio eliminarservicio;
+    private ListaServicio listaservicio;
+    /**
      * Creates new form VistaPrincipal
      */
 
@@ -75,8 +77,8 @@ private ModificarServicio modificarservicio;
     private ControladorCliente controladorCliente;
     private ControladorVeterinario controladorVeterinario;
     private ControladorFactura controladorFactura;
-    
-    
+    private Locale localizacion;
+    private ResourceBundle mensajes;
 
     public VistaPrincipal() {
         //Titulo
@@ -92,7 +94,34 @@ private ModificarServicio modificarservicio;
         controladorVeterinario = new ControladorVeterinario();
         controladorMascota = new ControladorMascota();
         controladorFactura = new ControladorFactura();
+
+        ////////intenracionalizacion
+        setLocationRelativeTo(null);
+        localizacion = new Locale("es", "EC");
+        Locale.setDefault(localizacion);
+        cambiaridioma();
+
     }
+
+    public void cambiaridioma() {
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idioma.mensajes", Locale.getDefault());
+        veterinario.setText(mensajes.getString("veterinario"));
+
+        vc.setText(mensajes.getString("veterinario.crear"));
+        vb.setText(mensajes.getString("veterinario.buscar"));
+        va.setText(mensajes.getString("veterinario.modificar"));
+        ve.setText(mensajes.getString("veterinario.eliminar"));
+        vl.setText(mensajes.getString("veterinario.lista"));
+        
+        servicio.setText(mensajes.getString("servicio"));
+        sc.setText(mensajes.getString("veterinario.crear"));
+        sb.setText(mensajes.getString("veterinario.buscar"));
+        sa.setText(mensajes.getString("veterinario.modificar"));
+        se.setText(mensajes.getString("veterinario.eliminar"));
+        sl.setText(mensajes.getString("veterinario.lista"));
+    }
+
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,18 +147,18 @@ private ModificarServicio modificarservicio;
         pasteMenuItem = new javax.swing.JMenuItem();
         deleteMenuItem = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentsMenuItem = new javax.swing.JMenuItem();
-        buscar = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        veterinario = new javax.swing.JMenu();
+        vc = new javax.swing.JMenuItem();
+        vb = new javax.swing.JMenuItem();
+        va = new javax.swing.JMenuItem();
+        ve = new javax.swing.JMenuItem();
+        vl = new javax.swing.JMenuItem();
+        servicio = new javax.swing.JMenu();
+        sc = new javax.swing.JMenuItem();
+        sb = new javax.swing.JMenuItem();
+        sa = new javax.swing.JMenuItem();
+        se = new javax.swing.JMenuItem();
+        sl = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         CrearFMenuItem = new javax.swing.JMenuItem();
         BuscarFMenuItem = new javax.swing.JMenuItem();
@@ -287,119 +316,119 @@ private ModificarServicio modificarservicio;
 
         menuBar.add(editMenu);
 
-        helpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/veterinario.png"))); // NOI18N
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Veterinario");
+        veterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/veterinario.png"))); // NOI18N
+        veterinario.setMnemonic('h');
+        veterinario.setText("Veterinario");
 
-        contentsMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        contentsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/veterinarioo.png"))); // NOI18N
-        contentsMenuItem.setMnemonic('c');
-        contentsMenuItem.setText("Crear");
-        contentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        vc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        vc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/veterinarioo.png"))); // NOI18N
+        vc.setMnemonic('c');
+        vc.setText("Crear");
+        vc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contentsMenuItemActionPerformed(evt);
+                vcActionPerformed(evt);
             }
         });
-        helpMenu.add(contentsMenuItem);
+        veterinario.add(vc);
 
-        buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/gato2.png"))); // NOI18N
-        buscar.setMnemonic('a');
-        buscar.setText("Buscar");
-        buscar.addActionListener(new java.awt.event.ActionListener() {
+        vb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        vb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/gato2.png"))); // NOI18N
+        vb.setMnemonic('a');
+        vb.setText("Buscar");
+        vb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarActionPerformed(evt);
+                vbActionPerformed(evt);
             }
         });
-        helpMenu.add(buscar);
+        veterinario.add(vb);
 
-        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar2.png"))); // NOI18N
-        jMenuItem4.setText("Actualizar");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        va.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        va.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar2.png"))); // NOI18N
+        va.setText("Actualizar");
+        va.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                vaActionPerformed(evt);
             }
         });
-        helpMenu.add(jMenuItem4);
+        veterinario.add(va);
 
-        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarr.png"))); // NOI18N
-        jMenuItem5.setText("Eliminar");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        ve.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarr.png"))); // NOI18N
+        ve.setText("Eliminar");
+        ve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                veActionPerformed(evt);
             }
         });
-        helpMenu.add(jMenuItem5);
+        veterinario.add(ve);
 
-        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarrrr.png"))); // NOI18N
-        jMenuItem6.setText("Listar");
-        jMenuItem6.setToolTipText("");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        vl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        vl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarrrr.png"))); // NOI18N
+        vl.setText("Listar");
+        vl.setToolTipText("");
+        vl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                vlActionPerformed(evt);
             }
         });
-        helpMenu.add(jMenuItem6);
+        veterinario.add(vl);
 
-        menuBar.add(helpMenu);
+        menuBar.add(veterinario);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/servicio.png"))); // NOI18N
-        jMenu1.setText("Servicio");
+        servicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/servicio.png"))); // NOI18N
+        servicio.setText("Servicio");
 
-        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/servicios.png"))); // NOI18N
-        jMenuItem7.setText("Crear");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        sc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        sc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/servicios.png"))); // NOI18N
+        sc.setText("Crear");
+        sc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                scActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem7);
+        servicio.add(sc);
 
-        jMenuItem11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscarservicio.png"))); // NOI18N
-        jMenuItem11.setText("Buscar");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        sb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        sb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscarservicio.png"))); // NOI18N
+        sb.setText("Buscar");
+        sb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                sbActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem11);
+        servicio.add(sb);
 
-        jMenuItem10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizarservicio.png"))); // NOI18N
-        jMenuItem10.setText("Actualizar");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        sa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        sa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizarservicio.png"))); // NOI18N
+        sa.setText("Actualizar");
+        sa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                saActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem10);
+        servicio.add(sa);
 
-        jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/elimarservicio.png"))); // NOI18N
-        jMenuItem9.setText("Eliminar");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        se.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        se.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/elimarservicio.png"))); // NOI18N
+        se.setText("Eliminar");
+        se.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                seActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem9);
+        servicio.add(se);
 
-        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarfac.png"))); // NOI18N
-        jMenuItem8.setText("Listar");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        sl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        sl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarfac.png"))); // NOI18N
+        sl.setText("Listar");
+        sl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                slActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem8);
+        servicio.add(sl);
 
-        menuBar.add(jMenu1);
+        menuBar.add(servicio);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/factura.png"))); // NOI18N
         jMenu2.setText("Factura");
@@ -450,6 +479,11 @@ private ModificarServicio modificarservicio;
 
         jMenuItem16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem16.setText("Ingles");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem16);
 
         menuBar.add(jMenu3);
@@ -475,7 +509,7 @@ private ModificarServicio modificarservicio;
         try {
             if (x == null) {
                 if (modificarCliente == null || modificarCliente.isVisible() == false) {
-                   modificarCliente = new ModificarCliente(controladorCliente);
+                    modificarCliente = new ModificarCliente(controladorCliente);
                     DesktopPane.add(modificarCliente);
                 }
             } else {
@@ -488,7 +522,7 @@ private ModificarServicio modificarservicio;
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         // TODO add your handling code here:
-    String x = CrearCliente.x;
+        String x = CrearCliente.x;
         try {
             if (x == null) {
                 if (crearCliente == null || crearCliente.isVisible() == false) {
@@ -503,73 +537,73 @@ private ModificarServicio modificarservicio;
         }
     }//GEN-LAST:event_openMenuItemActionPerformed
 
-    private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
+    private void vcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vcActionPerformed
         // TODO add your handling code here:
-         String x = CrearVeterinario.x;
+        String x = CrearVeterinario.x;
         try {
             if (x == null) {
                 if (crearveterinario == null || crearveterinario.isVisible() == false) {
-       crearveterinario = new CrearVeterinario(controladorVeterinario);
-       DesktopPane.add(crearveterinario);
-      }
+                    crearveterinario = new CrearVeterinario(controladorVeterinario, mensajes);
+                    DesktopPane.add(crearveterinario);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_contentsMenuItemActionPerformed
+    }//GEN-LAST:event_vcActionPerformed
 
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+    private void vbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vbActionPerformed
         // TODO add your handling code here:
-        String x =BuscarVeterinario.x;
-         try {
+        String x = BuscarVeterinario.x;
+        try {
             if (x == null) {
                 if (buscarveterinario == null || buscarveterinario.isVisible() == false) {
-        buscarveterinario = new BuscarVeterinario(controladorVeterinario);
-        DesktopPane.add(buscarveterinario);
-         }
+                    buscarveterinario = new BuscarVeterinario(controladorVeterinario,mensajes);
+                    DesktopPane.add(buscarveterinario);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_buscarActionPerformed
+    }//GEN-LAST:event_vbActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void vaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaActionPerformed
         // TODO add your handling code here:
         String x = ModificarVeterinario.x;
         try {
             if (x == null) {
                 if (modificarveterinario == null || modificarveterinario.isVisible() == false) {
-       modificarveterinario = new ModificarVeterinario(controladorVeterinario);
-       DesktopPane.add(modificarveterinario);
-      }
+                    modificarveterinario = new ModificarVeterinario(controladorVeterinario, mensajes);
+                    DesktopPane.add(modificarveterinario);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_vaActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void scActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scActionPerformed
         // TODO add your handling code here:
-      String x = CrearServicio.x;
+        String x = CrearServicio.x;
         try {
             if (x == null) {
                 if (crearservicio == null || crearservicio.isVisible() == false) {
-       crearservicio = new CrearServicio(controladorServicio);
-       DesktopPane.add(crearservicio);
-      }
+                    crearservicio = new CrearServicio(controladorServicio);
+                    DesktopPane.add(crearservicio);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_scActionPerformed
 
     private void EliFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliFMenuItemActionPerformed
         String x = eliF.x;
@@ -589,7 +623,7 @@ private ModificarServicio modificarservicio;
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
         // TODO add your handling code here:
-        
+
         String x = BuscarCliente.x;
         try {
             if (x == null) {
@@ -714,81 +748,81 @@ private ModificarServicio modificarservicio;
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+    private void saActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saActionPerformed
         // TODO add your handling code here:
-     String x = ModificarServicio.x;
+        String x = ModificarServicio.x;
         try {
             if (x == null) {
                 if (modificarservicio == null || modificarservicio.isVisible() == false) {
-       modificarservicio = new ModificarServicio(controladorServicio);
-       DesktopPane.add(modificarservicio);
-      }
+                    modificarservicio = new ModificarServicio(controladorServicio);
+                    DesktopPane.add(modificarservicio);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    }//GEN-LAST:event_saActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+    private void sbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbActionPerformed
         // TODO add your handling code here:
         String x = BuscarServicio.x;
         try {
             if (x == null) {
                 if (buscarservicio == null || buscarservicio.isVisible() == false) {
-       buscarservicio = new BuscarServicio(controladorServicio);
-       DesktopPane.add(buscarservicio);
-      }
+                    buscarservicio = new BuscarServicio(controladorServicio);
+                    DesktopPane.add(buscarservicio);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+    }//GEN-LAST:event_sbActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void seActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seActionPerformed
         // TODO add your handling code here:
-      String x = EliminarServicio.x;
+        String x = EliminarServicio.x;
         try {
             if (x == null) {
                 if (eliminarservicio == null || eliminarservicio.isVisible() == false) {
-       eliminarservicio = new EliminarServicio(controladorServicio);
-       DesktopPane.add(eliminarservicio);
-      }
+                    eliminarservicio = new EliminarServicio(controladorServicio);
+                    DesktopPane.add(eliminarservicio);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_seActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void slActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slActionPerformed
         // TODO add your handling code here:
-       String x = ListaServicio.x;
+        String x = ListaServicio.x;
         try {
             if (x == null) {
                 if (listaservicio == null || listaservicio.isVisible() == false) {
-       listaservicio = new ListaServicio(controladorServicio);
-       DesktopPane.add(listaservicio);
-      }
+                    listaservicio = new ListaServicio(controladorServicio);
+                    DesktopPane.add(listaservicio);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_slActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void vlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vlActionPerformed
         // TODO add your handling code here:
-       String x = ListaVeterinario.x;
+        String x = ListaVeterinario.x;
         try {
             if (x == null) {
                 if (listaveterinario == null || listaveterinario.isVisible() == false) {
-                   listaveterinario = new ListaVeterinario(controladorVeterinario);
+                    listaveterinario = new ListaVeterinario(controladorVeterinario,mensajes);
                     DesktopPane.add(listaveterinario);
                 }
             } else {
@@ -797,15 +831,15 @@ private ModificarServicio modificarservicio;
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_vlActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void veActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veActionPerformed
         // TODO add your handling code here:
         String x = EliminarVeterinario.x;
         try {
             if (x == null) {
                 if (eliminarveterinario == null || eliminarveterinario.isVisible() == false) {
-                   eliminarveterinario = new EliminarVeterinario(controladorVeterinario);
+                    eliminarveterinario = new EliminarVeterinario(controladorVeterinario,mensajes);
                     DesktopPane.add(eliminarveterinario);
                 }
             } else {
@@ -814,7 +848,7 @@ private ModificarServicio modificarservicio;
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_veActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -823,6 +857,10 @@ private ModificarServicio modificarservicio;
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         // TODO add your handling code here:
+        localizacion = new Locale("es", "EC");
+        Locale.setDefault(localizacion);
+        cambiaridioma();
+        System.out.println("Localizacion Forzada: " + Locale.getDefault().getLanguage());
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
@@ -878,6 +916,14 @@ private ModificarServicio modificarservicio;
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        // TODO add your handling code here:
+        localizacion = new Locale("en", "US");
+        Locale.setDefault(localizacion);
+        cambiaridioma();
+        System.out.println("Localizacion Forzada: " + Locale.getDefault().getLanguage());
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -918,36 +964,36 @@ private ModificarServicio modificarservicio;
     private javax.swing.JMenuItem CrearFMenuItem;
     public static javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JMenuItem EliFMenuItem;
-    private javax.swing.JMenuItem buscar;
-    private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
+    private javax.swing.JMenuItem sa;
     private javax.swing.JMenuItem saveAsMenuItem;
+    private javax.swing.JMenuItem sb;
+    private javax.swing.JMenuItem sc;
+    private javax.swing.JMenuItem se;
+    private javax.swing.JMenu servicio;
+    private javax.swing.JMenuItem sl;
+    private javax.swing.JMenuItem va;
+    private javax.swing.JMenuItem vb;
+    private javax.swing.JMenuItem vc;
+    private javax.swing.JMenuItem ve;
+    private javax.swing.JMenu veterinario;
+    private javax.swing.JMenuItem vl;
     // End of variables declaration//GEN-END:variables
 
 }
