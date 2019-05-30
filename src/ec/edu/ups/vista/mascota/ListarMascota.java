@@ -47,7 +47,8 @@ private ResourceBundle mensajes;
             Object[] datos = {mascota.getCodigo(),
                 mascota.getNombre(),
                 mascota.getEdad(),
-                mascota.getPeso()};
+                mascota.getPeso(),
+                mascota.getEspecie()};
                
             modelo.addRow(datos);
         }
@@ -98,7 +99,7 @@ private ResourceBundle mensajes;
 
             },
             new String [] {
-                "Codigo", "Nombre", "Edad", "Peso"
+                "Codigo", "Nombre", "Edad", "Peso", "Especie"
             }
         ));
         tblmascota.setEnabled(false);

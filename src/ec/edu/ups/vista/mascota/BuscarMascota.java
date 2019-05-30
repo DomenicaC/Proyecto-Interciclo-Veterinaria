@@ -44,6 +44,7 @@ public class BuscarMascota extends javax.swing.JInternalFrame {
         jnombre.setText(mensajes.getString("servicio.nombre"));        
         jpeso.setText(mensajes.getString("item.peso"));
         jedad.setText(mensajes.getString("label.edad"));
+        jespecie.setText(mensajes.getString("label.especie"));
         btnbuscar.setText(mensajes.getString("boton.buscar"));
         btncancelar.setText(mensajes.getString("boton.cancelar"));
     }
@@ -70,6 +71,8 @@ public class BuscarMascota extends javax.swing.JInternalFrame {
         btnbuscar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
         jdesu = new javax.swing.JLabel();
+        jespecie = new javax.swing.JLabel();
+        txtspecie = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -125,6 +128,12 @@ public class BuscarMascota extends javax.swing.JInternalFrame {
         jdesu.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jdesu.setText("de su mascota:");
 
+        jespecie.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jespecie.setText("Especie");
+
+        txtspecie.setEditable(false);
+        txtspecie.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -170,6 +179,12 @@ public class BuscarMascota extends javax.swing.JInternalFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(116, 116, 116))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jespecie)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtspecie)
+                .addGap(116, 116, 116))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,19 +196,23 @@ public class BuscarMascota extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jdesu, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtcodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jnombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jnombre)
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jedad)
                     .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpeso))
-                .addGap(18, 18, 18)
+                    .addComponent(jpeso)
+                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jespecie)
+                    .addComponent(txtspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnbuscar)
                     .addComponent(btncancelar))
@@ -237,6 +256,7 @@ public class BuscarMascota extends javax.swing.JInternalFrame {
             txtedad.setText(Integer.toString(mascota.getEdad()));
             txtnombre.setText(mascota.getNombre());
             txtpeso.setText(Double.toString(mascota.getPeso()));
+            txtspecie.setText(mascota.getEspecie());
         }
 
     }//GEN-LAST:event_btnbuscarActionPerformed
@@ -255,6 +275,7 @@ public class BuscarMascota extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jdesu;
     private javax.swing.JLabel jedad;
+    private javax.swing.JLabel jespecie;
     private javax.swing.JLabel jingrese;
     private javax.swing.JLabel jnombre;
     private javax.swing.JLabel jpeso;
@@ -263,5 +284,6 @@ public class BuscarMascota extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtedad;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtpeso;
+    private javax.swing.JTextField txtspecie;
     // End of variables declaration//GEN-END:variables
 }

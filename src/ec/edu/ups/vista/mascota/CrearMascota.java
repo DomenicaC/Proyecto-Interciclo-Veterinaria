@@ -42,6 +42,7 @@ private ResourceBundle mensajes;
         jcodigo.setText(mensajes.getString("servicio.codigo"));
         jpeso.setText(mensajes.getString("item.peso"));
         jedad.setText(mensajes.getString("label.edad"));
+        jespecie.setText(mensajes.getString("label.especie"));
         btncrear.setText(mensajes.getString("item.crear"));
         btncancelar.setText(mensajes.getString("boton.cancelar"));
     }
@@ -66,6 +67,8 @@ private ResourceBundle mensajes;
         txtpeso = new javax.swing.JTextField();
         btncrear = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
+        jespecie = new javax.swing.JLabel();
+        txtspecie = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -130,17 +133,17 @@ private ResourceBundle mensajes;
             }
         });
 
+        jespecie.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jespecie.setText("Especie");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btncancelar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -150,14 +153,22 @@ private ResourceBundle mensajes;
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btncrear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jpeso)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jespecie)
+                                    .addComponent(jpeso))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtpeso, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(txtspecie))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addComponent(jcodigo)))
+                        .addComponent(jcodigo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(btncrear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btncancelar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(txtcodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -184,9 +195,13 @@ private ResourceBundle mensajes;
                         .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btncancelar)
-                    .addComponent(btncrear))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(jespecie)
+                    .addComponent(txtspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btncrear)
+                    .addComponent(btncancelar))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -231,10 +246,12 @@ private ResourceBundle mensajes;
         mascota.setEdad(Integer.parseInt(txtedad.getText()));
         mascota.setNombre(txtnombre.getText());
         mascota.setPeso(Double.parseDouble(txtpeso.getText()));
+        mascota.setEspecie(txtspecie.getText());
         //Limpiamos las cajas de texto para una nueva mascota
         txtedad.setText("");
         txtpeso.setText("");
         txtnombre.setText("");
+        txtspecie.setText("");
         //Llamamos al controlador para crear la mascota
         controladorMascota.create(mascota);
         //Enviamos el codigo
@@ -257,6 +274,7 @@ private ResourceBundle mensajes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jcodigo;
     private javax.swing.JLabel jedad;
+    private javax.swing.JLabel jespecie;
     private javax.swing.JLabel jnombre;
     private javax.swing.JLabel jpeso;
     private javax.swing.JLabel jtitulo;
@@ -264,5 +282,6 @@ private ResourceBundle mensajes;
     private javax.swing.JTextField txtedad;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtpeso;
+    private javax.swing.JTextField txtspecie;
     // End of variables declaration//GEN-END:variables
 }

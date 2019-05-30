@@ -127,14 +127,16 @@
                       <Component id="jpeso" min="-2" max="-2" attributes="0"/>
                       <Component id="jedad" min="-2" max="-2" attributes="0"/>
                       <Component id="jnombre" min="-2" max="-2" attributes="0"/>
+                      <Component id="jespecie" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="txtnombre" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="txtedad" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="txtpeso" min="-2" pref="140" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txtspecie" max="32767" attributes="0"/>
+                      <Component id="txtnombre" alignment="0" pref="140" max="32767" attributes="0"/>
+                      <Component id="txtedad" alignment="0" pref="140" max="32767" attributes="0"/>
+                      <Component id="txtpeso" alignment="0" pref="140" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="93" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -156,7 +158,12 @@
                       <Component id="jpeso" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtpeso" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jespecie" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtspecie" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -194,6 +201,20 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtpeso">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jespecie">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Especie:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtspecie">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

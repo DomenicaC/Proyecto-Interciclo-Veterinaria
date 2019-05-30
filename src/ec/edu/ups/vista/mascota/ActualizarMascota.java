@@ -42,6 +42,7 @@ private ResourceBundle mensajes;
         jnombre.setText(mensajes.getString("servicio.nombre"));        
         jpeso.setText(mensajes.getString("item.peso"));
         jedad.setText(mensajes.getString("label.edad"));
+        jespecie.setText(mensajes.getString("label.especie"));
         btnbuscar.setText(mensajes.getString("boton.buscar"));
         btncancelar.setText(mensajes.getString("boton.cancelar"));
         btnactualizar.setText(mensajes.getString("boton.modificar"));
@@ -67,6 +68,8 @@ private ResourceBundle mensajes;
         txtedad = new javax.swing.JTextField();
         jpeso = new javax.swing.JLabel();
         txtpeso = new javax.swing.JTextField();
+        jespecie = new javax.swing.JLabel();
+        txtspecie = new javax.swing.JTextField();
         jtitulo = new javax.swing.JLabel();
         jingrese = new javax.swing.JLabel();
         jdes = new javax.swing.JLabel();
@@ -119,6 +122,12 @@ private ResourceBundle mensajes;
         jpeso.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jpeso.setText("Peso:");
 
+        jespecie.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jespecie.setText("Especie:");
+
+        txtspecie.setEditable(false);
+        txtspecie.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,13 +137,15 @@ private ResourceBundle mensajes;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jpeso)
                     .addComponent(jedad)
-                    .addComponent(jnombre))
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                    .addComponent(jnombre)
+                    .addComponent(jespecie))
+                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtspecie)
+                    .addComponent(txtnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(txtedad, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(txtpeso, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +162,11 @@ private ResourceBundle mensajes;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jpeso)
                     .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jespecie)
+                    .addComponent(txtspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jtitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
@@ -255,6 +270,7 @@ private ResourceBundle mensajes;
             txtedad.setText(Integer.toString(mascota.getEdad()));
             txtnombre.setText(mascota.getNombre());
             txtpeso.setText(Double.toString(mascota.getPeso()));
+            txtspecie.setText(mascota.getEspecie());
         }
     }//GEN-LAST:event_btnbuscarActionPerformed
 
@@ -270,11 +286,13 @@ private ResourceBundle mensajes;
         mascota.setEdad(Integer.parseInt(txtedad.getText()));
         mascota.setNombre(txtnombre.getText());
         mascota.setPeso(Double.parseDouble(txtpeso.getText()));
+        mascota.setEspecie(txtspecie.getText());
         controladorMascota.update(mascota);
         txtcodigoactu.setText("");
         txtedad.setText("");
         txtnombre.setText("");
         txtpeso.setText("");
+        txtspecie.setText("");
         JOptionPane.showMessageDialog(null, "Mascota Actualizada");
     }//GEN-LAST:event_btnactualizarActionPerformed
 
@@ -295,6 +313,7 @@ private ResourceBundle mensajes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jdes;
     private javax.swing.JLabel jedad;
+    private javax.swing.JLabel jespecie;
     private javax.swing.JLabel jingrese;
     private javax.swing.JLabel jnombre;
     private javax.swing.JLabel jpeso;
@@ -304,5 +323,6 @@ private ResourceBundle mensajes;
     private javax.swing.JTextField txtedad;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtpeso;
+    private javax.swing.JTextField txtspecie;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,16 +15,18 @@ public class Mascota {
     private int codigo;
     private int edad;
     private double peso;
+    private String especie;
 
     public Mascota() {
 
     }
 
-    public Mascota(String nombre, int codigo, int edad, double peso) {
+    public Mascota(String nombre, int codigo, int edad, double peso, String especie) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.edad = edad;
         this.peso = peso;
+        this.especie = especie;
     }
 
     public String getNombre() {
@@ -59,34 +61,17 @@ public class Mascota {
         this.peso = peso;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.codigo;
-        return hash;
+    public String getEspecie() {
+        return especie;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Mascota other = (Mascota) obj;
-        if (this.codigo != other.codigo) {
-            return false;
-        }
-        return true;
+    public void setEspecie(String especie) {
+        this.especie = especie;
     }
 
     @Override
     public String toString() {
-        return "Mascota{" + "nombre=" + nombre + ", codigo=" + codigo + ", edad=" + edad + ", peso=" + peso + '}';
+        return "Mascota{" + "nombre=" + nombre + ", codigo=" + codigo + ", edad=" + edad + ", peso=" + peso + ", especie=" + especie + '}';
     }
 
     
