@@ -21,14 +21,17 @@ public class ListaVeterinario extends javax.swing.JInternalFrame {
      * Creates new form ListaVeterinario
      */
     private ControladorVeterinario controladorveterinario;
-    
+    public static String x;
     public ListaVeterinario(ControladorVeterinario controladorveterinario) {
         initComponents();
+        x="x";
          int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
         int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
         setLocation(a/2,b/2);
+        setVisible(true);
         this.controladorveterinario = controladorveterinario;
         llenarDatos();
+        
     }
 public void llenarDatos() {
         DefaultTableModel modelo = (DefaultTableModel) tablaveterinario.getModel();
@@ -59,6 +62,23 @@ public void llenarDatos() {
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tablaveterinario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -82,6 +102,11 @@ public void llenarDatos() {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // TODO add your handling code here:
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

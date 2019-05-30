@@ -8,6 +8,7 @@ package ec.edu.ups.vista.veterinario;
 import ec.edu.ups.Modelo.Veterinario;
 import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
+import static ec.edu.ups.vista.mascota.CrearMascota.x;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,15 +20,20 @@ public class CrearVeterinario extends javax.swing.JInternalFrame {
     /**
      * Creates new form CrearVeterinario
      */
+  
     private ControladorVeterinario controladorveterinario;
-
+     public static String x;
     public CrearVeterinario(ControladorVeterinario controladorveterinario) {
+
         initComponents();
+        
         this.controladorveterinario = controladorveterinario;
         txtcodigo.setText(Integer.toString(this.controladorveterinario.getCodigo()));
-         int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
-        int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
-        setLocation(a/2,b/2);
+        x = "x";
+        int a = VistaPrincipal.DesktopPane.getWidth() - this.getWidth();
+        int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
+        setLocation(a / 2, b / 2);
+        setVisible(true);
     }
 
     /**
@@ -59,6 +65,25 @@ public class CrearVeterinario extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -178,7 +203,14 @@ public class CrearVeterinario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         dispose();
+        this.setVisible(false);
+        x = null;
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

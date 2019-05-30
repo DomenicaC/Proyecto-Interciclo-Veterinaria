@@ -56,7 +56,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private EliminarCliente eliminarCliente;
     private ModificarCliente modificarCliente;
     private ListarCliente listarCliente;
-
+    private CrearVeterinario crearveterinario;
+    private BuscarVeterinario buscarveterinario;
+    private ModificarVeterinario modificarveterinario;
+    private EliminarVeterinario eliminarveterinario;
+    private ListaVeterinario listaveterinario;
     /**
      * Creates new form VistaPrincipal
      */
@@ -466,7 +470,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (modificarCliente == null || modificarCliente.isVisible() == false) {
-                    modificarCliente = new ModificarCliente(controladorCliente);
+                   modificarCliente = new ModificarCliente(controladorCliente);
                     DesktopPane.add(modificarCliente);
                 }
             } else {
@@ -496,23 +500,53 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
         // TODO add your handling code here:
-        CrearVeterinario crearv = new CrearVeterinario(controladorVeterinario);
-        crearv.setVisible(true);
-        DesktopPane.add(crearv);
+         String x = CrearVeterinario.x;
+        try {
+            if (x == null) {
+                if (crearveterinario == null || crearveterinario.isVisible() == false) {
+       crearveterinario = new CrearVeterinario(controladorVeterinario);
+       DesktopPane.add(crearveterinario);
+      }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_contentsMenuItemActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
-        BuscarVeterinario crear = new BuscarVeterinario(controladorVeterinario);
-        crear.setVisible(true);
-        DesktopPane.add(crear);
+        String x =BuscarVeterinario.x;
+         try {
+            if (x == null) {
+                if (buscarveterinario == null || buscarveterinario.isVisible() == false) {
+        buscarveterinario = new BuscarVeterinario(controladorVeterinario);
+        DesktopPane.add(buscarveterinario);
+         }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_buscarActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        ModificarVeterinario modificarv = new ModificarVeterinario(controladorVeterinario);
-        modificarv.setVisible(true);
-        DesktopPane.add(modificarv);
+        String x = ModificarVeterinario.x;
+        try {
+            if (x == null) {
+                if (modificarveterinario == null || modificarveterinario.isVisible() == false) {
+       modificarveterinario = new ModificarVeterinario(controladorVeterinario);
+       DesktopPane.add(modificarveterinario);
+      }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -695,16 +729,36 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        ListaVeterinario listav = new ListaVeterinario(controladorVeterinario);
-        listav.setVisible(true);
-        DesktopPane.add(listav);
+       String x = ListaVeterinario.x;
+        try {
+            if (x == null) {
+                if (listaveterinario == null || listaveterinario.isVisible() == false) {
+                   listaveterinario = new ListaVeterinario(controladorVeterinario);
+                    DesktopPane.add(listaveterinario);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        EliminarVeterinario eliminarv = new EliminarVeterinario(controladorVeterinario);
-        eliminarv.setVisible(true);
-        DesktopPane.add(eliminarv);
+        String x = EliminarVeterinario.x;
+        try {
+            if (x == null) {
+                if (eliminarveterinario == null || eliminarveterinario.isVisible() == false) {
+                   eliminarveterinario = new EliminarVeterinario(controladorVeterinario);
+                    DesktopPane.add(eliminarveterinario);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
