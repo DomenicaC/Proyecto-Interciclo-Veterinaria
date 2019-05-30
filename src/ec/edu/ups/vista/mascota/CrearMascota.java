@@ -19,21 +19,29 @@ public class CrearMascota extends javax.swing.JInternalFrame {
 public static String x;
 private ControladorMascota controladorMascota;
 private CrearMascota crearmas;
+private ResourceBundle mensajes;
       
     /**
      * Creates new form CrearMascota
      */
-    public CrearMascota(ControladorMascota controladorMascota) {
+    public CrearMascota(ControladorMascota controladorMascota, ResourceBundle mensajes) {
         initComponents();
+        this.mensajes= mensajes;
         x="x";
         int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
         int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
         setLocation(a/2,b/2);
         setVisible(true);
+        cambiaridioma(mensajes);
         this.controladorMascota= controladorMascota;
         txtcodigo2.setText(Integer.toString(this.controladorMascota.getCodigo()));
     }
-
+    public void cambiaridioma(ResourceBundle mensajes){
+        jtitulo.setText(mensajes.getString("tituloM.crear"));
+        jnombre.setText(mensajes.getString("servicio.nombre"));
+        jcodigo.setText(mensajes.getString("servicio.codigo"));
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,12 +51,12 @@ private CrearMascota crearmas;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jtitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jnombre = new javax.swing.JLabel();
+        jcodigo = new javax.swing.JLabel();
+        jedad = new javax.swing.JLabel();
+        jpeso = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         txtcodigo2 = new javax.swing.JTextField();
         txtedad = new javax.swing.JTextField();
@@ -77,22 +85,22 @@ private CrearMascota crearmas;
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        jLabel1.setText("Crear Mascota");
+        jtitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        jtitulo.setText("Crear Mascota");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel2.setText("Nombre:");
+        jnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jnombre.setText("Nombre:");
 
-        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel3.setText("Codigo");
+        jcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jcodigo.setText("Codigo");
 
-        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel4.setText("Edad:");
+        jedad.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jedad.setText("Edad:");
 
-        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel5.setText("Peso:");
+        jpeso.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jpeso.setText("Peso:");
 
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,8 +141,8 @@ private CrearMascota crearmas;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2))
+                                    .addComponent(jedad)
+                                    .addComponent(jnombre))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,11 +150,11 @@ private CrearMascota crearmas;
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(btncrear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
+                                    .addComponent(jpeso)
                                     .addGap(18, 18, 18)
                                     .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addComponent(jLabel3)))
+                        .addComponent(jcodigo)))
                 .addGap(18, 18, 18)
                 .addComponent(txtcodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -158,16 +166,16 @@ private CrearMascota crearmas;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3)
+                        .addComponent(jnombre)
+                        .addComponent(jcodigo)
                         .addComponent(txtcodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jedad)
                     .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addComponent(jpeso)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -189,14 +197,14 @@ private CrearMascota crearmas;
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
-                        .addComponent(jLabel1)))
+                        .addComponent(jtitulo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1)
+                .addComponent(jtitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -243,12 +251,12 @@ private CrearMascota crearmas;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btncrear;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jcodigo;
+    private javax.swing.JLabel jedad;
+    private javax.swing.JLabel jnombre;
+    private javax.swing.JLabel jpeso;
+    private javax.swing.JLabel jtitulo;
     private javax.swing.JTextField txtcodigo2;
     private javax.swing.JTextField txtedad;
     private javax.swing.JTextField txtnombre;

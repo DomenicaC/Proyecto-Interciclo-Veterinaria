@@ -119,6 +119,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         sa.setText(mensajes.getString("servicio.modificar"));
         se.setText(mensajes.getString("servicio.eliminar"));
         sl.setText(mensajes.getString("servicio.lista"));
+        
+        menumascota.setText(mensajes.getString("menu.mascota"));
+        itemcrear.setText(mensajes.getString("item.crear"));
+        itembuscar.setText(mensajes.getString("servicio.buscar"));
+        itemactualizar.setText(mensajes.getString("servicio.modificar"));
+        itemeliminar.setText(mensajes.getString("servicio.eliminar"));
+        itemlistar.setText(mensajes.getString("servicio.lista"));
     }
 
  
@@ -141,12 +148,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         exitMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menumascota = new javax.swing.JMenu();
+        itemcrear = new javax.swing.JMenuItem();
+        itembuscar = new javax.swing.JMenuItem();
+        itemactualizar = new javax.swing.JMenuItem();
+        itemeliminar = new javax.swing.JMenuItem();
+        itemlistar = new javax.swing.JMenuItem();
         veterinario = new javax.swing.JMenu();
         vc = new javax.swing.JMenuItem();
         vb = new javax.swing.JMenuItem();
@@ -256,65 +263,65 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/mascota.png"))); // NOI18N
-        editMenu.setMnemonic('e');
-        editMenu.setText("Mascota");
+        menumascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/mascota.png"))); // NOI18N
+        menumascota.setMnemonic('e');
+        menumascota.setText("Mascota");
 
-        cutMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/crearmascota.png"))); // NOI18N
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Crear");
-        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itemcrear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemcrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/crearmascota.png"))); // NOI18N
+        itemcrear.setMnemonic('t');
+        itemcrear.setText("Crear");
+        itemcrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cutMenuItemActionPerformed(evt);
+                itemcrearActionPerformed(evt);
             }
         });
-        editMenu.add(cutMenuItem);
+        menumascota.add(itemcrear);
 
-        copyMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        copyMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscar.png"))); // NOI18N
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Buscar");
-        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itembuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itembuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscar.png"))); // NOI18N
+        itembuscar.setMnemonic('y');
+        itembuscar.setText("Buscar");
+        itembuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                copyMenuItemActionPerformed(evt);
+                itembuscarActionPerformed(evt);
             }
         });
-        editMenu.add(copyMenuItem);
+        menumascota.add(itembuscar);
 
-        pasteMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        pasteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar.png"))); // NOI18N
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Actualizar");
-        pasteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itemactualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/actualizar.png"))); // NOI18N
+        itemactualizar.setMnemonic('p');
+        itemactualizar.setText("Actualizar");
+        itemactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pasteMenuItemActionPerformed(evt);
+                itemactualizarActionPerformed(evt);
             }
         });
-        editMenu.add(pasteMenuItem);
+        menumascota.add(itemactualizar);
 
-        deleteMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        deleteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Eliminar");
-        deleteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itemeliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemeliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/borrar.png"))); // NOI18N
+        itemeliminar.setMnemonic('d');
+        itemeliminar.setText("Eliminar");
+        itemeliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteMenuItemActionPerformed(evt);
+                itemeliminarActionPerformed(evt);
             }
         });
-        editMenu.add(deleteMenuItem);
+        menumascota.add(itemeliminar);
 
-        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
-        jMenuItem3.setText("Listar");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        itemlistar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemlistar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listar.png"))); // NOI18N
+        itemlistar.setText("Listar");
+        itemlistar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                itemlistarActionPerformed(evt);
             }
         });
-        editMenu.add(jMenuItem3);
+        menumascota.add(itemlistar);
 
-        menuBar.add(editMenu);
+        menuBar.add(menumascota);
 
         veterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/veterinario.png"))); // NOI18N
         veterinario.setMnemonic('h');
@@ -640,13 +647,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
-    private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
+    private void itemcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemcrearActionPerformed
         // TODO add your handling code here:
         String x = CrearMascota.x;
         try {
             if (x == null) {
                 if (crearMascota == null || crearMascota.isVisible() == false) {
-                    crearMascota = new CrearMascota(controladorMascota);
+                    crearMascota = new CrearMascota(controladorMascota, mensajes);
                     crearMascota.setVisible(true);
                     DesktopPane.add(crearMascota);
                     DesktopPane.moveToFront(crearMascota);
@@ -657,9 +664,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_cutMenuItemActionPerformed
+    }//GEN-LAST:event_itemcrearActionPerformed
 
-    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
+    private void itembuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itembuscarActionPerformed
         String x = buscarMascota.x;
         try {
             if (x == null) {
@@ -676,7 +683,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_copyMenuItemActionPerformed
+    }//GEN-LAST:event_itembuscarActionPerformed
 
     private void CrearFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearFMenuItemActionPerformed
         String x = crearF.x;
@@ -863,7 +870,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         System.out.println("Localizacion Forzada: " + Locale.getDefault().getLanguage());
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
-    private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
+    private void itemactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemactualizarActionPerformed
         // TODO add your handling code here:
         String x = actualizarMascota.x;
         try {
@@ -878,9 +885,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_pasteMenuItemActionPerformed
+    }//GEN-LAST:event_itemactualizarActionPerformed
 
-    private void deleteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItemActionPerformed
+    private void itemeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemeliminarActionPerformed
         // TODO add your handling code here:
         String x = borrarMascota.x;
         try {
@@ -895,9 +902,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_deleteMenuItemActionPerformed
+    }//GEN-LAST:event_itemeliminarActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void itemlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemlistarActionPerformed
         // TODO add your handling code here:
         String x = listarMascota.x;
         try {
@@ -914,7 +921,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_itemlistarActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
         // TODO add your handling code here:
@@ -964,12 +971,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem CrearFMenuItem;
     public static javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JMenuItem EliFMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuItem itemactualizar;
+    private javax.swing.JMenuItem itembuscar;
+    private javax.swing.JMenuItem itemcrear;
+    private javax.swing.JMenuItem itemeliminar;
+    private javax.swing.JMenuItem itemlistar;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -977,10 +985,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menumascota;
     private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem sa;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem sb;
