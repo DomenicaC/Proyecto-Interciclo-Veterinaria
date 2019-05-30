@@ -10,6 +10,7 @@ import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.cliente.CrearCliente.x;
 import java.util.ResourceBundle;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -26,8 +27,15 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
         public static String x;
         
         private ResourceBundle mensajes;
+         public ImageIcon imgs[];
     public EliminarServicio(ControladorServicio controladorservicio,ResourceBundle mensajes) {
         initComponents();
+        imgs = new ImageIcon[6];
+        imgs[1]= new ImageIcon("src/ec/edu/ups/imagenes/22.png");
+        imgs[2]= new ImageIcon("src/ec/edu/ups/imagenes/3.png");
+        imgs[3]= new ImageIcon("src/ec/edu/ups/imagenes/333.png");
+        imgs[4]= new ImageIcon("src/ec/edu/ups/imagenes/44.png");
+        imgs[5]= new ImageIcon("src/ec/edu/ups/imagenes/5555.png");
         this.controladorservicio = controladorservicio;
         x="x";
          int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
@@ -68,6 +76,7 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
         labelc = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
         be = new javax.swing.JButton();
+        imagen = new javax.swing.JLabel();
         le = new javax.swing.JLabel();
 
         setClosable(true);
@@ -104,7 +113,7 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
                 bcActionPerformed(evt);
             }
         });
-        jPanel1.add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 150, 40));
+        jPanel1.add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 150, 40));
 
         bb.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         bb.setText("Buscar");
@@ -113,7 +122,7 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
                 bbActionPerformed(evt);
             }
         });
-        jPanel1.add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 150, 40));
+        jPanel1.add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 150, 40));
 
         txtprecio.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtprecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -123,12 +132,12 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
                 txtprecioActionPerformed(evt);
             }
         });
-        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 210, 40));
+        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 210, 40));
 
         labelp.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelp.setText("PRECIO:");
         labelp.setToolTipText("");
-        jPanel1.add(labelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, 40));
+        jPanel1.add(labelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 40));
 
         txtnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -138,19 +147,19 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 210, 40));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 210, 40));
 
         labeln.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labeln.setText("NOMBRE:");
-        jPanel1.add(labeln, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, 40));
+        jPanel1.add(labeln, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 40));
 
         labelc.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelc.setText("CODIGO:");
-        jPanel1.add(labelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 90, 40));
+        jPanel1.add(labelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 40));
 
         txtcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 210, 40));
+        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 210, 40));
 
         be.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         be.setText("Eliminar");
@@ -159,13 +168,16 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
                 beActionPerformed(evt);
             }
         });
-        jPanel1.add(be, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 140, 40));
+        jPanel1.add(be, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 140, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 500, 320));
+        imagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 180, 250));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 530, 320));
 
         le.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
         le.setText("ELIMINAR SERVICIO");
-        getContentPane().add(le, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 500, 50));
+        getContentPane().add(le, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 500, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,10 +188,26 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
         this.dispose();
         x = null;
     }//GEN-LAST:event_bcActionPerformed
-
+ public void checar(){
+    if("baño".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[1]);
+    }
+    if("limpieza dental".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[2]);
+    }
+    if("corte de pelo".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[3]);
+    }
+    if("corte de uñas".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[4]);
+    }
+    if("comprar alimento".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[5]);
+    }
+ }
     private void bbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbActionPerformed
         // TODO add your handling code here:
-        
+      
         int codigo = Integer.parseInt(txtcodigo.getText());
         Servicio bservicio = controladorservicio.read(codigo);
         if (bservicio == null) {
@@ -188,6 +216,7 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
         txtnombre.setText(bservicio.getNombreservicio());
         txtprecio.setText(String.valueOf(bservicio.getPrecio()));
         }
+        checar();
     }//GEN-LAST:event_bbActionPerformed
 
     private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
@@ -201,7 +230,7 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
     private void beActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beActionPerformed
         // TODO add your handling code here:
          JPasswordField admin = new JPasswordField();
-      
+         
 if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar",JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION){
     
 }
@@ -211,6 +240,9 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
        txtcodigo.setText("");
         txtnombre.setText("");
         txtprecio.setText("");
+        checar();
+      
+        imagen.setIcon(null);
     }//GEN-LAST:event_beActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
@@ -223,6 +255,7 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
     private javax.swing.JButton bb;
     private javax.swing.JButton bc;
     private javax.swing.JButton be;
+    private javax.swing.JLabel imagen;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelc;
     private javax.swing.JLabel labeln;

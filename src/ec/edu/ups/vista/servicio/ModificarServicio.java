@@ -10,6 +10,7 @@ import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.cliente.CrearCliente.x;
 import java.util.ResourceBundle;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +25,7 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
     private ControladorServicio controladorservicio;
     public static String x;
     private ResourceBundle mensajes;
+    public ImageIcon imgs[];
 
     public ModificarServicio(ControladorServicio controladorservicio, ResourceBundle mensajes) {
         initComponents();
@@ -35,6 +37,12 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         setVisible(true);
         this.mensajes = mensajes;
         cambiarIdioma(mensajes);
+        imgs = new ImageIcon[6];
+        imgs[1]= new ImageIcon("src/ec/edu/ups/imagenes/22.png");
+        imgs[2]= new ImageIcon("src/ec/edu/ups/imagenes/3.png");
+        imgs[3]= new ImageIcon("src/ec/edu/ups/imagenes/333.png");
+        imgs[4]= new ImageIcon("src/ec/edu/ups/imagenes/44.png");
+        imgs[5]= new ImageIcon("src/ec/edu/ups/imagenes/5555.png");
     }
 
     public void cambiarIdioma(ResourceBundle mensajes) {
@@ -47,6 +55,24 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         bc.setText(mensajes.getString("servicio.bcancelar"));
         bm.setText(mensajes.getString("servicio.bmodificar"));
     }
+    public void checar(){
+    if("baño".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[1]);
+    }
+    if("limpieza dental".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[2]);
+    }
+    if("corte de pelo".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[3]);
+    }
+    if("corte de uñas".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[4]);
+    }
+    if("comprar alimento".equals(txtnombre.getText())){
+        imagen.setIcon(imgs[5]);
+    }
+ }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,6 +93,7 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         labelc = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
         bm = new javax.swing.JButton();
+        imagen = new javax.swing.JLabel();
         lm = new javax.swing.JLabel();
 
         setClosable(true);
@@ -101,7 +128,7 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
                 bcActionPerformed(evt);
             }
         });
-        jPanel1.add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 150, 40));
+        jPanel1.add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 150, 40));
 
         bb.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         bb.setText("Buscar");
@@ -110,7 +137,7 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
                 bbActionPerformed(evt);
             }
         });
-        jPanel1.add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 150, 40));
+        jPanel1.add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 150, 40));
 
         txtprecio.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtprecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -119,12 +146,12 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
                 txtprecioActionPerformed(evt);
             }
         });
-        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 220, 40));
+        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 220, 40));
 
         labelp.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelp.setText("PRECIO:");
         labelp.setToolTipText("");
-        jPanel1.add(labelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 90, 40));
+        jPanel1.add(labelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 90, 40));
 
         txtnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -133,19 +160,24 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
                 txtnombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 220, 40));
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtnombreKeyPressed(evt);
+            }
+        });
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 220, 40));
 
         labeln.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labeln.setText("NOMBRE:");
-        jPanel1.add(labeln, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 100, 40));
+        jPanel1.add(labeln, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 100, 40));
 
         labelc.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         labelc.setText("CODIGO:");
-        jPanel1.add(labelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 90, 40));
+        jPanel1.add(labelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 90, 40));
 
         txtcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 220, 40));
+        jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 220, 40));
 
         bm.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         bm.setText("Modificar");
@@ -154,9 +186,12 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
                 bmActionPerformed(evt);
             }
         });
-        jPanel1.add(bm, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 140, 40));
+        jPanel1.add(bm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 140, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 480, 330));
+        imagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 190, 260));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 540, 330));
 
         lm.setFont(new java.awt.Font("Rockwell", 3, 36)); // NOI18N
         lm.setText("MODIFICAR SERVICIO");
@@ -183,6 +218,7 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         txtnombre.setText(bservicio.getNombreservicio());
         txtprecio.setText(String.valueOf(bservicio.getPrecio()));
          }
+         checar();
     }//GEN-LAST:event_bbActionPerformed
 
     private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
@@ -203,6 +239,8 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Producto Actualizado exitosamente", "Actualizar producto", JOptionPane.OK_OPTION);
         txtnombre.setText("");
         txtprecio.setText("");
+        txtcodigo.setText("");
+        checar();
     }//GEN-LAST:event_bmActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
@@ -210,11 +248,17 @@ public class ModificarServicio extends javax.swing.JInternalFrame {
         x = null;
     }//GEN-LAST:event_formInternalFrameClosing
 
+    private void txtnombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyPressed
+        // TODO add your handling code here:
+         checar();
+    }//GEN-LAST:event_txtnombreKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bb;
     private javax.swing.JButton bc;
     private javax.swing.JButton bm;
+    private javax.swing.JLabel imagen;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelc;
     private javax.swing.JLabel labeln;

@@ -228,6 +228,7 @@ public void checar(){
         servicio.setCodigo(Integer.parseInt(txtcp.getText()));
         servicio.setNombreservicio(txtnp.getText());
         servicio.setPrecio(Double.parseDouble(txtp.getText()));
+        
         controladorservicio.create(servicio);
 
         ////////limpiar
