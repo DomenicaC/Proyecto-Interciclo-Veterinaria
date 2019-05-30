@@ -6,6 +6,7 @@
 package ec.edu.ups.vista.cliente;
 
 import ec.edu.ups.Modelo.Cliente;
+import ec.edu.ups.Modelo.Mascota;
 import ec.edu.ups.controladores.ControladorCliente;
 import ec.edu.ups.vista.VistaPrincipal;
 import javax.swing.JOptionPane;
@@ -291,13 +292,24 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         String cedula = txtcedula.getText();
         Cliente cliente = controladorCliente.read1(cedula);
-        txtcodigo.setText(Integer.toString(cliente.getCodigo()));
+        if (cliente == null) {
+            JOptionPane.showMessageDialog(null, "El cliente no a sido registrado");
+        } else {
+            txtcodigo.setText(Integer.toString(cliente.getCodigo()));
         txtnombre.setText(cliente.getNombre());
         txtapellido.setText(cliente.getApellido());
         txtdireccion.setText(cliente.getDireccion());
         txttelefono.setText(cliente.getTelefono());
         txtgenero.setText(cliente.getGenero());
         txtedad.setText(Integer.toString(cliente.getEdad()));
+        }
+        
+        
+        
+        
+        
+        
+        
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
