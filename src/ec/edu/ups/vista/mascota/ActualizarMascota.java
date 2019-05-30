@@ -9,6 +9,7 @@ import ec.edu.ups.Modelo.Mascota;
 import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.mascota.CrearMascota.x;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,18 +19,34 @@ import javax.swing.JOptionPane;
 public class ActualizarMascota extends javax.swing.JInternalFrame {
 private ControladorMascota controladorMascota;
 public static String x;
+private ResourceBundle mensajes;
     /**
      * Creates new form ActualizarMascota
      */
-    public ActualizarMascota(ControladorMascota controladorMascota) {
+    public ActualizarMascota(ControladorMascota controladorMascota, ResourceBundle mensajes) {
         initComponents();
         this.controladorMascota = controladorMascota;
+        this.mensajes = mensajes;
          x="x";
          int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
         int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
         setLocation(a/2,b/2);
         setVisible(true);
+        cambiaridioma(mensajes);
     }
+    
+       public void cambiaridioma(ResourceBundle mensajes){
+        jtitulo.setText(mensajes.getString("tituloM.modificar"));
+        jingrese.setText(mensajes.getString("label.ingrese"));
+        jdes.setText(mensajes.getString("label.de"));
+        jnombre.setText(mensajes.getString("servicio.nombre"));        
+        jpeso.setText(mensajes.getString("item.peso"));
+        jedad.setText(mensajes.getString("label.edad"));
+        btnbuscar.setText(mensajes.getString("boton.buscar"));
+        btncancelar.setText(mensajes.getString("boton.cancelar"));
+        btnactualizar.setText(mensajes.getString("boton.modificar"));
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,15 +61,15 @@ public static String x;
         jLabel6 = new javax.swing.JLabel();
         txtcodigo2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jnombre = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        jedad = new javax.swing.JLabel();
         txtedad = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jpeso = new javax.swing.JLabel();
         txtpeso = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jtitulo = new javax.swing.JLabel();
+        jingrese = new javax.swing.JLabel();
+        jdes = new javax.swing.JLabel();
         txtcodigoactu = new javax.swing.JTextField();
         btnactualizar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
@@ -87,8 +104,8 @@ public static String x;
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel2.setText("Nombre:");
+        jnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jnombre.setText("Nombre:");
 
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,11 +113,11 @@ public static String x;
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel5.setText("Edad:");
+        jedad.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jedad.setText("Edad:");
 
-        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel8.setText("Peso:");
+        jpeso.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jpeso.setText("Peso:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,9 +126,9 @@ public static String x;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2))
+                    .addComponent(jpeso)
+                    .addComponent(jedad)
+                    .addComponent(jnombre))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,27 +141,27 @@ public static String x;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jnombre)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(jedad)
                     .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(jpeso)
                     .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        jLabel1.setText("Actualizar Mascota");
+        jtitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        jtitulo.setText("Actualizar Mascota");
 
-        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel4.setText("Ingrese el codigo");
+        jingrese.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jingrese.setText("Ingrese el codigo");
 
-        jLabel7.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel7.setText("de su mascota:");
+        jdes.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jdes.setText("de su mascota:");
 
         btnactualizar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
         btnactualizar.setText("Actualizar");
@@ -175,21 +192,18 @@ public static String x;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtitulo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7))
+                            .addComponent(jingrese)
+                            .addComponent(jdes))
                         .addGap(40, 40, 40)
                         .addComponent(txtcodigoactu, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -205,13 +219,13 @@ public static String x;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jtitulo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(jingrese)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jdes, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtcodigoactu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnbuscar)))
@@ -276,15 +290,15 @@ public static String x;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btncancelar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jdes;
+    private javax.swing.JLabel jedad;
+    private javax.swing.JLabel jingrese;
+    private javax.swing.JLabel jnombre;
+    private javax.swing.JLabel jpeso;
+    private javax.swing.JLabel jtitulo;
     private javax.swing.JTextField txtcodigo2;
     private javax.swing.JTextField txtcodigoactu;
     private javax.swing.JTextField txtedad;

@@ -8,6 +8,7 @@ package ec.edu.ups.vista.mascota;
 import ec.edu.ups.Modelo.Mascota;
 import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.vista.VistaPrincipal;
+import java.util.ResourceBundle;
 import javax.swing.table.DefaultTableModel;
 import java.util.Set;
 /**
@@ -17,19 +18,28 @@ import java.util.Set;
 public class ListarMascota extends javax.swing.JInternalFrame {
 public static String x;
 private ControladorMascota controladorMascota;
+private ResourceBundle mensajes;
     /**
      * Creates new form ListarMascota
      */
-    public ListarMascota(ControladorMascota controladorMascota) {
+    public ListarMascota(ControladorMascota controladorMascota, ResourceBundle mensajes) {
         initComponents();
         this.controladorMascota = controladorMascota;
+        this.mensajes = mensajes;
         x = "x";
         int a = VistaPrincipal.DesktopPane.getWidth() - this.getWidth();
         int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
         setLocation(a / 2, b / 2);
         setVisible(true);
         llenarDatos();
+        cambiaridioma(mensajes);
     }
+     public void cambiaridioma(ResourceBundle mensajes){
+        jtitulo.setText(mensajes.getString("tituloM.listar"));
+        
+    }
+    
+    
     public void llenarDatos(){
         DefaultTableModel modelo = (DefaultTableModel) tblmascota.getModel();
         Set<Mascota> lista = controladorMascota.getLista();
@@ -53,7 +63,7 @@ private ControladorMascota controladorMascota;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        clientetitulo = new javax.swing.JLabel();
+        jtitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblmascota = new javax.swing.JTable();
 
@@ -80,8 +90,8 @@ private ControladorMascota controladorMascota;
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        clientetitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        clientetitulo.setText("Listar Mascotas");
+        jtitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        jtitulo.setText("Listar Mascotas");
 
         tblmascota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,7 +110,7 @@ private ControladorMascota controladorMascota;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addComponent(clientetitulo)
+                .addComponent(jtitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
@@ -110,7 +120,7 @@ private ControladorMascota controladorMascota;
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(clientetitulo)
+                .addComponent(jtitulo)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 154, Short.MAX_VALUE))
@@ -143,9 +153,9 @@ private ControladorMascota controladorMascota;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel clientetitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jtitulo;
     private javax.swing.JTable tblmascota;
     // End of variables declaration//GEN-END:variables
 }

@@ -106,6 +106,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public void cambiaridioma() {
         mensajes = ResourceBundle.getBundle("ec.edu.ups.idioma.mensajes", Locale.getDefault());
         veterinario.setText(mensajes.getString("veterinario"));
+        menucliente.setText(mensajes.getString("menu.cliente"));
+        menufactura.setText(mensajes.getString("menu.factura"));
 
         vc.setText(mensajes.getString("veterinario.crear"));
         vb.setText(mensajes.getString("veterinario.buscar"));
@@ -145,7 +147,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         DesktopPane = new javax.swing.JDesktopPane();
         jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
+        menucliente = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -169,7 +171,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         sa = new javax.swing.JMenuItem();
         se = new javax.swing.JMenuItem();
         sl = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menufactura = new javax.swing.JMenu();
         CrearFMenuItem = new javax.swing.JMenuItem();
         BuscarFMenuItem = new javax.swing.JMenuItem();
         EliFMenuItem = new javax.swing.JMenuItem();
@@ -207,9 +209,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/clienteicono.png"))); // NOI18N
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Cliente");
+        menucliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/clienteicono.png"))); // NOI18N
+        menucliente.setMnemonic('f');
+        menucliente.setText("Cliente");
 
         openMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         openMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/crearcliente.png"))); // NOI18N
@@ -220,7 +222,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 openMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(openMenuItem);
+        menucliente.add(openMenuItem);
 
         saveAsMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         saveAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/busacar2.png"))); // NOI18N
@@ -231,7 +233,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 saveAsMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(saveAsMenuItem);
+        menucliente.add(saveAsMenuItem);
 
         exitMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         exitMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/modificarcliente.png"))); // NOI18N
@@ -242,7 +244,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 exitMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        menucliente.add(exitMenuItem);
 
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/eliminarcliente.png"))); // NOI18N
@@ -252,7 +254,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem1);
+        menucliente.add(jMenuItem1);
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/listarcliente.png"))); // NOI18N
@@ -262,9 +264,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem2);
+        menucliente.add(jMenuItem2);
 
-        menuBar.add(fileMenu);
+        menuBar.add(menucliente);
 
         menumascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/mascota.png"))); // NOI18N
         menumascota.setMnemonic('e');
@@ -440,8 +442,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(servicio);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/factura.png"))); // NOI18N
-        jMenu2.setText("Factura");
+        menufactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/factura.png"))); // NOI18N
+        menufactura.setText("Factura");
 
         CrearFMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         CrearFMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/facturacrear.png"))); // NOI18N
@@ -451,7 +453,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 CrearFMenuItemActionPerformed(evt);
             }
         });
-        jMenu2.add(CrearFMenuItem);
+        menufactura.add(CrearFMenuItem);
 
         BuscarFMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BuscarFMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/buscarfactura.png"))); // NOI18N
@@ -461,7 +463,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 BuscarFMenuItemActionPerformed(evt);
             }
         });
-        jMenu2.add(BuscarFMenuItem);
+        menufactura.add(BuscarFMenuItem);
 
         EliFMenuItem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         EliFMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/deleteffac.png"))); // NOI18N
@@ -471,9 +473,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 EliFMenuItemActionPerformed(evt);
             }
         });
-        jMenu2.add(EliFMenuItem);
+        menufactura.add(EliFMenuItem);
 
-        menuBar.add(jMenu2);
+        menuBar.add(menufactura);
 
         menuidioma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/idioma.png"))); // NOI18N
         menuidioma.setText("Idioma");
@@ -880,7 +882,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (actualizarMascota == null || actualizarMascota.isVisible() == false) {
-                    actualizarMascota = new ActualizarMascota(controladorMascota);
+                    actualizarMascota = new ActualizarMascota(controladorMascota, mensajes);
                     DesktopPane.add(actualizarMascota);
                 }
             } else {
@@ -897,7 +899,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (borrarMascota == null || borrarMascota.isVisible() == false) {
-                    borrarMascota = new BorrarMascota(controladorMascota);
+                    borrarMascota = new BorrarMascota(controladorMascota, mensajes);
                     DesktopPane.add(borrarMascota);
                 }
             } else {
@@ -914,7 +916,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (listarMascota == null || listarMascota.isVisible() == false) {
-                    listarMascota = new ListarMascota(controladorMascota);
+                    listarMascota = new ListarMascota(controladorMascota, mensajes);
                     listarMascota.setVisible(true);
                     DesktopPane.add(listarMascota);
                     DesktopPane.moveToFront(listarMascota);
@@ -942,6 +944,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
         if(buscarMascota != null && buscarMascota.isVisible()){
             buscarMascota.cambiaridioma(mensajes);
+        }
+        if(actualizarMascota != null && actualizarMascota.isVisible()){
+            actualizarMascota.cambiaridioma(mensajes);
+        }
+        if(borrarMascota != null && borrarMascota.isVisible()){
+            borrarMascota.cambiaridioma(mensajes);
+        }
+        if(listarMascota != null && listarMascota.isVisible()){
+            listarMascota.cambiaridioma(mensajes);
         }
     }
     /**
@@ -985,7 +996,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JMenuItem EliFMenuItem;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuItem itemactualizar;
     private javax.swing.JMenuItem itembuscar;
     private javax.swing.JMenuItem itemcrear;
@@ -994,10 +1004,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemingles;
     private javax.swing.JMenuItem itemlistar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menucliente;
+    private javax.swing.JMenu menufactura;
     private javax.swing.JMenu menuidioma;
     private javax.swing.JMenu menumascota;
     private javax.swing.JMenuItem openMenuItem;

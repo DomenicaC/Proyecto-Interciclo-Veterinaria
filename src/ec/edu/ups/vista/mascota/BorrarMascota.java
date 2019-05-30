@@ -9,6 +9,7 @@ import ec.edu.ups.Modelo.Mascota;
 import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.mascota.BuscarMascota.x;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -19,17 +20,32 @@ import javax.swing.JPasswordField;
 public class BorrarMascota extends javax.swing.JInternalFrame {
 public static String x;
 private ControladorMascota controladorMascota;
+private ResourceBundle mensajes;
     /**
      * Creates new form BorrarMascota
      */
-    public BorrarMascota(ControladorMascota controladorMascota) {
+    public BorrarMascota(ControladorMascota controladorMascota, ResourceBundle mensajes) {
         initComponents();
         this.controladorMascota = controladorMascota;
+        this.mensajes = mensajes;
         x = "x";
         int a = VistaPrincipal.DesktopPane.getWidth() - this.getWidth();
         int b = VistaPrincipal.DesktopPane.getHeight() - this.getHeight();
         setLocation(a / 2, b / 2);
         setVisible(true);
+        cambiaridioma(mensajes);
+    }
+    
+      public void cambiaridioma(ResourceBundle mensajes){
+        jtitulo.setText(mensajes.getString("tituloM.eliminar"));
+        jingrese.setText(mensajes.getString("label.ingrese"));
+        jdes.setText(mensajes.getString("label.de"));
+        jnombre.setText(mensajes.getString("servicio.nombre"));        
+        jpeso.setText(mensajes.getString("item.peso"));
+        jedad.setText(mensajes.getString("label.edad"));
+        btnbuscar.setText(mensajes.getString("boton.buscar"));
+        btncancelar.setText(mensajes.getString("boton.cancelar"));
+        bnteliminar.setText(mensajes.getString("boton.eliminar"));
     }
 
     /**
@@ -42,20 +58,20 @@ private ControladorMascota controladorMascota;
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jtitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jnombre = new javax.swing.JLabel();
+        jingrese = new javax.swing.JLabel();
+        jedad = new javax.swing.JLabel();
+        jpeso = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         txtcodigoeliminar = new javax.swing.JTextField();
         txtedad = new javax.swing.JTextField();
         txtpeso = new javax.swing.JTextField();
         bnteliminar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        btncancelar1 = new javax.swing.JButton();
+        jdes = new javax.swing.JLabel();
+        btnbuscar = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -80,22 +96,22 @@ private ControladorMascota controladorMascota;
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
-        jLabel1.setText("Eliminar Mascota");
+        jtitulo.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
+        jtitulo.setText("Eliminar Mascota");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel2.setText("Nombre:");
+        jnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jnombre.setText("Nombre:");
 
-        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel3.setText("Ingrese el codigo");
+        jingrese.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jingrese.setText("Ingrese el codigo");
 
-        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel4.setText("Edad:");
+        jedad.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jedad.setText("Edad:");
 
-        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel5.setText("Peso:");
+        jpeso.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jpeso.setText("Peso:");
 
         txtnombre.setEditable(false);
         txtnombre.setEnabled(false);
@@ -127,14 +143,14 @@ private ControladorMascota controladorMascota;
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel6.setText("de su mascota:");
+        jdes.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jdes.setText("de su mascota:");
 
-        btncancelar1.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
-        btncancelar1.setText("Buscar");
-        btncancelar1.addActionListener(new java.awt.event.ActionListener() {
+        btnbuscar.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
+        btnbuscar.setText("Buscar");
+        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncancelar1ActionPerformed(evt);
+                btnbuscarActionPerformed(evt);
             }
         });
 
@@ -156,27 +172,27 @@ private ControladorMascota controladorMascota;
                                     .addGap(134, 134, 134))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(jnombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jedad, javax.swing.GroupLayout.Alignment.TRAILING))
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
+                                    .addComponent(jpeso)
                                     .addGap(18, 18, 18)
                                     .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
+                                        .addComponent(jingrese)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
+                                        .addComponent(jdes)
                                         .addGap(20, 20, 20)))
                                 .addComponent(txtcodigoeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btncancelar1)))
+                                .addComponent(btnbuscar)))
                         .addGap(16, 16, 16))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -185,24 +201,24 @@ private ControladorMascota controladorMascota;
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(jingrese)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jdes, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtcodigoeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btncancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jnombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jedad)
                     .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jpeso))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bnteliminar)
@@ -217,7 +233,7 @@ private ControladorMascota controladorMascota;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(jtitulo)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -227,7 +243,7 @@ private ControladorMascota controladorMascota;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1)
+                .addComponent(jtitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -271,7 +287,7 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
         
     }//GEN-LAST:event_btncancelarActionPerformed
 
-    private void btncancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelar1ActionPerformed
+    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(txtcodigoeliminar.getText());
         Mascota mascota = controladorMascota.read(codigo);
@@ -283,7 +299,7 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
             txtpeso.setText(Double.toString(mascota.getPeso()));
             
         }
-    }//GEN-LAST:event_btncancelar1ActionPerformed
+    }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         // TODO add your handling code here:
@@ -293,16 +309,16 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnteliminar;
+    private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btncancelar;
-    private javax.swing.JButton btncancelar1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jdes;
+    private javax.swing.JLabel jedad;
+    private javax.swing.JLabel jingrese;
+    private javax.swing.JLabel jnombre;
+    private javax.swing.JLabel jpeso;
+    private javax.swing.JLabel jtitulo;
     private javax.swing.JTextField txtcodigoeliminar;
     private javax.swing.JTextField txtedad;
     private javax.swing.JTextField txtnombre;
