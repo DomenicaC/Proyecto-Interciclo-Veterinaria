@@ -40,11 +40,11 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         titulobuscar.setText(mensajes.getString("buscar.cliente.titulo"));
         labelcodigo.setText(mensajes.getString("cliente.codigo"));
         labelnombre.setText(mensajes.getString("cliente.nombre"));
-        labelapellido.setText(mensajes.getString("cliente.apellido"));
+        labeltelefono.setText(mensajes.getString("cliente.telefono"));
         labelcedula.setText(mensajes.getString("cliente.cedula"));
         labeledad.setText(mensajes.getString("cliente.edad"));
         labeldireccion.setText(mensajes.getString("cliente.direccion"));
-        labeltelefono.setText(mensajes.getString("cliente.telefono"));
+        labelapellido.setText(mensajes.getString("cliente.apellido"));
         labelgenero.setText(mensajes.getString("cliente.genero"));
         botonbuscarcliente.setText(mensajes.getString("boton.buscar"));
         botoncancelar.setText(mensajes.getString("boton.cancelar"));
@@ -66,8 +66,8 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         labeledad = new javax.swing.JLabel();
         labelgenero = new javax.swing.JLabel();
         botoncancelar = new javax.swing.JButton();
-        labeltelefono = new javax.swing.JLabel();
         labelapellido = new javax.swing.JLabel();
+        labeltelefono = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         txtapellido = new javax.swing.JTextField();
@@ -126,11 +126,11 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        labeltelefono.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        labeltelefono.setText("Apellido:");
-
         labelapellido.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        labelapellido.setText("Teléfono:");
+        labelapellido.setText("Apellido:");
+
+        labeltelefono.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labeltelefono.setText("Teléfono:");
 
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtcodigo.setEnabled(false);
@@ -210,14 +210,14 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelapellido)
+                            .addComponent(labeltelefono)
                             .addComponent(labeledad))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labeltelefono)
+                        .addComponent(labelapellido)
                         .addGap(27, 27, 27)
                         .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(82, 82, 82))
@@ -252,7 +252,7 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labeltelefono)
+                            .addComponent(labelapellido)
                             .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +262,7 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
                             .addComponent(labeledad))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelapellido)
+                            .addComponent(labeltelefono)
                             .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(83, 83, 83)))
                 .addComponent(botoncancelar)
@@ -283,7 +283,7 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(titulobuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
