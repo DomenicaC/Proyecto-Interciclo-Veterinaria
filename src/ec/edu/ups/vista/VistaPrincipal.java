@@ -61,7 +61,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ModificarVeterinario modificarveterinario;
     private EliminarVeterinario eliminarveterinario;
     private ListaVeterinario listaveterinario;
-    /**
+    private CrearServicio crearservicio;
+   private BuscarServicio buscarservicio;
+private ModificarServicio modificarservicio;
+            private EliminarServicio eliminarservicio;
+            private ListaServicio listaservicio;
+            /**
      * Creates new form VistaPrincipal
      */
 
@@ -551,9 +556,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
-        CrearServicio crear = new CrearServicio(controladorServicio);
-        crear.setVisible(true);
-        DesktopPane.add(crear);
+      String x = CrearServicio.x;
+        try {
+            if (x == null) {
+                if (crearservicio == null || crearservicio.isVisible() == false) {
+       crearservicio = new CrearServicio(controladorServicio);
+       DesktopPane.add(crearservicio);
+      }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void EliFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliFMenuItemActionPerformed
@@ -701,30 +716,70 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
-        ModificarServicio eliminars = new ModificarServicio(controladorServicio);
-        eliminars.setVisible(true);
-        DesktopPane.add(eliminars);
+     String x = ModificarServicio.x;
+        try {
+            if (x == null) {
+                if (modificarservicio == null || modificarservicio.isVisible() == false) {
+       modificarservicio = new ModificarServicio(controladorServicio);
+       DesktopPane.add(modificarservicio);
+      }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
-        BuscarServicio buscars = new BuscarServicio(controladorServicio);
-        buscars.setVisible(true);
-        DesktopPane.add(buscars);
+        String x = BuscarServicio.x;
+        try {
+            if (x == null) {
+                if (buscarservicio == null || buscarservicio.isVisible() == false) {
+       buscarservicio = new BuscarServicio(controladorServicio);
+       DesktopPane.add(buscarservicio);
+      }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-        EliminarServicio eliminars = new EliminarServicio(controladorServicio);
-        eliminars.setVisible(true);
-        DesktopPane.add(eliminars);
+      String x = EliminarServicio.x;
+        try {
+            if (x == null) {
+                if (eliminarservicio == null || eliminarservicio.isVisible() == false) {
+       eliminarservicio = new EliminarServicio(controladorServicio);
+       DesktopPane.add(eliminarservicio);
+      }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
-        ListaServicio listas = new ListaServicio(controladorServicio);
-        listas.setVisible(true);
-        DesktopPane.add(listas);
+       String x = ListaServicio.x;
+        try {
+            if (x == null) {
+                if (listaservicio == null || listaservicio.isVisible() == false) {
+       listaservicio = new ListaServicio(controladorServicio);
+       DesktopPane.add(listaservicio);
+      }
+            } else {
+                JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed

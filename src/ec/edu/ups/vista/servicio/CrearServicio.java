@@ -8,6 +8,7 @@ package ec.edu.ups.vista.servicio;
 import ec.edu.ups.Modelo.Servicio;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.VistaPrincipal;
+import static ec.edu.ups.vista.cliente.CrearCliente.x;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,13 +21,16 @@ public class CrearServicio extends javax.swing.JInternalFrame {
      * Creates new form NewJInternalFrame
      */
     private ControladorServicio controladorservicio;
+    public static String x;
     public CrearServicio(ControladorServicio controladorservicio) {
         initComponents();
     this.controladorservicio = controladorservicio;
      txtcp.setText(Integer.toString(this.controladorservicio.getCodigo()));
+     x="x";
       int a=VistaPrincipal.DesktopPane.getWidth()-this.getWidth();
         int b=VistaPrincipal.DesktopPane.getHeight()-this.getHeight();
         setLocation(a/2,b/2);
+        setVisible(true);
     }
 
     /**
@@ -52,6 +56,23 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -124,8 +145,9 @@ public class CrearServicio extends javax.swing.JInternalFrame {
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
-
-        dispose();
+  this.setVisible(false);
+        this.dispose();
+        x = null;
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
@@ -151,6 +173,11 @@ public class CrearServicio extends javax.swing.JInternalFrame {
     private void txtnpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnpActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // TODO add your handling code here:
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
