@@ -303,8 +303,9 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
     
 }
      
-     int codigo = Integer.parseInt(txtcedula.getText());
-     Cliente cliente= controladorCliente.read(codigo);
+     String cedula = txtcedula.getText();
+     Cliente cliente= controladorCliente.read1(cedula);
+      int codigo = cliente.getCodigo();
      if (cliente == null) {
             JOptionPane.showMessageDialog(null, "Cliente no ha sido registrada");
         } else {
