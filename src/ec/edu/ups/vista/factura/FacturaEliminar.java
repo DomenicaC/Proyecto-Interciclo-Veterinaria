@@ -163,7 +163,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         tableColum.setHeaderValue(mensajes.getString("servicio.nombre"));
 
         tableColum = tableColumnModel.getColumn(3);
-        tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
+        tableColum.setHeaderValue(mensajes.getString("labelF.precio"));
 
         tableColum = tableColumnModel.getColumn(4);
         tableColum.setHeaderValue(mensajes.getString("labelF.tot"));

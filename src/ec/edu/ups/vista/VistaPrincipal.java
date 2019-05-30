@@ -104,7 +104,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         controladorFactura = new ControladorFactura();
         controladorFDetalle = new ControladorFacDetalle();
 
-        ////////intenracionalizacion
+        //intenracionalizacion
         setLocationRelativeTo(null);
         localizacion = new Locale("es", "EC");
         Locale.setDefault(localizacion);
