@@ -977,13 +977,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         if(listarCliente != null && listarCliente.isVisible()){
             listarCliente.cambiarIdioma(mensajes);
         }
-        
-        
-        
-        
-        
-        
-        
+
     }
     /**
      * @param args the command line arguments
