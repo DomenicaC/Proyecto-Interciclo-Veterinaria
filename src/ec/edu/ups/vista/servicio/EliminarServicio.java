@@ -207,7 +207,7 @@ if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar
 }
         int codigo = Integer.parseInt(txtcodigo.getText());
         controladorservicio.delete(codigo);
-        JOptionPane.showMessageDialog(this, "Servici eliminado exitosamente!!", "eliminar servicio" , JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(this, "Servicio eliminado exitosamente!!", "Eliminar servicio" , JOptionPane.OK_OPTION);
        txtcodigo.setText("");
         txtnombre.setText("");
         txtprecio.setText("");
