@@ -70,7 +70,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         this.controladorVeterinario = controladorVeterinario;
         this.controladorMascota = controladorMascota;
         this.controladorServicio = controladorServicio;
-        
+
         this.mensajes = mensajes;
         cambiarIdioma(mensajes);
 
@@ -730,7 +730,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
                 tablaF.removeRow(fila);
                 tablaF.removeRow(tblServF.getRowCount() - 1);
 
-                totalCP = servicio.getPrecio() * cant;
+                totalCP = cant * servicio.getPrecio();
 
                 Object[] datos = {codigoServ,
                     cant,
@@ -829,13 +829,13 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
     public void cambiarIdioma(ResourceBundle mensajes) {
         //titulo
         lblTitulo.setText(mensajes.getString("tituloF.crear"));
-        
+
         //Veterinario
         lblCedV.setText(mensajes.getString("labelF.cedV"));
         lblCodV.setText(mensajes.getString("labelF.codV"));
         lblNomV.setText(mensajes.getString("labelF.nomV"));
         lblApeV.setText(mensajes.getString("labelF.apeV"));
-        
+
         //Cliente
         lblCedC.setText(mensajes.getString("labelF.cedC"));
         lblCodC.setText(mensajes.getString("labelF.codC"));
@@ -843,46 +843,46 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         lblApeC.setText(mensajes.getString("labelF.apeC"));
         lblDirC.setText(mensajes.getString("labelF.dirC"));
         lblTelC.setText(mensajes.getString("labelF.telC"));
-        
+
         //Mascota
         lblCodM.setText(mensajes.getString("labelF.codM"));
         lblNomM.setText(mensajes.getString("labelF.nomM"));
         lblEdadM.setText(mensajes.getString("labelF.edadM"));
         lblPesoM.setText(mensajes.getString("labelF.pesoM"));
-        
+
         //Tabla
         JTableHeader tableHeader = tblServF.getTableHeader();
         TableColumnModel tableColumnModel = tableHeader.getColumnModel();
-        
+
         TableColumn tableColum;
-        
+
         tableColum = tableColumnModel.getColumn(0);
         tableColum.setHeaderValue(mensajes.getString("label.codigo"));
-        
+
         tableColum = tableColumnModel.getColumn(1);
         tableColum.setHeaderValue(mensajes.getString("labelFD.cant"));
-        
+
         tableColum = tableColumnModel.getColumn(2);
         tableColum.setHeaderValue(mensajes.getString("servicio.nombre"));
-        
+
         tableColum = tableColumnModel.getColumn(3);
         tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
-        
+
         tableColum = tableColumnModel.getColumn(4);
-        tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
-        
+        tableColum.setHeaderValue(mensajes.getString("labelF.tot"));
+
         //factura
         lblSub.setText(mensajes.getString("labelF.sub"));
         lblIva.setText(mensajes.getString("labelF.iva"));
         lblTot.setText(mensajes.getString("labelF.tot"));
-        
+
         //boton
-        btnBuscarCF.setText(mensajes.getString("menu.item.eliminar"));
-        btnBuscarMF.setText(mensajes.getString("menu.item.eliminar"));
-        btnBuscarVF.setText(mensajes.getString("menu.item.eliminar"));
+        btnBuscarCF.setText(mensajes.getString("boton.buscar"));
+        btnBuscarMF.setText(mensajes.getString("boton.buscar"));
+        btnBuscarVF.setText(mensajes.getString("boton.buscar"));
         btnCrear.setText(mensajes.getString("boton.crear"));
         btnCancelarF.setText(mensajes.getString("boton.cancelar"));
-        
+
     }
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
@@ -947,7 +947,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
 
     private void btnCancelarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarFActionPerformed
         // TODO add your handling code here:
-        //x = null;
+        x = null;
         this.dispose();
     }//GEN-LAST:event_btnCancelarFActionPerformed
 

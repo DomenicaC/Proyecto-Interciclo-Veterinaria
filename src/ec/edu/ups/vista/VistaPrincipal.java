@@ -6,6 +6,7 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.controladores.ControladorFacDetalle;
 import ec.edu.ups.controladores.ControladorFactura;
 import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.controladores.ControladorServicio;
@@ -46,25 +47,28 @@ import javax.swing.JOptionPane;
  */
 public class VistaPrincipal extends javax.swing.JFrame {
 
-    private CrearMascota crearMascota;
-
     private FacturaCrear crearF;
     private FacturaBuscar buscarF;
     private FacturaEliminar eliF;
+    
+    private CrearMascota crearMascota;
     private BuscarMascota buscarMascota;
     private ActualizarMascota actualizarMascota;
     private BorrarMascota borrarMascota;
     private ListarMascota listarMascota;
+    
     private CrearCliente crearCliente;
     private BuscarCliente buscarCliente;
     private EliminarCliente eliminarCliente;
     private ModificarCliente modificarCliente;
     private ListarCliente listarCliente;
+    
     private CrearVeterinario crearveterinario;
     private BuscarVeterinario buscarveterinario;
     private ModificarVeterinario modificarveterinario;
     private EliminarVeterinario eliminarveterinario;
     private ListaVeterinario listaveterinario;
+    
     private CrearServicio crearservicio;
     private BuscarServicio buscarservicio;
     private ModificarServicio modificarservicio;
@@ -80,6 +84,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ControladorCliente controladorCliente;
     private ControladorVeterinario controladorVeterinario;
     private ControladorFactura controladorFactura;
+    private ControladorFacDetalle controladorFDetalle;
     private Locale localizacion;
     private ResourceBundle mensajes;
 
@@ -97,6 +102,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         controladorVeterinario = new ControladorVeterinario();
         controladorMascota = new ControladorMascota();
         controladorFactura = new ControladorFactura();
+        controladorFDetalle = new ControladorFacDetalle();
 
         ////////intenracionalizacion
         setLocationRelativeTo(null);
@@ -768,7 +774,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (crearF == null || crearF.isVisible() == false) {
-                    crearF = new FacturaCrear(mensajes, controladorFactura, null, controladorCliente, controladorVeterinario, controladorMascota, controladorServicio);
+                    crearF = new FacturaCrear(mensajes, controladorFactura, controladorFDetalle, controladorCliente, controladorVeterinario, controladorMascota, controladorServicio);
                     DesktopPane.add(crearF);
                 }
             } else {
@@ -781,6 +787,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_CrearFMenuItemActionPerformed
 
     private void BuscarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarFMenuItemActionPerformed
+
         String x = buscarF.x;
         try {
             if (x == null) {

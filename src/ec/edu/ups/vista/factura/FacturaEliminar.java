@@ -106,6 +106,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         txtNomM.setText("");
         txtNomV.setText("");
         txtPesoM.setText("");
+        txtRuc.setText("");
         txtSubtotal.setText("");
         txtTelC.setText("");
         txtTotal.setText("");
@@ -124,7 +125,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(ResourceBundle mensajes) {
         //titulo
-        lblTitulo.setText(mensajes.getString("tituloF.Eliminar"));
+        lblTitulo.setText(mensajes.getString("tituloF.eliminar"));
 
         //Veterinario
         lblCedV.setText(mensajes.getString("labelF.cedV"));
@@ -165,12 +166,17 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
 
         tableColum = tableColumnModel.getColumn(4);
-        tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
+        tableColum.setHeaderValue(mensajes.getString("labelF.tot"));
 
         //factura
         lblSub.setText(mensajes.getString("labelF.sub"));
         lblIva.setText(mensajes.getString("labelF.iva"));
         lblTot.setText(mensajes.getString("labelF.tot"));
+
+        //boton
+        btnBuscarRF.setText(mensajes.getString("boton.buscar"));
+        btnEliminar.setText(mensajes.getString("boton.eliminar"));
+        btnCancelarF.setText(mensajes.getString("boton.cancelar"));
 
     }
 

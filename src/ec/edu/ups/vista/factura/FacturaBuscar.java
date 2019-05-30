@@ -673,12 +673,16 @@ public class FacturaBuscar extends javax.swing.JInternalFrame {
         tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
 
         tableColum = tableColumnModel.getColumn(4);
-        tableColum.setHeaderValue(mensajes.getString("servicio.precio"));
+        tableColum.setHeaderValue(mensajes.getString("labelF.tot"));
 
         //factura
         lblSub.setText(mensajes.getString("labelF.sub"));
         lblIva.setText(mensajes.getString("labelF.iva"));
         lblTot.setText(mensajes.getString("labelF.tot"));
+
+        //boton
+        btnBuscarRF.setText(mensajes.getString("boton.buscar"));
+        btnCancelarF.setText(mensajes.getString("boton.cancelar"));
 
     }
 
@@ -727,7 +731,7 @@ public class FacturaBuscar extends javax.swing.JInternalFrame {
 
     private void btnCancelarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarFActionPerformed
         // TODO add your handling code here:
-        //x = null;
+        x = null;
         this.dispose();
     }//GEN-LAST:event_btnCancelarFActionPerformed
 
