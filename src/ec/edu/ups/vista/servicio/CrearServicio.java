@@ -31,7 +31,7 @@ public class CrearServicio extends javax.swing.JInternalFrame {
     public CrearServicio(ControladorServicio controladorservicio, ResourceBundle mensajes) {
         initComponents();
         msgs= new String[5];
-        imgs = new ImageIcon[5];
+        imgs = new ImageIcon[6];
         this.controladorservicio = controladorservicio;
         txtcp.setText(Integer.toString(this.controladorservicio.getCodigo()));
         x = "x";
@@ -45,7 +45,7 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         msgs[0] = "baño".toUpperCase();
         msgs[1] = "limpieza dental".toUpperCase();
         msgs[2] = "corte de pelo".toUpperCase();
-        msgs[3] = "corte de unas".toUpperCase();       
+        msgs[3] = "corte de uñas".toUpperCase();       
         msgs[4] = "comprar alimento".toUpperCase();
         
          
@@ -53,6 +53,9 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         imgs[1]= new ImageIcon("src/ec/edu/ups/imagenes/22.png");
         imgs[2]= new ImageIcon("src/ec/edu/ups/imagenes/3.png");
         imgs[3]= new ImageIcon("src/ec/edu/ups/imagenes/333.png");
+        imgs[4]= new ImageIcon("src/ec/edu/ups/imagenes/44.png");
+        imgs[5]= new ImageIcon("src/ec/edu/ups/imagenes/5555.png");
+        
         jButton1.setIcon(imgs[0]);
     }
     
@@ -209,6 +212,12 @@ public void checar(){
     }
     if("corte de pelo".equals(txtnp.getText())){
         jButton1.setIcon(imgs[3]);
+    }
+    if("corte de uñas".equals(txtnp.getText())){
+        jButton1.setIcon(imgs[4]);
+    }
+    if("comprar alimento".equals(txtnp.getText())){
+        jButton1.setIcon(imgs[5]);
     }
 }
     private void bcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcActionPerformed
