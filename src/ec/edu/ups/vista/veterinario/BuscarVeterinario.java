@@ -9,6 +9,7 @@ import ec.edu.ups.Modelo.Veterinario;
 import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -207,12 +208,16 @@ public class BuscarVeterinario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         String cedula = txtcedula.getText();
         Veterinario buscarv = controladorveterinario.readCedula(cedula);
+         if (buscarv == null) {
+            JOptionPane.showMessageDialog(null, "El Veterinario no existe ");
+        } else {
         txtnombre.setText(buscarv.getNombre());
         txtapellido.setText(buscarv.getApellido());
         txtcodigo.setText(String.valueOf(buscarv.getCodigo()));
         txtedad.setText(String.valueOf(buscarv.getEdad()));
         txtsueldo.setText(String.valueOf(buscarv.getSueldo()));
         txttitulo.setText(buscarv.getTitulo());
+         }
     }//GEN-LAST:event_bbActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing

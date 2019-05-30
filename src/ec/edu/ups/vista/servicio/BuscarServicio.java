@@ -10,6 +10,7 @@ import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.cliente.CrearCliente.x;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -110,6 +111,7 @@ public class BuscarServicio extends javax.swing.JInternalFrame {
         jPanel1.add(bb, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 150, 40));
 
         txtprecio.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtprecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtprecio.setEnabled(false);
         txtprecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +127,7 @@ public class BuscarServicio extends javax.swing.JInternalFrame {
 
         txtnombre.setEditable(false);
         txtnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtnombre.setEnabled(false);
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +145,7 @@ public class BuscarServicio extends javax.swing.JInternalFrame {
         jPanel1.add(labelc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 90, 40));
 
         txtcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 220, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 550, 280));
@@ -163,9 +167,13 @@ public class BuscarServicio extends javax.swing.JInternalFrame {
     private void bbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(txtcodigo.getText());
-        Servicio buscarProducto = controladorservicio.read(codigo);
-        txtnombre.setText(buscarProducto.getNombreservicio());
-        txtprecio.setText(String.valueOf(buscarProducto.getPrecio()));
+        Servicio bservicio = controladorservicio.read(codigo);
+         if (bservicio == null) {
+            JOptionPane.showMessageDialog(null, "El servicio no existe");
+        } else {
+        txtnombre.setText(bservicio.getNombreservicio());
+        txtprecio.setText(String.valueOf(bservicio.getPrecio()));
+         }
     }//GEN-LAST:event_bbActionPerformed
 
     private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed

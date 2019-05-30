@@ -154,7 +154,8 @@ public class CrearServicio extends javax.swing.JInternalFrame {
 
         labels.setFont(new java.awt.Font("Rockwell", 3, 48)); // NOI18N
         labels.setText("CREAR SERVICIO");
-        getContentPane().add(labels, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 420, 50));
+        labels.setToolTipText("");
+        getContentPane().add(labels, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

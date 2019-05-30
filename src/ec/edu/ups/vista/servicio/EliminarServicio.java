@@ -11,6 +11,7 @@ import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.cliente.CrearCliente.x;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -178,10 +179,15 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
 
     private void bbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbActionPerformed
         // TODO add your handling code here:
+        
         int codigo = Integer.parseInt(txtcodigo.getText());
-        Servicio buscarProducto = controladorservicio.read(codigo);
-        txtnombre.setText(buscarProducto.getNombreservicio());
-        txtprecio.setText(String.valueOf(buscarProducto.getPrecio()));
+        Servicio bservicio = controladorservicio.read(codigo);
+        if (bservicio == null) {
+            JOptionPane.showMessageDialog(null, "El servicio no existe");
+        } else {
+        txtnombre.setText(bservicio.getNombreservicio());
+        txtprecio.setText(String.valueOf(bservicio.getPrecio()));
+        }
     }//GEN-LAST:event_bbActionPerformed
 
     private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
@@ -194,6 +200,11 @@ public class EliminarServicio extends javax.swing.JInternalFrame {
 
     private void beActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beActionPerformed
         // TODO add your handling code here:
+         JPasswordField admin = new JPasswordField();
+      
+if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar",JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION){
+    
+}
         int codigo = Integer.parseInt(txtcodigo.getText());
         controladorservicio.delete(codigo);
         JOptionPane.showMessageDialog(this, "Servici eliminado exitosamente!!", "eliminar servicio" , JOptionPane.OK_OPTION);

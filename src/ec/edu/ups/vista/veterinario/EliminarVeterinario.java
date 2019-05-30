@@ -10,6 +10,7 @@ import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -36,7 +37,7 @@ public class EliminarVeterinario extends javax.swing.JInternalFrame {
     }
 
     public void cambiarIdioma(ResourceBundle mensajes) {
-        labele.setText(mensajes.getString("titulov.modificar"));
+        labele.setText(mensajes.getString("titulov.eliminar"));
         labelcodigo.setText(mensajes.getString("veterinario.codigo"));
         labelnombre.setText(mensajes.getString("veterinario.nombre"));
         labelapellido.setText(mensajes.getString("veterinario.apellido"));
@@ -106,6 +107,7 @@ public class EliminarVeterinario extends javax.swing.JInternalFrame {
 
         txtcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtcodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtcodigo.setEnabled(false);
         jPanel1.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 162, 28));
 
         labelcodigo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -115,6 +117,7 @@ public class EliminarVeterinario extends javax.swing.JInternalFrame {
         txtnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtnombre.setToolTipText("");
         txtnombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtnombre.setEnabled(false);
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 200, 31));
 
         labelnombre.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -128,6 +131,7 @@ public class EliminarVeterinario extends javax.swing.JInternalFrame {
         txtapellido.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtapellido.setToolTipText("");
         txtapellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtapellido.setEnabled(false);
         jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 203, 29));
 
         txtcedula.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -142,6 +146,7 @@ public class EliminarVeterinario extends javax.swing.JInternalFrame {
         txtedad.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtedad.setToolTipText("");
         txtedad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtedad.setEnabled(false);
         jPanel1.add(txtedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 61, 29));
 
         labeledad.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -151,6 +156,7 @@ public class EliminarVeterinario extends javax.swing.JInternalFrame {
         txtsueldo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtsueldo.setToolTipText("");
         txtsueldo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtsueldo.setEnabled(false);
         jPanel1.add(txtsueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 196, 30));
 
         labelsueldo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -164,6 +170,7 @@ public class EliminarVeterinario extends javax.swing.JInternalFrame {
         txttitulo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txttitulo.setToolTipText("");
         txttitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txttitulo.setEnabled(false);
         jPanel1.add(txttitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 196, 31));
 
         bc.setFont(new java.awt.Font("Elephant", 2, 18)); // NOI18N
@@ -205,6 +212,11 @@ public class EliminarVeterinario extends javax.swing.JInternalFrame {
 
     private void beActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beActionPerformed
         // TODO add your handling code here:
+         JPasswordField admin = new JPasswordField();
+      
+if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar",JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION){
+    
+}
         int codigo = Integer.parseInt(txtcodigo.getText());
         controladorveterinario.delete(codigo);
         JOptionPane.showMessageDialog(this, "Veterinario eliminado exitosamente!!", "eliminar Veterinario" , JOptionPane.OK_OPTION);
@@ -227,12 +239,16 @@ public class EliminarVeterinario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         String cedula = txtcedula.getText();
         Veterinario buscarv = controladorveterinario.readCedula(cedula);
+        if (buscarv == null) {
+            JOptionPane.showMessageDialog(null, "El Veterinario no existe ");
+        } else {
         txtnombre.setText(buscarv.getNombre());
         txtapellido.setText(buscarv.getApellido());
         txtcodigo.setText(String.valueOf(buscarv.getCodigo()));
         txtedad.setText(String.valueOf(buscarv.getEdad()));
         txtsueldo.setText(String.valueOf(buscarv.getSueldo()));
         txttitulo.setText(buscarv.getTitulo());
+        }
     }//GEN-LAST:event_bbActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
