@@ -40,7 +40,10 @@ private ResourceBundle mensajes;
         jtitulo.setText(mensajes.getString("tituloM.crear"));
         jnombre.setText(mensajes.getString("servicio.nombre"));
         jcodigo.setText(mensajes.getString("servicio.codigo"));
-        
+        jpeso.setText(mensajes.getString("item.peso"));
+        jedad.setText(mensajes.getString("label.edad"));
+        btncrear.setText(mensajes.getString("item.crear"));
+        btncancelar.setText(mensajes.getString("boton.cancelar"));
     }
     /**
      * This method is called from within the constructor to initialize the form.

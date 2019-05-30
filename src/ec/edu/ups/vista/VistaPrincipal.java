@@ -126,6 +126,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         itemactualizar.setText(mensajes.getString("servicio.modificar"));
         itemeliminar.setText(mensajes.getString("servicio.eliminar"));
         itemlistar.setText(mensajes.getString("servicio.lista"));
+        menuidioma.setText(mensajes.getString("menu.idioma"));
+        itemespañol.setText(mensajes.getString("item.español"));
+        itemingles.setText(mensajes.getString("item.ingles"));
     }
 
  
@@ -170,9 +173,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         CrearFMenuItem = new javax.swing.JMenuItem();
         BuscarFMenuItem = new javax.swing.JMenuItem();
         EliFMenuItem = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
+        menuidioma = new javax.swing.JMenu();
+        itemespañol = new javax.swing.JMenuItem();
+        itemingles = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -472,28 +475,28 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(jMenu2);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/idioma.png"))); // NOI18N
-        jMenu3.setText("Idioma");
+        menuidioma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/imagenes/idioma.png"))); // NOI18N
+        menuidioma.setText("Idioma");
 
-        jMenuItem15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem15.setText("Español");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+        itemespañol.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemespañol.setText("Español");
+        itemespañol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
+                itemespañolActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem15);
+        menuidioma.add(itemespañol);
 
-        jMenuItem16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem16.setText("Ingles");
-        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+        itemingles.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        itemingles.setText("Ingles");
+        itemingles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem16ActionPerformed(evt);
+                iteminglesActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem16);
+        menuidioma.add(itemingles);
 
-        menuBar.add(jMenu3);
+        menuBar.add(menuidioma);
 
         setJMenuBar(menuBar);
 
@@ -671,7 +674,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         try {
             if (x == null) {
                 if (buscarMascota == null || buscarMascota.isVisible() == false) {
-                    buscarMascota = new BuscarMascota(controladorMascota);
+                    buscarMascota = new BuscarMascota(controladorMascota, mensajes);
                     buscarMascota.setVisible(true);
                     DesktopPane.add(buscarMascota);
                     DesktopPane.moveToFront(buscarMascota);
@@ -862,13 +865,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+    private void itemespañolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemespañolActionPerformed
         // TODO add your handling code here:
         localizacion = new Locale("es", "EC");
         Locale.setDefault(localizacion);
         cambiaridioma();
         System.out.println("Localizacion Forzada: " + Locale.getDefault().getLanguage());
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
+        comprobar();
+    }//GEN-LAST:event_itemespañolActionPerformed
 
     private void itemactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemactualizarActionPerformed
         // TODO add your handling code here:
@@ -923,14 +927,23 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itemlistarActionPerformed
 
-    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+    private void iteminglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteminglesActionPerformed
         // TODO add your handling code here:
         localizacion = new Locale("en", "US");
         Locale.setDefault(localizacion);
-        cambiaridioma();
-        System.out.println("Localizacion Forzada: " + Locale.getDefault().getLanguage());
-    }//GEN-LAST:event_jMenuItem16ActionPerformed
+        cambiaridioma();        
+        comprobar();
+    }//GEN-LAST:event_iteminglesActionPerformed
 
+    private void comprobar(){
+        //Comprobacion mascota
+        if(crearMascota != null && crearMascota.isVisible()){
+            crearMascota.cambiaridioma(mensajes);
+        }
+        if(buscarMascota != null && buscarMascota.isVisible()){
+            buscarMascota.cambiaridioma(mensajes);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -977,15 +990,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itembuscar;
     private javax.swing.JMenuItem itemcrear;
     private javax.swing.JMenuItem itemeliminar;
+    private javax.swing.JMenuItem itemespañol;
+    private javax.swing.JMenuItem itemingles;
     private javax.swing.JMenuItem itemlistar;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuidioma;
     private javax.swing.JMenu menumascota;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem sa;
