@@ -10,6 +10,7 @@ import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.vista.VistaPrincipal;
 import static ec.edu.ups.vista.mascota.CrearMascota.x;
 import java.util.ResourceBundle;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +21,7 @@ public class ActualizarMascota extends javax.swing.JInternalFrame {
 private ControladorMascota controladorMascota;
 public static String x;
 private ResourceBundle mensajes;
+public ImageIcon imgs[];
     /**
      * Creates new form ActualizarMascota
      */
@@ -33,6 +35,15 @@ private ResourceBundle mensajes;
         setLocation(a/2,b/2);
         setVisible(true);
         cambiaridioma(mensajes);
+        imgs = new ImageIcon[6];
+         imgs[0]= new ImageIcon("src/ec/edu/ups/imagenes/inicial.png");
+        imgs[1]= new ImageIcon("src/ec/edu/ups/imagenes/caninos.png");
+        imgs[2]= new ImageIcon("src/ec/edu/ups/imagenes/felinos.png");
+        imgs[3]= new ImageIcon("src/ec/edu/ups/imagenes/reptil.png");
+        imgs[4]= new ImageIcon("src/ec/edu/ups/imagenes/aves.png");
+        imgs[5]= new ImageIcon("src/ec/edu/ups/imagenes/roedor.png");
+        
+        jLabel1.setIcon(imgs[0]);
     }
     
        public void cambiaridioma(ResourceBundle mensajes){
@@ -70,6 +81,7 @@ private ResourceBundle mensajes;
         txtpeso = new javax.swing.JTextField();
         jespecie = new javax.swing.JLabel();
         txtspecie = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jtitulo = new javax.swing.JLabel();
         jingrese = new javax.swing.JLabel();
         jdes = new javax.swing.JLabel();
@@ -125,8 +137,13 @@ private ResourceBundle mensajes;
         jespecie.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jespecie.setText("Especie:");
 
-        txtspecie.setEditable(false);
-        txtspecie.setEnabled(false);
+        txtspecie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtspecieKeyPressed(evt);
+            }
+        });
+
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,29 +160,34 @@ private ResourceBundle mensajes;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtspecie)
                     .addComponent(txtnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(txtedad, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(txtpeso, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    .addComponent(txtedad)
+                    .addComponent(txtpeso))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jnombre)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jedad)
-                    .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jpeso)
-                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jespecie)
-                    .addComponent(txtspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jnombre)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jedad)
+                            .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jpeso)
+                            .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jespecie)
+                            .addComponent(txtspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -209,9 +231,10 @@ private ResourceBundle mensajes;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtitulo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jtitulo)
+                        .addContainerGap(79, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -250,7 +273,7 @@ private ResourceBundle mensajes;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnactualizar)
                     .addComponent(btncancelar))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -271,9 +294,26 @@ private ResourceBundle mensajes;
             txtnombre.setText(mascota.getNombre());
             txtpeso.setText(Double.toString(mascota.getPeso()));
             txtspecie.setText(mascota.getEspecie());
+            checar();
         }
     }//GEN-LAST:event_btnbuscarActionPerformed
-
+public void checar(){
+    if("canino".equals(txtspecie.getText())){
+        jLabel1.setIcon(imgs[1]);
+    }
+    if("felino".equals(txtspecie.getText())){
+        jLabel1.setIcon(imgs[2]);
+    }
+    if("reptil".equals(txtspecie.getText())){
+        jLabel1.setIcon(imgs[3]);
+    }
+    if("ave".equals(txtspecie.getText())){
+        jLabel1.setIcon(imgs[4]);
+    }
+    if("roedor".equals(txtspecie.getText())){
+        jLabel1.setIcon(imgs[5]);
+    }
+}
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         // TODO add your handling code here:
         x=null;
@@ -293,6 +333,7 @@ private ResourceBundle mensajes;
         txtnombre.setText("");
         txtpeso.setText("");
         txtspecie.setText("");
+        jLabel1.setIcon(null);
         JOptionPane.showMessageDialog(null, "Mascota Actualizada");
     }//GEN-LAST:event_btnactualizarActionPerformed
 
@@ -303,11 +344,17 @@ private ResourceBundle mensajes;
    x=null;
     }//GEN-LAST:event_btncancelarActionPerformed
 
+    private void txtspecieKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtspecieKeyPressed
+        // TODO add your handling code here:
+        checar();
+    }//GEN-LAST:event_txtspecieKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btncancelar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
