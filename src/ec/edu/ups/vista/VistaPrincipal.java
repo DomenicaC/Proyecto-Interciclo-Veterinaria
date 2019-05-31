@@ -1074,6 +1074,48 @@ public class VistaPrincipal extends javax.swing.JFrame {
             listarCliente.cambiarIdioma(mensajes);
         }
         
+        ////Servicio
+        if (crearservicio != null && crearservicio.isVisible()){
+            crearservicio.cambiarIdioma(mensajes);
+        }
+        
+        if(buscarservicio != null && buscarservicio.isVisible()){
+            buscarservicio.cambiarIdioma(mensajes);
+        }
+        
+        if(modificarservicio != null && modificarservicio.isVisible()){
+            modificarservicio.cambiarIdioma(mensajes);
+        }
+        
+        if(eliminarservicio != null && eliminarservicio.isVisible()){
+            eliminarservicio.cambiarIdioma(mensajes);
+        }
+        
+        if(listaservicio != null && listaservicio.isVisible()){
+            listaservicio.cambiarIdioma(mensajes);
+        }
+        
+        ////Veterinario
+        if (crearveterinario != null && crearveterinario.isVisible()){
+            crearveterinario.cambiarIdioma(mensajes);
+        }
+        
+        if(buscarveterinario != null && buscarveterinario.isVisible()){
+            buscarveterinario.cambiarIdioma(mensajes);
+        }
+        
+        if(modificarveterinario != null && modificarveterinario.isVisible()){
+            modificarveterinario.cambiarIdioma(mensajes);
+        }
+        
+        if(eliminarveterinario != null && eliminarveterinario.isVisible()){
+            eliminarveterinario.cambiarIdioma(mensajes);
+        }
+        
+        if(listaveterinario != null && listaveterinario.isVisible()){
+            listaveterinario.cambiarIdioma(mensajes);
+        }
+        
         //Factura
         if(crearF != null && crearF.isVisible()){
             crearF.cambiarIdioma(mensajes);

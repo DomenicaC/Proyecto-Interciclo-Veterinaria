@@ -66,7 +66,7 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         labelc.setText(mensajes.getString("servicio.codigo"));
         labeln.setText(mensajes.getString("servicio.nombre"));
         labelp.setText(mensajes.getString("servicio.precio"));
-
+        label.setText(mensajes.getString("titulos.ingrese"));
         bc.setText(mensajes.getString("servicio.bcrear"));
         bca.setText(mensajes.getString("servicio.bcancelar"));
 
@@ -91,7 +91,7 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         labelc = new javax.swing.JLabel();
         txtcp = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        label = new javax.swing.JLabel();
         labels = new javax.swing.JLabel();
 
         setClosable(true);
@@ -181,11 +181,11 @@ public class CrearServicio extends javax.swing.JInternalFrame {
         jPanel1.add(txtcp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 160, 40));
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 220, 250));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ingrese su servicio");
-        jLabel1.setToolTipText("");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 200, -1));
+        label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label.setText("Ingrese su servicio");
+        label.setToolTipText("");
+        jPanel1.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 520, 320));
 
@@ -262,8 +262,8 @@ public void checar(){
     private javax.swing.JButton bc;
     private javax.swing.JButton bca;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel label;
     private javax.swing.JLabel labelc;
     private javax.swing.JLabel labeln;
     private javax.swing.JLabel labelp;
