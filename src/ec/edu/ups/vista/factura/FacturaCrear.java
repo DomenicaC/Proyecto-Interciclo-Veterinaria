@@ -176,6 +176,23 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -610,17 +627,17 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
                                         .addComponent(lblSub)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(27, 27, 27)
-                                            .addComponent(lblIva)
-                                            .addGap(16, 16, 16)
-                                            .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(25, 25, 25)
-                                            .addComponent(lblTot)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(25, 25, 25)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblIva)
+                                                .addGap(16, 16, 16)
+                                                .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblTot)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -870,6 +887,7 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         lblNomM.setText(mensajes.getString("labelF.nomM"));
         lblEdadM.setText(mensajes.getString("labelF.edadM"));
         lblPesoM.setText(mensajes.getString("labelF.pesoM"));
+        lblEspecie.setText(mensajes.getString("labelF.especie"));
 
         //Tabla
         JTableHeader tableHeader = tblServF.getTableHeader();
@@ -955,9 +973,13 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         controladorFactura.create(factura);
         JOptionPane.showMessageDialog(this, "Factura Creada");
         System.out.println("factura \n" + factura.toString());
+        /*
+         txtRuc.setText(Integer.toString(controladorFactura.getCodigo()));
+         factura.setRuc(Integer.parseInt(txtRuc.getText()));*/
 
-        txtRuc.setText(Integer.toString(controladorFactura.getCodigo()));
-        factura.setRuc(Integer.parseInt(txtRuc.getText()));
+        int ruc = this.controladorFactura.getCodigo() + 1;
+        txtRuc.setText(String.valueOf(ruc));
+        txtFecha.setText(controladorFactura.getFecha());
 
         contador = 0;
 
@@ -971,6 +993,10 @@ public class FacturaCrear extends javax.swing.JInternalFrame {
         x = null;
         this.dispose();
     }//GEN-LAST:event_btnCancelarFActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        x = null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

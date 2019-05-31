@@ -131,6 +131,23 @@ public class FacturaBuscar extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         lblRuc.setBackground(new java.awt.Color(255, 255, 255));
         lblRuc.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -677,6 +694,7 @@ public class FacturaBuscar extends javax.swing.JInternalFrame {
         lblNomM.setText(mensajes.getString("labelF.nomM"));
         lblEdadM.setText(mensajes.getString("labelF.edadM"));
         lblPesoM.setText(mensajes.getString("labelF.pesoM"));
+        lblEspecie.setText(mensajes.getString("labelF.especie"));
 
         //Tabla
         JTableHeader tableHeader = tblServF.getTableHeader();
@@ -726,6 +744,7 @@ public class FacturaBuscar extends javax.swing.JInternalFrame {
 
             //cliente
             cliente = factura.getCli();
+            cliente = factura.getCli();
             txtCodC.setText(Integer.toString(cliente.getCodigo()));
             txtNomC.setText(cliente.getNombre());
             txtApeC.setText(cliente.getApellido());
@@ -763,6 +782,10 @@ public class FacturaBuscar extends javax.swing.JInternalFrame {
     private void tblServFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServFKeyReleased
 
     }//GEN-LAST:event_tblServFKeyReleased
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        x = null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

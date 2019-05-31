@@ -19,10 +19,12 @@ import javax.swing.JPasswordField;
  * @author Byron PC
  */
 public class BorrarMascota extends javax.swing.JInternalFrame {
-public static String x;
-private ControladorMascota controladorMascota;
-private ResourceBundle mensajes;
-public ImageIcon imgs[];
+
+    public static String x;
+    private ControladorMascota controladorMascota;
+    private ResourceBundle mensajes;
+    public ImageIcon imgs[];
+
     /**
      * Creates new form BorrarMascota
      */
@@ -37,22 +39,22 @@ public ImageIcon imgs[];
         setVisible(true);
         cambiaridioma(mensajes);
         imgs = new ImageIcon[6];
-         imgs[0]= new ImageIcon("src/ec/edu/ups/imagenes/inicial.png");
-        imgs[1]= new ImageIcon("src/ec/edu/ups/imagenes/caninos.png");
-        imgs[2]= new ImageIcon("src/ec/edu/ups/imagenes/felinos.png");
-        imgs[3]= new ImageIcon("src/ec/edu/ups/imagenes/reptil.png");
-        imgs[4]= new ImageIcon("src/ec/edu/ups/imagenes/aves.png");
-        imgs[5]= new ImageIcon("src/ec/edu/ups/imagenes/roedor.png");
-        
+        imgs[0] = new ImageIcon("src/ec/edu/ups/imagenes/inicial.png");
+        imgs[1] = new ImageIcon("src/ec/edu/ups/imagenes/caninos.png");
+        imgs[2] = new ImageIcon("src/ec/edu/ups/imagenes/felinos.png");
+        imgs[3] = new ImageIcon("src/ec/edu/ups/imagenes/reptil.png");
+        imgs[4] = new ImageIcon("src/ec/edu/ups/imagenes/aves.png");
+        imgs[5] = new ImageIcon("src/ec/edu/ups/imagenes/roedor.png");
+
         jLabel1.setIcon(imgs[0]);
-        
+
     }
-    
-      public void cambiaridioma(ResourceBundle mensajes){
+
+    public void cambiaridioma(ResourceBundle mensajes) {
         jtitulo.setText(mensajes.getString("tituloM.eliminar"));
         jingrese.setText(mensajes.getString("label.ingrese"));
         jdes.setText(mensajes.getString("label.de"));
-        jnombre.setText(mensajes.getString("servicio.nombre"));        
+        jnombre.setText(mensajes.getString("servicio.nombre"));
         jpeso.setText(mensajes.getString("item.peso"));
         jedad.setText(mensajes.getString("label.edad"));
         jespecie1.setText(mensajes.getString("label.especie"));
@@ -307,54 +309,54 @@ public ImageIcon imgs[];
     }//GEN-LAST:event_txtnombreActionPerformed
 
     private void bnteliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnteliminarActionPerformed
-     //Contraseña para eliminar
+        //Contraseña para eliminar
         JPasswordField admin = new JPasswordField();
-      
-if(JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar",JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION){
-    
-}
-     
+
+        if (JOptionPane.showConfirmDialog(null, admin, "Ingrese contraseña para eliminar", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+
+        }
+
         int codigo = Integer.parseInt(txtcodigoeliminar.getText());
-     Mascota mascota= controladorMascota.read(codigo);
-     if (mascota == null) {
+        Mascota mascota = controladorMascota.read(codigo);
+        if (mascota == null) {
             JOptionPane.showMessageDialog(null, "Su mascota no ha sido registrada");
         } else {
-         JOptionPane.showMessageDialog(null, "Su mascota ha sido eliminada");
-         controladorMascota.delete(codigo);
-         txtedad.setText("");
-         txtnombre.setText("");
-         txtpeso.setText("");
-         txtcodigoeliminar.setText("");
-         txtspecie1.setText("");
-         jLabel1.setIcon(null);
+            JOptionPane.showMessageDialog(null, "Su mascota ha sido eliminada");
+            controladorMascota.delete(codigo);
+            txtedad.setText("");
+            txtnombre.setText("");
+            txtpeso.setText("");
+            txtcodigoeliminar.setText("");
+            txtspecie1.setText("");
+            jLabel1.setIcon(null);
         }
-             
+
     }//GEN-LAST:event_bnteliminarActionPerformed
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
         this.setVisible(false);
-        x=null;
-        
+        x = null;
+
     }//GEN-LAST:event_btncancelarActionPerformed
-public void checar(){
-    if("canino".equals(txtspecie1.getText())){
-        jLabel1.setIcon(imgs[1]);
+    public void checar() {
+        if ("canino".equals(txtspecie1.getText())) {
+            jLabel1.setIcon(imgs[1]);
+        }
+        if ("felino".equals(txtspecie1.getText())) {
+            jLabel1.setIcon(imgs[2]);
+        }
+        if ("reptil".equals(txtspecie1.getText())) {
+            jLabel1.setIcon(imgs[3]);
+        }
+        if ("ave".equals(txtspecie1.getText())) {
+            jLabel1.setIcon(imgs[4]);
+        }
+        if ("roedor".equals(txtspecie1.getText())) {
+            jLabel1.setIcon(imgs[5]);
+        }
     }
-    if("felino".equals(txtspecie1.getText())){
-        jLabel1.setIcon(imgs[2]);
-    }
-    if("reptil".equals(txtspecie1.getText())){
-        jLabel1.setIcon(imgs[3]);
-    }
-    if("ave".equals(txtspecie1.getText())){
-        jLabel1.setIcon(imgs[4]);
-    }
-    if("roedor".equals(txtspecie1.getText())){
-        jLabel1.setIcon(imgs[5]);
-    }
-}
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
         int codigo = Integer.parseInt(txtcodigoeliminar.getText());
@@ -372,16 +374,13 @@ public void checar(){
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         // TODO add your handling code here:
-        x=null;
+        x = null;
     }//GEN-LAST:event_formInternalFrameClosing
 
     private void txtspecie1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtspecie1KeyPressed
         // TODO add your handling code here:
-        
-      
-        
-        
-        
+
+
     }//GEN-LAST:event_txtspecie1KeyPressed
 
 

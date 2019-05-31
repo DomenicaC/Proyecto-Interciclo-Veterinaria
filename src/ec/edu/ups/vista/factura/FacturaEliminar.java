@@ -18,7 +18,6 @@ import ec.edu.ups.controladores.ControladorMascota;
 import ec.edu.ups.controladores.ControladorServicio;
 import ec.edu.ups.controladores.ControladorVeterinario;
 import ec.edu.ups.vista.VistaPrincipal;
-import static ec.edu.ups.vista.factura.FacturaBuscar.x;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
@@ -106,10 +105,11 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         txtNomM.setText("");
         txtNomV.setText("");
         txtPesoM.setText("");
-        txtRuc.setText("");
+        //txtRuc.setText("");
         txtSubtotal.setText("");
         txtTelC.setText("");
         txtTotal.setText("");
+        txtEspecie.setText("");
 
     }
 
@@ -146,6 +146,7 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         lblNomM.setText(mensajes.getString("labelF.nomM"));
         lblEdadM.setText(mensajes.getString("labelF.edadM"));
         lblPesoM.setText(mensajes.getString("labelF.pesoM"));
+        lblEspecie.setText(mensajes.getString("labelF.especie"));
 
         //Tabla
         JTableHeader tableHeader = tblServF.getTableHeader();
@@ -238,6 +239,27 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblServF = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         lblRuc.setBackground(new java.awt.Color(255, 255, 255));
         lblRuc.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -767,25 +789,33 @@ public class FacturaEliminar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblServFKeyReleased
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+
         JPasswordField admin = new JPasswordField();
 
         if (JOptionPane.showConfirmDialog(null, admin, "Ingrese su contraseña", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-            int codi = Integer.parseInt(txtRuc.getText());
-            factura = controladorFactura.read(codi);
+
+            int ruc = Integer.parseInt(txtRuc.getText());
+            factura = controladorFactura.read(ruc);
+
             if (factura == null) {
                 JOptionPane.showMessageDialog(this, "RUC no Existe");
             } else {
                 JOptionPane.showMessageDialog(this, "Factura Eliminada");
-                controladorFactura.delete(codi);
-                vaciarDatos();
-                vaciarTabla();
+                controladorFactura.delete(ruc);
+
             }
         } else {
             JOptionPane.showMessageDialog(this, "No se puede eliminar");
         }
 
+        vaciarDatos();
+        vaciarTabla();
 
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        x = null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
